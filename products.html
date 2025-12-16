@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>A1 Computer Corp - Products</title>
+    <link rel="icon" type="image/x-icon" href="logo.png" />
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="productstyle.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg bg-white shadow-sm sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="logo.png" alt="logo" height="40" class="me-2">
+                <div class="d-flex flex-column">
+                    <strong>A1 Computer</strong>
+                    <small class="text-muted" style="font-size: 0.7rem; line-height: 1;">IT Solutions Corp</small>
+                </div>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navMenu">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                            aria-expanded="false">Products</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="products.html?category=Accessories">Accessories</a></li>
+                            <li><a class="dropdown-item" href="products.html?category=PC Case">Casings</a></li>
+                            <li><a class="dropdown-item" href="products.html?category=Cooling">CPU Coolers</a></li>
+                            <li><a class="dropdown-item" href="products.html?category=CPU">Procesors</a></li>
+                            <li><a class="dropdown-item" href="products.html?category=Graphics Card">Graphics Cards</a>
+                            </li>
+                            <li><a class="dropdown-item" href="products.html?category=Laptop">Laptops</a></li>
+                            <li><a class="dropdown-item" href="products.html?category=Monitor">Monitors</a></li>
+                            <li><a class="dropdown-item" href="products.html?category=Motherboard">Motherboard</a></li>
+                            <li><a class="dropdown-item" href="products.html?category=Networking">Wifi</a></li>
+                            <li><a class="dropdown-item" href="products.html?category=PC Build">PC Builds</a></li>
+                            <li><a class="dropdown-item" href="products.html?category=Peripherals">Peripherals</a></li>
+                            <li><a class="dropdown-item"
+                                    href="products.html?category=Power&category=Power Supply">UPS/AVR</a></li>
+                            <li><a class="dropdown-item" href="products.html?category=Tools">Tools</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="container-fluid p-4">
+        <div class="row">
+
+            <!-- SIDEBAR -->
+            <div class="col-3 sidebar">
+
+                <!-- Clear Filters Button -->
+                <button id="clearFiltersBtn" class="btn btn-outline-secondary w-100 mb-4">
+                    Clear Filters
+                </button>
+
+                <div class="mb-4">
+                    <div class="filter-title">Category</div>
+                    <div class="brand-list" id="categoryList"></div>
+                </div>
+
+                <!-- Brand Filter -->
+                <div class="mb-4">
+                    <div class="filter-title">Brand</div>
+                    <div class="brand-list" id="brandList"></div>
+                </div>
+
+            </div>
+
+            <!-- MAIN CONTENT -->
+            <div class="col-9">
+
+                <!-- Top Controls -->
+                <div class="filter-bar d-flex justify-content-end mb-4">
+                    <div class="sort-wrapper">
+                        <label class="sort-label">Sort</label>
+                        <select id="sortSelect" class="sort-select">
+                            <option value="az">Name: A → Z</option>
+                            <option value="za">Name: Z → A</option>
+                        </select>
+                    </div>
+                </div>
+
+
+                <!-- Products Grid -->
+                <div class="row" id="productGrid"></div>
+
+                <div id="pagination" class="custom-pagination"></div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="site-footer py-5 text-center">
+        <div class="container">
+            <div class="row text-white gy-4">
+
+                <!-- CONTACT -->
+                <div class="col-md-4">
+                    <h5 class="footer-title"><i class="bi bi-telephone-fill"></i> Contact Us</h5>
+                    <ul class="footer-list">
+                        <li><i class="bi bi-phone"></i> Globe: 09171098923</li>
+                        <li><i class="bi bi-geo-alt-fill"></i> Address: Blk 10 Lot 9,<br>
+                            GreenGate Homes 3,<br>
+                            Malagasang 2A, Imus Cavite</li>
+                        <li>
+                            <i class="bi bi-envelope-fill"></i>
+                            Email: <a href="mailto:arnold@a1computercorp.com">arnold@a1computercorp.com</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- LOCATION -->
+                <div class="col-md-4">
+                    <h5 class="footer-title"><i class="bi bi-map-fill"></i> Location</h5>
+
+                    <a href="https://www.google.com/maps/place/A1+COMPUTER+IT+SOLUTIONS+CORP/" class="footer-link"
+                        target="_blank">Open in Google Maps</a>
+
+                    <div class="footer-map mt-3">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7725.059588392966!2d120.920948!3d14.374753!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397d37c294672dd%3A0xee9b98f8014fbcb8!2sA1%20COMPUTER%20IT%20SOLUTIONS%20CORP!5e0!3m2!1sen!2sph!4v1700000000001"
+                            allowfullscreen="" loading="lazy">
+                        </iframe>
+                    </div>
+                </div>
+
+                <!-- SOCIALS -->
+                <div class="col-md-4">
+                    <h5 class="footer-title"><i class="bi bi-share-fill"></i> Follow Us</h5>
+                    <ul class="footer-list">
+                        <li>
+                            <i class="bi bi-facebook"></i>
+                            <a href="https://www.facebook.com/a1computercorp/">Facebook</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+        <div class="text-white mt-4">
+            © 2025 A1 Computer Corp. All Rights Reserved.
+        </div>
+    </footer>
+
+    <script>
+
+        // ======================= DATASET PLACEHOLDER =======================
+        // Paste your full dataset here:
+        // const allProducts = [ ... ];
+
+        const allProducts = [
+            // Page 1
+            { name: "NEUTRON ODYSSEY 165-3 M ATX CASING", brand: "NEUTRON", category: "PC Case", image: "assets/casings/NEUTRON ODYSSEY 165-3 M ATX CASING.png", link: "https://www.google.com/search?q=neutron+odyssey+165-3+m+atx+casing+specs&sca_esv=b4437735d9785011&rlz=1C1UEAD_enPH1123PH1123&biw=1366&bih=641&sxsrf=AE3TifNn5QNnRLfcCqQGj6SDEN_ytvg3lQ%3A1765427883170&ei=q0o6ac2VCtCdvr0Pv8uHkAo&oq=NEUTRON+ODYSSEY+165-3+M+ATX+CASING+s&gs_lp=Egxnd3Mtd2l6LXNlcnAiJE5FVVRST04gT0RZU1NFWSAxNjUtMyBNIEFUWCBDQVNJTkcgcyoCCAAyBRAhGKABMgUQIRigATIFECEYoAEyBRAhGKABSMsJUG1Y0AJwAXgAkAEAmAGyAaABwgOqAQMwLjO4AQHIAQD4AQGYAgOgAvICwgIKEAAYsAMY1gQYR5gDAIgGAZAGCJIHBTEuMS4xoAe8DLIHBTAuMS4xuAfiAsIHAzMtM8gHKoAIAA&sclient=gws-wiz-serp" },
+            { name: "LENOVO D22E-20 21.5\" MONITOR", brand: "LENOVO", category: "Monitor", image: "assets/monitors/LENOVO D22E-20 21.5 MONITOR.jpg", link: "https://psref.lenovo.com/Detail/Lenovo_D22e_20?M=66D2KCC6US" },
+            { name: "ACER SA222QEBI 21.5\" MONITOR", brand: "ACER", category: "Monitor", image: "assets/monitors/ACER SA222QEBI 21.5 MONITOR.jfif", link: "https://www.acer.com/ph-en/monitors/essential/sa2/pdp/MM.TWFSP.001" },
+            { name: "EPSON LQ590 DOT MATRIX PRINTER", brand: "EPSON", category: "Printer", image: "assets/printers/EPSON LQ590 DOT MATRIX PRINTER.jfif", link: "https://www.epson.com.ph/Dot-Matrix-Printers/Epson-LQ-590II-Impact-Printer/p/C11CF39501" },
+            { name: "EPSON LQ310 DOT MATRIX PRINTER", brand: "EPSON", category: "Printer", image: "assets/printers/EPSON LQ310 DOT MATRIX PRINTER.jfif", link: "https://www.epson.com.ph/TKDN/SIDM/Epson-LQ-310-Dot-Matrix-Printer/p/C11CC25301" },
+            { name: "EPSON LX310 DOT MATRIX PRINTER", brand: "EPSON", category: "Printer", image: "assets/printers/EPSON LX310 DOT MATRIX PRINTER.png", link: "https://www.epson.com.ph/TKDN/SIDM/Epson-LX-310-Dot-Matrix-Printer/p/C11CC24301" },
+            { name: "TPLINK AX10 AX1500 WIFI 6 ROUTER", brand: "TP-LINK", category: "Networking", image: "assets/networking/TPLINK AX10 AX1500 WIFI 6 ROUTER.jpg", link: "https://www.tp-link.com/ph/home-networking/wifi-router/archer-ax10/" },
+            { name: "TPLINK AX23 AX1800 WIFI 6 ROUTER", brand: "TP-LINK", category: "Networking", image: "assets/networking/TPLINK AX23 AX1800 WIFI 6 ROUTER.jpg", link: "https://www.tp-link.com/ph/home-networking/wifi-router/archer-ax23/" },
+            { name: "TPLINK AX72 AX5400 WIFI 6 ROUTER", brand: "TP-LINK", category: "Networking", image: "assets/networking/TPLINK AX72 AX5400 WIFI 6 ROUTER.png", link: "https://www.tp-link.com/ph/home-networking/wifi-router/archer-ax72/" },
+            { name: "THERMALTAKE TR2 SP 550WATTS 80PLUS PSU", brand: "THERMALTAKE", category: "Power Supply", image: "assets/psu/THERMALTAKE TR2 SP 550WATTS 80PLUS PSU.jpg", link: "https://www.thermaltake.com/tr2-s-550w-dc-to-dc-version.html" },
+            { name: "THERMALTAKE TR2 SP 650WATTS 80PLUS PSU", brand: "THERMALTAKE", category: "Power Supply", image: "assets/psu/THERMALTAKE TR2 SP 650WATTS 80PLUS PSU.jpg", link: "https://www.thermaltake.com/tr2-s-650w.html" },
+            { name: "THERMALTAKE TR2 SP 750WATTS 80PLUS PSU", brand: "THERMALTAKE", category: "Power Supply", image: "assets/psu/THERMALTAKE TR2 SP 750WATTS 80PLUS PSU.jpg", link: "https://www.thermaltake.com/tr2-s-750w-dc-to-dc-version.html" },
+            { name: "COOLMAN PM18 FAN 120MM BLACK FAN", brand: "COOLMAN", category: "Cooling", image: "assets/cooling/COOLMAN PM18 FAN 120MM BLACK FAN.jfif", link: "https://www.facebook.com/CoolmanPhilippines/photos/%F0%9D%97%A0%F0%9D%97%AE%F0%9D%98%85-%F0%9D%97%96%F0%9D%97%BC%F0%9D%97%BC%F0%9D%97%B9%F0%9D%97%B6%F0%9D%97%BB%F0%9D%97%B4-%F0%9D%98%84%F0%9D%97%B6%F0%9D%98%81 %F0 %A5 %A5 %A5 %A5 %A5 %A5 %A5 %A5 %A5 %A5 %A5 %A5 %A5 %A5 %A5 %A5 %A5 %A5 %A5 %" },
+            { name: "CORSAIR CX750 750WATTS 80 PLUS BRONZE PSU", brand: "CORSAIR", category: "Power Supply", image: "assets/psu/CORSAIR CX750 750WATTS 80 PLUS BRONZE PSU.webp", link: "https://www.google.com/search?q=CORSAIR+CX750+750WATTS+80+PLUS+BRONZE+PSU&sca_esv=a566feb79decc771&rlz=1C1UEAD_enPH1123PH1123&sxsrf=AE3TifOPbiM5kkYJBm5juvumeBdK-rjagA%3A1765685706848&ei=yjk-aYzGM7G8vr0P1tehyAg&ved=0ahUKEwiM093qm7yRAxUxnq8BHdZrCIkQ4dUDCBE&uact=5&oq=CORSAIR+CX750+750WATTS+80+PLUS+BRONZE+PSU&gs_lp=Egxnd3Mtd2l6LXNlcnAiKUNPUlNBSVIgQ1g3NTAgNzUwV0FUVFMgODAgUExVUyBCUk9OWkUgUFNVMgoQIxjwBRgnGMkCMgYQABgWGB4yBhAAGBYYHjIIEAAYFhgKGB4yBhAAGBYYHjIGEAAYFhgeMgsQABiABBiGAxiKBTILEAAYgAQYhgMYigUyCxAAGIAEGIYDGIoFMgUQABjvBUjRB1ClBVilBXABeAGQAQCYAYwBoAGMAaoBAzAuMbgBA8gBAPgBAvgBAZgCAqACvwHCAgoQABiwAxjWBBhHmAMAiAYBkAYIkgcDMS4xoAeDC7IHAzAuMbgHnwHCBwUzLTEuMcgHJ4AIAA&sclient=gws-wiz-serp" },
+            { name: "INPLAY UFO KIT 3 FIX RGB FAN", brand: "INPLAY", category: "Cooling", image: "assets/cooling/INPLAY UFO KIT 3 FIX RGB FAN.jfif", link: "https://www.google.com/search?sca_esv=25dfd463629c044b&rlz=1C1UEAD_enPH1123PH1123&q=INPLAY+UFO+KIT+3+FIX+RGB+FAN&source=lnms&fbs=AIIjpHxWTCDiHUFDengF14cj36gwX61uFym4ho93usPZ_vjh2QdeHh5hN9jGHVnWPpt1iPRZ65BQa-KD1ckgue6haTLapXJuot1Yz7qPU51NHwt83DOcnO4f5MWI9fg28ZWdhaPNioE74Pso9DMEJGGl9l2unDRkLQ_XJuo9mfv_S6rhQz8LBwzclZXpWR5AtcuQ4ltbHt_xhUIHs5XyMdiqn5mhL1f3llgVwr2JQF0qNlVlB3jIZ_g&sa=X&ved=2ahUKEwj0gIHH7ryRAxXnslYBHZOJAHEQ0pQJegQIDRAB&biw=1366&bih=641&dpr=1" },
+            { name: "INPLAY GS750-Ultra Rated 750W RGB 80Plus Bronze PSU", brand: "INPLAY", category: "Power Supply", image: "assets/psu/INPLAY GS750-Ultra Rated 750W RGB 80Plus Bronze PSU.webp", link: "https://www.google.com/search?q=INPLAY+GS750-Ultra+Rated+750W+RGB+80Plus+Bronze+PSU+specs&sca_esv=25dfd463629c044b&rlz=1C1UEAD_enPH1123PH1123&biw=1366&bih=641&ei=2JA-adi1K_el2roP3ajtqQI&ved=0ahUKEwjYgbvt7ryRAxX3klYBHV1UOyUQ4dUDCBE&uact=5&oq=INPLAY+GS750-Ultra+Rated+750W+RGB+80Plus+Bronze+PSU+specs&gs_lp=Egxnd3Mtd2l6LXNlcnAiOUlOUExBWSBHUzc1MC1VbHRyYSBSYXRlZCA3NTBXIFJHQiA4MFBsdXMgQnJvbnplIFBTVSBzcGVjczIIEAAYgAQYogQyCBAAGIAEGKIEMggQABiABBiiBDIIEAAYgAQYogQyCBAAGKIEGIkFSIQWUHZYlxNwAXgBkAEAmAHKAaAB4QaqAQUwLjUuMbgBA8gBAPgBAZgCB6ACpAfCAgoQABiwAxjWBBhHwgIHECEYoAEYCpgDAIgGAZAGCJIHBTEuNS4xoAe-GbIHBTAuNS4xuAebB8IHBzAuMy4zLjHIByKACAA&sclient=gws-wiz-serp" },
+            { name: "INPLAY SEAVIEW 240 RADIATOR WHITE LIQUID COOLER", brand: "INPLAY", category: "Cooling", image: "assets/cooling/INPLAY SEAVIEW 240 RADIATOR WHITE LIQUID COOLER.jfif", link: "https://www.google.com/search?q=inplay+seaview+240+radiator+white+liquid+cooler+specs&sca_esv=25dfd463629c044b&rlz=1C1UEAD_enPH1123PH1123&biw=1366&bih=641&ei=WpE-aYaqDb7l2roP0OOJ0QM&oq=INPLAY+SEAVIEW+240+RADIATOR+WHITE+LIQUID+COOLER+s&gs_lp=Egxnd3Mtd2l6LXNlcnAiMUlOUExBWSBTRUFWSUVXIDI0MCBSQURJQVRPUiBXSElURSBMSVFVSUQgQ09PTEVSIHMqAggAMgUQIRigATIFECEYoAEyBRAhGKABMgUQIRigATIFECEYoAFIkA1QjQFYkQJwAXgBkAEAmAGwAaABkQKqAQMxLjG4AQHIAQD4AQGYAgOgAsACwgIKEAAYsAMY1gQYR5gDAIgGAZAGCJIHAzEuMqAHpQqyBwMwLjK4B6kCwgcFMi0yLjHIBx-ACAA&sclient=gws-wiz-serp" },
+            { name: "INPLAY RF-P4 CPU AIR COOLER", brand: "INPLAY", category: "Cooling", image: "assets/cooling/INPLAY RF-P4 CPU AIR COOLER.webp", link: "https://www.google.com/search?sca_esv=25dfd463629c044b&rlz=1C1UEAD_enPH1123PH1123&biw=1366&bih=641&q=INPLAY+RF-P4+CPU+AIR+COOLER+specs&source=lnms&fbs=AIIjpHwdlVWI4oi2g38E8_BbusNmV4N_PDMDZa8kD6jzfAqHH_e2wpq3bNF0nim2pM6iwiI3YZUT4dZ0qi7fChuC-hVDTS2JIdXDc33C9ADrJoDFtDsdnXYMu8rYO_uzl3O9Zw2ZwhSuPJg5GUCUOKK8hVKQ3DAFtYdQef5qgSIuNUCpTXKZIAvJredIXpNeJR9XjvbkeBP2lIVT3SZ4pUKV2Tm1UuhvnYHi-fd9t_lo5B1krL_k2pY&sa=X&ved=2ahUKEwi0zIXB77yRAxVLk1YBHRacPBsQ0pQJegQIDBAB" },
+            { name: "TPLINK T2UB NANO WIFI ADAPTER", brand: "TP-LINK", category: "Networking", image: "assets/networking/TPLINK T2UB NANO WIFI ADAPTER.png", link: "https://www.tp-link.com/ph/home-networking/adapter/archer-t2ub-nano/" },
+            { name: "TPLINK T3U PLUS WIFI ADAPTER", brand: "TP-LINK", category: "Networking", image: "assets/networking/TPLINK T3U PLUS WIFI ADAPTER.jpg", link: "https://www.tp-link.com/ph/home-networking/adapter/archer-t3u-plus/" },
+            { name: "TPLINK LS108G 8 PORT SWITCH", brand: "TP-LINK", category: "Networking", image: "assets/networking/TPLINK LS108G 8 PORT SWITCH.jpg", link: "https://www.tp-link.com/ph/home-networking/soho-switch/ls108g/" },
+            { name: "HKC MB21V13 21.5\" MONITOR", brand: "HKC", category: "Monitor", image: "assets/monitors/HKC MB21V13 21.5 MONITOR.jfif", link: "https://www.google.com/search?q=HKC+MB21V13+21.5%5C%22+MONITOR&rlz=1C1UEAD_enPH1123PH1123&oq=HKC+MB21V13+21.5%5C%22+MONITOR&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIHCAEQIRiPAtIBBzIwMGowajSoAgCwAgA&sourceid=chrome&ie=UTF-8" },
+            { name: "NVISION N200HD V3 20\" MONITOR", brand: "NVISION", category: "Monitor", image: "assets/monitors/NVISION N200HD V3 20 MONITOR.jfif", link: "https://www.google.com/search?sca_esv=bdf989aec2a32a28&rlz=1C1UEAD_enPH1123PH1123&q=NVISION+N200HD+V3+20%5C%22+MONITOR+specs&source=lnms&fbs=AIIjpHz2LkAPJDdeiKYzFgacvjxVCCXt2_rn5WCap3LXcg4MWimX5xVC8lXXVk1dsWFqCuPWcQlsxInfO8t-7SRSqtqwDOvPDMj3YRq--E0IOLAUyO7lIkHszn3419ypbEZ4LkGr2FmBc3f9hyZA6jScPXxNtUPXO6x2hqtz3Heu7AeI1ZQFmbDbTC354YUBtjX0ahSt_A8WrIgIJ3zDg-i_ujSouYoLfuzvn7sk2cMOWGJ2wjAgRVw&sa=X&ved=2ahUKEwigp-zcwb6RAxV6oK8BHcwjJVkQ0pQJegQIChAB&biw=1366&bih=641&dpr=1" },
+            { name: "NVISION H22V5 21.5\" MONITOR", brand: "NVISION", category: "Monitor", image: "assets/monitors/NVISION H22V5 21.5 MONITOR.webp", link: "https://www.google.com/search?q=NVISION+H22V5+21.5%5C%22+MONITOR+specs&sca_esv=bdf989aec2a32a28&rlz=1C1UEAD_enPH1123PH1123&biw=1366&bih=641&ei=920_aYnRIMuPvr0PkOL1qA8&ved=0ahUKEwjJqNndwb6RAxXLh68BHRBxHfUQ4dUDCBE&uact=5&oq=NVISION+H22V5+21.5%5C%22+MONITOR+specs&gs_lp=Egxnd3Mtd2l6LXNlcnAiIk5WSVNJT04gSDIyVjUgMjEuNVwiIE1PTklUT1Igc3BlY3MyChAAGLADGNYEGEcyChAAGLADGNYEGEcyChAAGLADGNYEGEcyChAAGLADGNYEGEcyChAAGLADGNYEGEcyChAAGLADGNYEGEcyChAAGLADGNYEGEcyChAAGLADGNYEGEdImhJQ8RBY8RBwAXgBkAEAmAEAoAEAqgEAuAEDyAEA-AEC-AEBmAIBoAIQmAMAiAYBkAYIkgcBMaAHALIHALgHAMIHAzMtMcgHDIAIAA&sclient=gws-wiz-serp" },
+            { name: "NVISION V185H 18.5\" MONITOR", brand: "NVISION", category: "Monitor", image: "assets/monitors/NVISION V185H 18.5 MONITOR.jfif", link: "https://www.google.com/search?q=NVISION+V185H+18.5+MONITOR+specs&sca_esv=bdf989aec2a32a28&rlz=1C1UEAD_enPH1123PH1123&biw=1366&bih=641&ei=OG4_aefFFc-kvr0Pob3r0Ac&ved=0ahUKEwjnwc38wb6RAxVPkq8BHaHeGnoQ4dUDCBE&uact=5&oq=NVISION+V185H+18.5+MONITOR+specs&gs_lp=Egxnd3Mtd2l6LXNlcnAiIE5WSVNJT04gVjE4NUggMTguNSBNT05JVE9SIHNwZWNzMgUQIRifBUjeOlAAWPUKcAB4AZABAJgBjAGgAe8DqgEDMy4yuAEDyAEA-AEC-AEBmAIEoALOA8ICBRAAGO8FwgIIEAAYgAQYogTCAggQABiiBBiJBZgDAJIHAzMuMaAHyA-yBwMzLjG4B84DwgcHMi0xLjIuMcgHMYAIAA&sclient=gws-wiz-serp" },
+            { name: "NVISION N190HD V3 19\" MONITOR", brand: "NVISION", category: "Monitor", image: "assets/monitors/NVISION N190HD V3 19 MONITOR.jfif", link: "https://www.google.com/search?q=NVISION+N190HD+V3+19+MONITOR+specs&sca_esv=bdf989aec2a32a28&rlz=1C1UEAD_enPH1123PH1123&biw=1366&bih=641&ei=Xm8_aaXWOfLN1e8PoOi_sA0&ved=0ahUKEwil_YmJw76RAxXyZvUHHSD0D9YQ4dUDCBE&uact=5&oq=NVISION+N190HD+V3+19+MONITOR+specs&gs_lp=Egxnd3Mtd2l6LXNlcnAiIk5WSVNJT04gTjE5MEhEIFYzIDE5IE1PTklUT1Igc3BlY3MyBRAAGO8FMggQABiABBiiBDIFEAAY7wUyBRAAGO8FMggQABiABBiiBEi1DFDsCFjsCHACeAGQAQCYAZABoAGQAaoBAzAuMbgBA8gBAPgBAvgBAZgCA6ACqgHCAgoQABiwAxjWBBhHmAMAiAYBkAYCkgcDMi4xoAeWArIHAzAuMbgHoAHCBwcwLjEuMS4xyAcQgAgA&sclient=gws-wiz-serp" },
+            { name: "NVISION N185HD V3 18.5\" MONITOR", brand: "NVISION", category: "Monitor", image: "assets/monitors/NVISION N185HD V3 18.5 MONITOR.webp", link: "https://www.google.com/search?q=NVISION+N185HD+V3+18.5+MONITOR+specs&sca_esv=bdf989aec2a32a28&rlz=1C1UEAD_enPH1123PH1123&biw=1366&bih=641&ei=uG8_aeWZHKedvr0P15KjwA4&ved=0ahUKEwjl1eGzw76RAxWnjq8BHVfJCOgQ4dUDCBE&uact=5&oq=NVISION+N185HD+V3+18.5+MONITOR+specs&gs_lp=Egxnd3Mtd2l6LXNlcnAiJE5WSVNJT04gTjE4NUhEIFYzIDE4LjUgTU9OSVRPUiBzcGVjczIIEAAYogQYiQUyCBAAGIAEGKIEMggQABiABBiiBDIIEAAYgAQYogQyCBAAGKIEGIkFSPBWUJVAWP9JcAF4AZABAJgBigGgAYgDqgEDMi4yuAEDyAEA-AEC-AEBmAIFoAK9A8ICChAAGLADGNYEGEeYAwCIBgGQBgiSBwMzLjKgB_4KsgcDMi4yuAe0A8IHBTItNC4xyAckgAgA&sclient=gws-wiz-serp" },
+            { name: "ACER SA242YHBJ 24.5\" MONITOR", brand: "ACER", category: "Monitor", image: "assets/monitors/ACER SA242YHBJ 24.5 MONITOR.jfif", link: "https://www.acer.com/us-en/monitors/essential/sa2/pdp/UM.QS2AA.H03" },
+            { name: "HP M24F 23.8\" MONITOR", brand: "HP", category: "Monitor", image: "assets/monitors/HP M24F 23.8 MONITOR.webp", link: "https://support.hp.com/my-en/product/details/hp-m24f-fhd-monitor/2100644760" },
+            { name: "ASUS VA24EHF 23.8\" MONITOR", brand: "ASUS", category: "Monitor", image: "assets/monitors/ASUS VA24EHF 23.8 MONITOR.png", link: "https://www.asus.com/ph/displays-desktops/monitors/eye-care/va24ehf/" },
+            { name: "TPLINK TAPO C220 CAMERA", brand: "TP-LINK", category: "Security", image: "assets/security/TPLINK TAPO C220 CAMERA.jpg", link: "https://www.tp-link.com/ph/home-networking/cloud-camera/tapo-c220/" },
+            { name: "TPLINK TAPO D230S1 DOORBELL", brand: "TP-LINK", category: "Security", image: "assets/security/TPLINK TAPO D230S1 DOORBELL.jpg", link: "https://www.tp-link.com/ph/home-networking/cloud-camera/tapo-d230s1/" },
+            { name: "TPLINK TAPO C110 CAMERA", brand: "TP-LINK", category: "Security", image: "assets/security/TPLINK TAPO C110 CAMERA.jpg", link: "https://www.tp-link.com/ph/home-networking/cloud-camera/tapo-c110/" },
+            { name: "TPLINK TL-SG10160 NETWORK SWITCH", brand: "TP-LINK", category: "Networking", image: "assets/networking/TPLINK TL-SG10160 NETWORK SWITCH.jpg", link: "https://www.tp-link.com/us/business-networking/unmanaged-switch/tl-sg1016d/" },
+            { name: "DARKFLASH LG02 CABLE", brand: "DARKFLASH", category: "Accessories", image: "assets/accessories/DARKFLASH LG02 CABLE.png", link: "https://www.darkflash.com/product/lg02" },
+            { name: "DARKFLASH LG01 CABLE", brand: "DARKFLASH", category: "Accessories", image: "assets/accessories/DARKFLASH LG01 CABLE.png", link: "https://www.darkflash.com/product/lg01" },
+            { name: "DARKFLASH DC240 WHITE LIQUID COOLER", brand: "DARKFLASH", category: "Cooling", image: "assets/cooling/DARKFLASH DC240 WHITE LIQUID COOLER.png", link: "https://www.darkflash.com/product/radiantdc240" },
+            { name: "DARKFLASH DX240 VER 2.6 LIQUID COOLER", brand: "DARKFLASH", category: "Cooling", image: "assets/cooling/DARKFLASH DX240 VER 2.6 LIQUID COOLER.png", link: "https://www.darkflash.com/product/twisterdxv2.6240" },
+            { name: "DARKFLASH DX240 WHITE VER 2.6 LIQUID COOLER", brand: "DARKFLASH", category: "Cooling", image: "assets/cooling/DARKFLASH DX240 WHITE VER 2.6 LIQUID COOLER.png", link: "https://www.darkflash.com/product/twisterdxv2.6240" },
+            { name: "DARKFLASH DX240 BLACK VER 2.6 LIQUID COOLER", brand: "DARKFLASH", category: "Cooling", image: "assets/cooling/DARKFLASH DX240 BLACK VER 2.6 LIQUID COOLER.png", link: "https://www.darkflash.com/product/twisterdxv2.6240" },
+            { name: "COOLMAN CM-03 ARGB FAN", brand: "COOLMAN", category: "Cooling", image: "assets/cooling/COOLMAN CM-03 ARGB FAN.jfif", link: "https://www.google.com/search?q=COOLMAN+CM-03+ARGB+FAN+specs&sca_esv=a566feb79decc771&rlz=1C1UEAD_enPH1123PH1123&sxsrf=AE3TifNGW-eJo6mRv9UfztyWTe_5oNP9kg%3A1765684832638&ei=YDY-abPYJqePrfcPyrHyiA8&ved=0ahUKEwiziPDJmLyRAxWnR-sIHcqYHPEQ4dUDCBE&uact=5&oq=COOLMAN+CM-03+ARGB+FAN+specs&gs_lp=Egxnd3Mtd2l6LXNlcnAiHENPT0xNQU4gQ00tMDMgQVJHQiBGQU4gc3BlY3MyBRAhGKABMgUQIRigAUjSE1C7A1iHEnABeAGQAQCYAYgBoAHwBKoBAzAuNbgBA8gBAPgBAZgCBqACzQXCAgoQABiwAxjWBBhHwgIGEAAYFhgewgILEAAYgAQYhgMYigXCAgUQABjvBcICCBAAGIAEGKIEwgIHECEYoAEYCpgDAIgGAZAGB5IHAzEuNaAH8xSyBwMwLjW4B8AFwgcFMi0yLjTIBzmACAA&sclient=gws-wiz-serp" },
+            { name: "DARKFLASH C6 MS BLACK FAN", brand: "DARKFLASH", category: "Cooling", image: "assets/cooling/DARKFLASH C6 MS BLACK FAN.png", link: "https://www.darkflash.com/product/c6" },
+
+            // Page 2
+            { name: "DARKFLASH INFINITY 24 WHITE FAN", brand: "DARKFLASH", category: "Cooling", image: "assets/cooling/DARKFLASH INFINITY 24 WHITE FAN.png", link: "https://www.darkflash.com/product/inf24pro" },
+            { name: "DARKFLASH DM12-F FAN WHITE FAN", brand: "DARKFLASH", category: "Cooling", image: "assets/cooling/DARKFLASH DM12-F FAN WHITE FAN.png", link: "https://www.darkflash.com/product/dm12fargb" },
+            { name: "DARKFLASH DC360 WHITE LIQUID COOLER", brand: "DARKFLASH", category: "Cooling", image: "assets/cooling/DARKFLASH DC360 WHITE LIQUID COOLER.png", link: "https://www.darkflash.com/product/radiantdc360" },
+            { name: "DARKFLASH INFINITY 34 WHITE FAN", brand: "DARKFLASH", category: "Cooling", image: "assets/cooling/DARKFLASH INFINITY 34 WHITE FAN.png", link: "https://www.darkflash.com/product/inf32t" },
+            { name: "DARKFLASH DC120 WHITE LIQUID COOLER", brand: "DARKFLASH", category: "Cooling", image: "assets/cooling/DARKFLASH DC120 WHITE LIQUID COOLER.jpg", link: "https://www.darkflash.com/product/radiantdc120" },
+            { name: "DARKFLASH DARKVOID CPU AIR COOLER", brand: "DARKFLASH", category: "Cooling", image: "assets/cooling/DARKFLASH DARKVOID CPU AIR COOLER.jfif", link: "https://www.darkflash.com/product/darkvoid" },
+            { name: "DARKFLASH CASE (DK150) BLK ATX W/3PCS FAN CASING", brand: "DARKFLASH", category: "PC Case", image: "assets/casings/DARKFLASH CASE (DK150) BLK ATX W3PCS FAN CASING.png", link: "https://www.darkflash.com/product/dk150atx" },
+            { name: "DARKFLASH CASE (DK150) WHT ATX W/3PCS FAN CASING", brand: "DARKFLASH", category: "PC Case", image: "assets/casings/DARKFLASH CASE (DK150) WHT ATX W3PCS FAN CASING.png", link: "https://www.darkflash.com/product/dk150atx" },
+            { name: "DARKFLASH CASE (DK351) BLK ATX W/4PCS ARGB CASING", brand: "DARKFLASH", category: "PC Case", image: "assets/casings/DARKFLASH CASE (DK351) BLK ATX W14PCS ARGB CASING.png", link: "https://www.darkflash.com/product/dk351atx" },
+            { name: "DARKFLASH CASE (DK351) WHT ATX W/4PCS ARGB CASING", brand: "DARKFLASH", category: "PC Case", image: "assets/casings/DARKFLASH CASE (DK351) WHT ATX W14PCS ARGB CASING.png", link: "https://www.darkflash.com/product/dk351atx" },
+            { name: "DARKFLASH CASE (L285M) M-ATX WHITE CASING", brand: "DARKFLASH", category: "PC Case", image: "assets/casings/DARKFLASH CASE (L285M) M-ATX WHITE CASING.png", link: "https://www.darkflash.com/product/l285m" },
+            { name: "DARKFLASH CASE (DB330M MESH) WHITE M-ATX CASING", brand: "DARKFLASH", category: "PC Case", image: "assets/casings/DARKFLASH CASE (DB330M MESH) WHITE M-ATX CASING.png", link: "https://www.darkflash.com/product/db330m-mesh" },
+            { name: "DARKFLASH CASE (DB330M) M-ATX BLACK CASING", brand: "DARKFLASH", category: "PC Case", image: "assets/casings/DARKFLASH CASE (DB330M) M-ATX BLACK CASING.jpg", link: "https://www.darkflash.com/product/db330m" },
+            { name: "DARKFLASH CASE (DB330M) M-ATX WHITE CASING", brand: "DARKFLASH", category: "PC Case", image: "assets/casings/DARKFLASH CASE (DB330M) M-ATX WHITE CASING.jpg", link: "https://www.darkflash.com/product/db330m" },
+            { name: "DARKFLASH CASE (DK352 PLUS) ATX BLACK CASING", brand: "DARKFLASH", category: "PC Case", image: "assets/casings/DARKFLASH CASE (DK352 PLUS) ATX BLACK CASING.png", link: "https://www.darkflash.com/product/dk352plus" },
+            { name: "DARKFLASH CASE (DK352 PLUS) ATX WHITE CASING", brand: "DARKFLASH", category: "PC Case", image: "assets/casings/DARKFLASH CASE (DK352 PLUS) ATX WHITE CASING.png", link: "https://www.darkflash.com/product/dk352plus" },
+            { name: "DARKFLASH CASE (C285MP) M-ATX BLACK CASING", brand: "DARKFLASH", category: "PC Case", image: "assets/casings/DARKFLASH CASE (C285MP) M-ATX BLACK CASING.jpg", link: "https://www.darkflash.com/product/c285mp-matx-case" },
+            { name: "DARKFLASH CASE (C285MP) M-ATX WHITE CASING", brand: "DARKFLASH", category: "PC Case", image: "assets/casings/DARKFLASH CASE (C285MP) M-ATX WHITE CASING.jpg", link: "https://www.darkflash.com/product/c285mp-matx-case" },
+            { name: "COOLMAN CASE (REYNA) M-ATX BLACK CASING", brand: "COOLMAN", category: "PC Case", image: "assets/casings/COOLMAN CASE (REYNA) M-ATX BLACK CASING.jpg", link: "https://www.google.com/search?q=COOLMAN+CASE+%28REYNA%29+M-ATX+BLACK+CASING+SPECS&sca_esv=a566feb79decc771&rlz=1C1UEAD_enPH1123PH1123&sxsrf=AE3TifMGbmn1_tjFJjL1oAdOFt8jueMHBQ%3A1765684945864&ei=0TY-abe7NPyd0-kPwv2g6A0&ved=0ahUKEwj35-7_mLyRAxX8zjQHHcI-CN0Q4dUDCBE&uact=5&oq=COOLMAN+CASE+%28REYNA%29+M-ATX+BLACK+CASING+SPECS&gs_lp=Egxnd3Mtd2l6LXNlcnAiLUNPT0xNQU4gQ0FTRSAoUkVZTkEpIE0tQVRYIEJMQUNLIENBU0lORyBTUEVDUzIFEAAY7wUyCBAAGIAEGKIEMgUQABjvBTIFEAAY7wUyCBAAGIAEGKIESIgYUPsDWMcUcAN4AZABAJgBugGgAcwGqgEDMC42uAEDyAEA-AEBmAIFoALcA8ICChAAGLADGNYEGEfCAggQABiiBBiJBZgDAIgGAZAGCJIHAzIuM6AH2wqyBwMwLjO4B8gDwgcFMi0yLjPIBy-ACAA&sclient=gws-wiz-serp" },
+            { name: "COOLMAN CASE (REYNA) M-ATX WHITE CASING", brand: "COOLMAN", category: "PC Case", image: "assets/casings/COOLMAN CASE (REYNA) M-ATX WHITE CASING.jfif", link: "https://www.google.com/search?q=COOLMAN+CASE+%28REYNA%29+M-ATX+BLACK+CASING+SPECS&sca_esv=a566feb79decc771&rlz=1C1UEAD_enPH1123PH1123&sxsrf=AE3TifMGbmn1_tjFJjL1oAdOFt8jueMHBQ%3A1765684945864&ei=0TY-abe7NPyd0-kPwv2g6A0&ved=0ahUKEwj35-7_mLyRAxX8zjQHHcI-CN0Q4dUDCBE&uact=5&oq=COOLMAN+CASE+%28REYNA%29+M-ATX+BLACK+CASING+SPECS&gs_lp=Egxnd3Mtd2l6LXNlcnAiLUNPT0xNQU4gQ0FTRSAoUkVZTkEpIE0tQVRYIEJMQUNLIENBU0lORyBTUEVDUzIFEAAY7wUyCBAAGIAEGKIEMgUQABjvBTIFEAAY7wUyCBAAGIAEGKIESIgYUPsDWMcUcAN4AZABAJgBugGgAcwGqgEDMC42uAEDyAEA-AEBmAIFoALcA8ICChAAGLADGNYEGEfCAggQABiiBBiJBZgDAIgGAZAGCJIHAzIuM6AH2wqyBwMwLjO4B8gDwgcFMi0yLjPIBy-ACAA&sclient=gws-wiz-serp" },
+            { name: "COOLMAN CASE (RUBY) WHITE CASING", brand: "COOLMAN", category: "PC Case", image: "assets/casings/COOLMAN CASE (RUBY) WHITE CASING.jfif", link: "https://www.google.com/search?q=COOLMAN+CASE+%28RUBY%29+WHITE+CASING+SPECS&sca_esv=a566feb79decc771&rlz=1C1UEAD_enPH1123PH1123&sxsrf=AE3TifNYKi2iqNEGa2FESXZUVEW0iYKpCw%3A1765684953750&ei=2TY-abPBLfi-0-kPuPDpgQI&ved=0ahUKEwjzkdCDmbyRAxV43zQHHTh4OiAQ4dUDCBE&uact=5&oq=COOLMAN+CASE+%28RUBY%29+WHITE+CASING+SPECS&gs_lp=Egxnd3Mtd2l6LXNlcnAiJkNPT0xNQU4gQ0FTRSAoUlVCWSkgV0hJVEUgQ0FTSU5HIFNQRUNTMggQABiABBiiBDIIEAAYgAQYogQyCBAAGKIEGIkFMggQABiiBBiJBTIIEAAYgAQYogRIxgZQAFiiAnAAeAGQAQCYAcIBoAG0AqoBAzAuMrgBA8gBAPgBAvgBAZgCAqAC9QKYAwCSBwUwLjEuMaAHvAiyBwUwLjEuMbgH9QLCBwUzLTEuMcgHMIAIAA&sclient=gws-wiz-serp" },
+            { name: "COOLMAN CASE (RUBY) BLACK CASING", brand: "COOLMAN", category: "PC Case", image: "assets/casings/COOLMAN CASE (RUBY) BLACK CASING.webp", link: "https://www.google.com/search?q=COOLMAN+CASE+%28RUBY%29+WHITE+CASING+SPECS&sca_esv=a566feb79decc771&rlz=1C1UEAD_enPH1123PH1123&sxsrf=AE3TifNYKi2iqNEGa2FESXZUVEW0iYKpCw%3A1765684953750&ei=2TY-abPBLfi-0-kPuPDpgQI&ved=0ahUKEwjzkdCDmbyRAxV43zQHHTh4OiAQ4dUDCBE&uact=5&oq=COOLMAN+CASE+%28RUBY%29+WHITE+CASING+SPECS&gs_lp=Egxnd3Mtd2l6LXNlcnAiJkNPT0xNQU4gQ0FTRSAoUlVCWSkgV0hJVEUgQ0FTSU5HIFNQRUNTMggQABiABBiiBDIIEAAYgAQYogQyCBAAGKIEGIkFMggQABiiBBiJBTIIEAAYgAQYogRIxgZQAFiiAnAAeAGQAQCYAcIBoAG0AqoBAzAuMrgBA8gBAPgBAvgBAZgCAqAC9QKYAwCSBwUwLjEuMaAHvAiyBwUwLjEuMbgH9QLCBwUzLTEuMcgHMIAIAA&sclient=gws-wiz-serp" },
+            { name: "COOLMAN CASE (AURORA) BLACK CASING", brand: "COOLMAN", category: "PC Case", image: "assets/casings/COOLMAN CASE (AURORA) BLACK CASING.jfif", link: "https://www.google.com/search?q=COOLMAN+CASE+%28AURORA%29+BLACK+CASING+specs&sca_esv=a566feb79decc771&rlz=1C1UEAD_enPH1123PH1123&sxsrf=AE3TifM1KmPhWu7IAOdqHDYYWJOPTU1Yag%3A1765685567549&ei=Pzk-afqeIfXQ1e8P_YDZ4QU&ved=0ahUKEwi6uqeom7yRAxV1aPUHHX1ANlwQ4dUDCBE&uact=5&oq=COOLMAN+CASE+%28AURORA%29+BLACK+CASING+specs&gs_lp=Egxnd3Mtd2l6LXNlcnAiKENPT0xNQU4gQ0FTRSAoQVVST1JBKSBCTEFDSyBDQVNJTkcgc3BlY3MyBRAhGKABSL8LUOYCWLIKcAF4AJABAJgBogGgAacGqgEDMS42uAEDyAEA-AEBmAIHoAKEBsICChAAGLADGNYEGEfCAgcQIRigARgKmAMAiAYBkAYIkgcDMS42oAfbFbIHAzAuNrgH7gXCBwcwLjEuNS4xyAcqgAgA&sclient=gws-wiz-serp" },
+            { name: "COOLMAN CASE (AURORA) WHITE CASING", brand: "COOLMAN", category: "PC Case", image: "assets/casings/COOLMAN CASE (AURORA) WHITE CASING.jpg", link: "https://www.google.com/search?q=COOLMAN+CASE+%28AURORA%29+BLACK+CASING+specs&sca_esv=a566feb79decc771&rlz=1C1UEAD_enPH1123PH1123&sxsrf=AE3TifM1KmPhWu7IAOdqHDYYWJOPTU1Yag%3A1765685567549&ei=Pzk-afqeIfXQ1e8P_YDZ4QU&ved=0ahUKEwi6uqeom7yRAxV1aPUHHX1ANlwQ4dUDCBE&uact=5&oq=COOLMAN+CASE+%28AURORA%29+BLACK+CASING+specs&gs_lp=Egxnd3Mtd2l6LXNlcnAiKENPT0xNQU4gQ0FTRSAoQVVST1JBKSBCTEFDSyBDQVNJTkcgc3BlY3MyBRAhGKABSL8LUOYCWLIKcAF4AJABAJgBogGgAacGqgEDMS42uAEDyAEA-AEBmAIHoAKEBsICChAAGLADGNYEGEfCAgcQIRigARgKmAMAiAYBkAYIkgcDMS42oAfbFbIHAzAuNrgH7gXCBwcwLjEuNS4xyAcqgAgA&sclient=gws-wiz-serp" },
+            { name: "COOLMAN CASE (SPECTRA) WHITE CASING", brand: "COOLMAN", category: "PC Case", image: "assets/casings/COOLMAN CASE (SPECTRA) WHITE CASING.jfif", link: "https://www.google.com/search?q=COOLMAN+CASE+%28SPECTRA%29+WHITE+CASING+specs&sca_esv=a566feb79decc771&rlz=1C1UEAD_enPH1123PH1123&sxsrf=AE3TifOSPPilO5UGCMkO-ABaPeoqErUg9Q%3A1765685581944&ei=TTk-aZexObrf1e8PtpTAsA8&ved=0ahUKEwjXi5avm7yRAxW6b_UHHTYKEPYQ4dUDCBE&uact=5&oq=COOLMAN+CASE+%28SPECTRA%29+WHITE+CASING+specs&gs_lp=Egxnd3Mtd2l6LXNlcnAiKUNPT0xNQU4gQ0FTRSAoU1BFQ1RSQSkgV0hJVEUgQ0FTSU5HIHNwZWNzMggQABiABBiiBDIIEAAYogQYiQUyBRAAGO8FMgUQABjvBTIFEAAY7wVIreIFUIraBViK2gVwAngBkAEAmAGwAaABsAGqAQMwLjG4AQPIAQD4AQL4AQGYAgOgAsUBwgIKEAAYsAMY1gQYR5gDAIgGAZAGCJIHAzIuMaAHrwOyBwMwLjG4B7YBwgcDMi0zyAcPgAgA&sclient=gws-wiz-serp" },
+            { name: "COOLMAN CASE (SPECTRA) BLACK CASING", brand: "COOLMAN", category: "PC Case", image: "assets/casings/ CASE (SPECTRA) BLACK CASING.jfif", link: "https://www.google.com/search?q=COOLMAN+CASE+%28SPECTRA%29+WHITE+CASING+specs&sca_esv=a566feb79decc771&rlz=1C1UEAD_enPH1123PH1123&sxsrf=AE3TifOSPPilO5UGCMkO-ABaPeoqErUg9Q%3A1765685581944&ei=TTk-aZexObrf1e8PtpTAsA8&ved=0ahUKEwjXi5avm7yRAxW6b_UHHTYKEPYQ4dUDCBE&uact=5&oq=COOLMAN+CASE+%28SPECTRA%29+WHITE+CASING+specs&gs_lp=Egxnd3Mtd2l6LXNlcnAiKUNPT0xNQU4gQ0FTRSAoU1BFQ1RSQSkgV0hJVEUgQ0FTSU5HIHNwZWNzMggQABiABBiiBDIIEAAYogQYiQUyBRAAGO8FMgUQABjvBTIFEAAY7wVIreIFUIraBViK2gVwAngBkAEAmAGwAaABsAGqAQMwLjG4AQPIAQD4AQL4AQGYAgOgAsUBwgIKEAAYsAMY1gQYR5gDAIgGAZAGCJIHAzIuMaAHrwOyBwMwLjG4B7YBwgcDMi0zyAcPgAgA&sclient=gws-wiz-serp" },
+            { name: "DEEPCOOL AG400 CPU AIR COOLER", brand: "DEEPCOOL", category: "Cooling", image: "assets/cooling/DEEPCOOL AG400 CPU AIR COOLER.webp", link: "https://www.deepcool.com/products/Cooling/cpuaircoolers/GAMMAXX-AG400-Single-Tower-CPU-Cooler-1851-1700-AM5/2024/15898.shtml" },
+            { name: "DEEPCOOL AG500 CPU AIR COOLER", brand: "DEEPCOOL", category: "Cooling", image: "assets/cooling/DEEPCOOL AG500 CPU AIR COOLER.webp", link: "https://www.deepcool.com/products/Cooling/cpuaircoolers/AG500-Performance-CPU-Cooler-1851-1700-AM5/2022/16250.shtml" },
+            { name: "DEEPCOOL GAMMAXX GTE V2 CPU AIR COOLER", brand: "DEEPCOOL", category: "Cooling", image: "assets/cooling/DEEPCOOL GAMMAXX GTE V2 CPU AIR COOLER.webp", link: "https://www.deepcool.com/products/Cooling/cpuaircoolers/Gammaxx-GTE-V2-CPU-Cooler/2021/172.shtml" },
+            { name: "DEEPCOOL ALTA 9 PWM CPU AIR COOLER", brand: "DEEPCOOL", category: "Cooling", image: "assets/cooling/DEEPCOOL ALTA 9 PWM CPU AIR COOLER.webp", link: "https://www.deepcool.com/products/Cooling/cpuaircoolers/ALTA-9-PWM-Compact-CPU-Cooler-1851-1700/2022/16194.shtml" },
+            { name: "DEEPCOOL AM209 V2 CPU AIR COOLER", brand: "DEEPCOOL", category: "Cooling", image: "assets/cooling/DEEPCOOL AM209 V2 CPU AIR COOLER.webp", link: "https://www.deepcool.com/products/Cooling/cpuaircoolers/2021/14423.shtml" },
+            { name: "DEEPCOOL MACUBE 110 BLACK CASING", brand: "DEEPCOOL", category: "PC Case", image: "assets/casings/DEEPCOOL MACUBE 110 BLACK CASING.webp", link: "https://www.deepcool.com/products/Cases/Macube-110-Micro-ATX-Case/2021/4670.shtml" },
+            { name: "DEEPCOOL MACUBE 110 WHITE CASING", brand: "DEEPCOOL", category: "PC Case", image: "assets/casings/DEEPCOOL MACUBE 110 WHITE CASING.webp", link: "https://www.deepcool.com/products/Cases/Macube-110-White-Micro-ATX-Case/2021/4669.shtml?status=authorization" },
+            { name: "A4TECH FK15 KEYBOARD", brand: "A4TECH", category: "Peripherals", image: "assets/peripherals/A4TECH FK15 KEYBOARD.jpg", link: "https://www.a4tech.com/product.aspx?tid=10&id=275" },
+            { name: "VIKINGS VK-811 GAMING KEYBOARD", brand: "VIKINGS", category: "Peripherals", image: "assets/peripherals/VIKINGS VK-811 GAMING KEYBOARD.jfif", link: "https://www.google.com/search?q=VIKINGS+VK-811+GAMING+KEYBOARD+specs&sca_esv=60592e8bb2cdfe2f&rlz=1C1UEAD_enPH1123PH1123&biw=1366&bih=641&ei=S8U_aZfUDPWPvr0P3orJ2Aw&ved=0ahUKEwjXpduBlb-RAxX1h68BHV5FEssQ4dUDCBE&uact=5&oq=VIKINGS+VK-811+GAMING+KEYBOARD+specs&gs_lp=Egxnd3Mtd2l6LXNlcnAiJFZJS0lOR1MgVkstODExIEdBTUlORyBLRVlCT0FSRCBzcGVjczIFECEYoAEyBRAhGKABSOsKUNgBWNwJcAF4AJABAJgBmQGgAf0EqgEDMy4zuAEDyAEA-AEBmAIHoALBBcICCBAAGLADGO8FwgILEAAYgAQYsAMYogTCAgcQIRigARgKmAMAiAYBkAYEkgcDMi41oAe1FLIHAzEuNbgHuAXCBwcwLjEuNS4xyAcmgAgA&sclient=gws-wiz-serp" },
+            { name: "DARKFLASH GD100 BROWN SUGAR GAMING KEYBOARD", brand: "DARKFLASH", category: "Peripherals", image: "assets/peripherals/DARKFLASH GD100 BROWN SUGAR GAMING KEYBOARD.jpg", link: "https://www.darkflash.com/product/gd100" },
+            { name: "A4TECH FG1012 KEYBOARD AND MOUSE COMBO", brand: "A4TECH", category: "Peripherals", image: "assets/peripherals/A4TECH FG1012 KEYBOARD AND MOUSE COMBO.jpg", link: "https://www.a4tech.com/product.aspx?tid=26&id=287" },
+            { name: "NEUTRON C-23 KEYBOARD AND MOUSE COMBO", brand: "NEUTRON", category: "Peripherals", image: "assets/peripherals/NEUTRON C-23 KEYBOARD AND MOUSE COMBO.jpg", link: "https://www.google.com/search?q=NEUTRON+C-23+KEYBOARD+AND+MOUSE+COMBO+specs&sca_esv=b8d16794a32ebd8e&rlz=1C1UEAD_enPH1123PH1123&ei=CpU_afOEOZ3O1e8P5fK2iQY&ved=0ahUKEwjzsdj_5r6RAxUdZ_UHHWW5LWEQ4dUDCBE&uact=5&oq=NEUTRON+C-23+KEYBOARD+AND+MOUSE+COMBO+specs&gs_lp=Egxnd3Mtd2l6LXNlcnAiK05FVVRST04gQy0yMyBLRVlCT0FSRCBBTkQgTU9VU0UgQ09NQk8gc3BlY3MyBxAhGKABGApInDJQ4SJYlzFwAXgAkAEAmAGhAaAB5AWqAQM1LjK4AQPIAQD4AQGYAgegAscFwgIOEAAYgAQYsAMYhgMYigXCAgsQABiABBiwAxiiBMICCBAAGLADGO8FwgILEAAYsAMYogQYiQXCAgQQIRgVmAMAiAYBkAYGkgcDNC4zoAeTJrIHAzMuM7gHugXCBwcwLjMuMy4xyAccgAgA&sclient=gws-wiz-serp" },
+            { name: "TWOLF COMBO 41N1 KEYBOARD MOUSE HEADSET", brand: "TWOLF", category: "Peripherals", image: "assets/peripherals/TWOLF COMBO 41N1 KEYBOARD MOUSE HEADSET.jpg", link: "https://www.google.com/search?q=TWOLF+COMBO+41N1+KEYBOARD+MOUSE+HEADSET&sca_esv=60592e8bb2cdfe2f&rlz=1C1UEAD_enPH1123PH1123&biw=1366&bih=641&ei=PcQ_aaeDFoSTvr0Prp-z-AU&ved=0ahUKEwjnlYWBlL-RAxWEia8BHa7PDF8Q4dUDCBE&uact=5&oq=TWOLF+COMBO+41N1+KEYBOARD+MOUSE+HEADSET&gs_lp=Egxnd3Mtd2l6LXNlcnAiJ1RXT0xGIENPTUJPIDQxTjEgS0VZQk9BUkQgTU9VU0UgSEVBRFNFVDIFECEYoAEyBRAhGKABMgUQIRigATIFECEYoAFI8wJQAFgAcAB4AZABAJgBpAGgAaQBqgEDMC4xuAEDyAEA-AEC-AEBmAIBoAK6AZgDAJIHAzAuMaAHrASyBwMwLjG4B7oBwgcDMy0xyAcNgAgA&sclient=gws-wiz-serp" },
+            { name: "LOGITECH MK270R KEYBOARD AND MOUSE COMBO", brand: "LOGITECH", category: "Peripherals", image: "assets/peripherals/LOGITECH MK270R KEYBOARD AND MOUSE COMBO.webp", link: "https://www.logitech.com/en-ph/shop/p/mk270r-wireless-keyboard-mouse" },
+            { name: "A4TECH KRS-8372 KEYBOARD AND MOUSE COMBO", brand: "A4TECH", category: "Peripherals", image: "assets/peripherals/A4TECH KRS-8372 KEYBOARD AND MOUSE COMBO.jpg", link: "https://www.a4tech.com/product.aspx?tid=25&id=121" },
+            { name: "A4TECH KRS-92 KEYBOARD", brand: "A4TECH", category: "Peripherals", image: "assets/peripherals/A4TECH KRS-92 KEYBOARD.jpg", link: "https://www.a4tech.com/product.aspx?tid=10&id=132" },
+            { name: "LOGITECH B100 WIRED MOUSE", brand: "LOGITECH", category: "Peripherals", image: "assets/peripherals/LOGITECH B100 WIRED MOUSE.webp", link: "https://www.logitech.com/en-us/products/mice/b100-usb-business-mouse.910-001439.html" },
+
+            // Page 3
+            { name: "ROG BIG MOUSEPAD", brand: "ASUS", category: "Accessories", image: "assets/accessories/ROG BIG MOUSEPAD.jpg", link: "https://www.google.com/search?q=ROG+BIG+MOUSEPAD+specs&sca_esv=ee636c63b9ed21ff&rlz=1C1UEAD_enPH1123PH1123&biw=1366&bih=641&sxsrf=AE3TifNxuqbtXfcSnwej0KVtj3mkOElL-w%3A1765595226316&ei=Wtg8ae6DE4qVvr0PytyJ0As&ved=0ahUKEwjumKDiyrmRAxWKiq8BHUpuAroQ4dUDCBE&uact=5&oq=ROG+BIG+MOUSEPAD+specs&gs_lp=Egxnd3Mtd2l6LXNlcnAiFlJPRyBCSUcgTU9VU0VQQUQgc3BlY3MyBRAhGJ8FMgUQIRifBUieGlB3WIcZcAV4AZABAJgBeaABhwiqAQM2LjS4AQPIAQD4AQGYAg-gAuEIwgIKEAAYsAMY1gQYR8ICBhAAGBYYHsICCxAAGIAEGIYDGIoFwgIIEAAYgAQYogTCAgUQIRigAcICBxAhGKABGAqYAwCIBgGQBgiSBwM2LjmgB6QdsgcDMS45uAfCCMIHBzAuOS41LjHIBziACAA&sclient=gws-wiz-serp" },
+            { name: "INPLAY SMALL GREY MOUSEPAD", brand: "INPLAY", category: "Accessories", image: "assets/cooling/INPLAY SMALL GREY MOUSEPAD.jfif", link: "https://www.google.com/search?num=12&sca_esv=25dfd463629c044b&rlz=1C1UEAD_enPH1123PH1123&q=INPLAY+SMALL+GREY+MOUSEPAD+specs&source=lnms&fbs=AIIjpHyTFN8BbSyNXQ3oA-fn7H5NUrrIpQXg7ywPuzBdcoqHY9koTyP2YoWqyTioW_DKM8e-VnFAMbMvyI_Q-Qdwai4SXDVnvNKViTufRM5nqAhPrhw8l6aGCVxIPw1w5qVq3kZ7h_1TA5eQWH8Y8sbTOqwRLYosVOkpCQVB7uVdlHx-w3AKd7HhCVZr7xdGWgIUbyjWYTbKd-Prp6h2XIYsqAMp_EJEmUQUJ3EfsC-Eo7RgJBRtHWU&sa=X&ved=2ahUKEwi8z5La77yRAxUAp1YBHXEkJAYQ0pQJegQIDxAB&biw=1366&bih=641&dpr=1" },
+            { name: "ASUS TUF P1 GAMING MOUSE PAD", brand: "ASUS", category: "Accessories", image: "assets/accessories/ASUS TUF P1 GAMING MOUSE PAD.png", link: "https://www.asus.com/ph/accessories/mice-and-mouse-pads/tuf-gaming/tuf-gaming-p1/" },
+            { name: "MOUSEPAD WITH WRISTPAD", brand: "GENERIC", category: "Accessories", image: "assets/accessories/MOUSEPAD WITH WRISTPAD.jfif", link: "https://www.google.com/search?q=MOUSEPAD+WITH+WRISTPAD+specs&sca_esv=7b41aa12b393a752&rlz=1C1UEAD_enPH1123PH1123&ei=51w-afK_KM_h0-kPmKOfwQE&ved=0ahUKEwiyz_eovbyRAxXP8DQHHZjRJxgQ4dUDCBE&uact=5&oq=MOUSEPAD+WITH+WRISTPAD+specs&gs_lp=Egxnd3Mtd2l6LXNlcnAiHE1PVVNFUEFEIFdJVEggV1JJU1RQQUQgc3BlY3MyBxAhGKABGApIgQ9QOVj0DXACeAGQAQCYAZgBoAGiB6oBAzEuNrgBA8gBAPgBAZgCCaACkQjCAgoQABiwAxjWBBhHwgIGEAAYFhgewgILEAAYgAQYhgMYigXCAggQABiABBiiBMICCBAAGKIEGIkFmAMA4gMFEgExIECIBgGQBgiSBwMyLjegB6spsgcDMC43uAfsB8IHCTAuMS42LjEuMcgHSYAIAA&sclient=gws-wiz-serp" },
+            { name: "SAMSUNG LS24C330GAEXXP 24\" MONITOR", brand: "SAMSUNG", category: "Monitor", image: "assets/monitors/SAMSUNG LS24C330GAEXXP 24 MONITOR.webp", link: "https://villman.com/Product-Detail/samsung_-ls24c330gaexxp-24inch-flat-ips4ms100hzhdmi-monitor-" },
+            { name: "SAMSUNG LS24AG320NEXXP 24\" GAMING MONITOR 165HZ", brand: "SAMSUNG", category: "Monitor", image: "assets/monitors/SAMSUNG LS24AG320NEXXP 24 GAMING MONITOR 165HZ.jpg", link: "https://villman.com/Product-Detail/samsung_ls24ag320nexxp-gaming-flat-va-24inch-169-1920-x-1080-1ms-mprt-165hz-" },
+            { name: "SAMSUNG LS24DG302EEXXP 24\" GAMING MONITOR 180HZ", brand: "SAMSUNG", category: "Monitor", image: "assets/monitors/SAMSUNG LS24DG302EEXXP 24 GAMING MONITOR 180HZ.png", link: "https://www.google.com/search?q=SAMSUNG+LS24DG302EEXXP+24+GAMING+MONITOR+180HZ+specs&sca_esv=f99d34a608ada35f&rlz=1C1UEAD_enPH1123PH1123&ei=8p0_afilGcTl2roP1r_s4QI&ved=0ahUKEwj45tC-776RAxXEslYBHdYfOywQ4dUDCBE&uact=5&oq=SAMSUNG+LS24DG302EEXXP+24+GAMING+MONITOR+180HZ+specs&gs_lp=Egxnd3Mtd2l6LXNlcnAiNFNBTVNVTkcgTFMyNERHMzAyRUVYWFAgMjQgR0FNSU5HIE1PTklUT1IgMTgwSFogc3BlY3MyBRAAGO8FMggQABiABBiiBDIFEAAY7wUyCBAAGKIEGIkFMgUQABjvBUivDFCzAViZCXABeAGQAQCYAZwBoAHpBKoBAzQuMrgBA8gBAPgBAZgCB6AClwXCAgoQABiwAxjWBBhHwgIGEAAYFhgemAMAiAYBkAYIkgcDNS4yoAeYGLIHAzQuMrgHjAXCBwUyLTYuMcgHIoAIAA&sclient=gws-wiz-serp" },
+            { name: "SAMSUNG LS22C310EAEXXP 22\" MONITOR", brand: "SAMSUNG", category: "Monitor", image: "assets/monitors/SAMSUNG LS22C310EAEXXP 22 MONITOR.webp", link: "https://www.google.com/search?q=SAMSUNG+LS22C310EAEXXP+22%5C%22+MONITOR+specs&sca_esv=f99d34a608ada35f&rlz=1C1UEAD_enPH1123PH1123&ei=L54_aYmlKdzi2roP2bWz8AI&ved=0ahUKEwjJ-Ovb776RAxVcsVYBHdnaDC4Q4dUDCBE&uact=5&oq=SAMSUNG+LS22C310EAEXXP+22%5C%22+MONITOR+specs&gs_lp=Egxnd3Mtd2l6LXNlcnAiKVNBTVNVTkcgTFMyMkMzMTBFQUVYWFAgMjJcIiBNT05JVE9SIHNwZWNzMggQABiABBiiBDIIEAAYgAQYogQyCBAAGIAEGKIEMggQABiiBBiJBTIIEAAYgAQYogRI5xRQsAtYsAtwAXgBkAEAmAGcAaABnAGqAQMwLjG4AQPIAQD4AQL4AQGYAgKgAq0BwgIKEAAYsAMY1gQYR5gDAIgGAZAGCJIHAzEuMaAHlAOyBwMwLjG4B6QBwgcDMi0yyAcMgAgA&sclient=gws-wiz-serp" },
+            { name: "SAMSUNG LS27C330GAEXXP 27\" MONITOR", brand: "SAMSUNG", category: "Monitor", image: "assets/monitors/SAMSUNG LS27C330GAEXXP 27 MONITOR.webp", link: "https://www.google.com/search?q=SAMSUNG+LS27C330GAEXXP+27%5C%22+MONITOR+specs&sca_esv=f99d34a608ada35f&rlz=1C1UEAD_enPH1123PH1123&ei=R54_adK1I-zk2roPo43T8Qg&ved=0ahUKEwiS9Z7n776RAxVsslYBHaPGNI4Q4dUDCBE&uact=5&oq=SAMSUNG+LS27C330GAEXXP+27%5C%22+MONITOR+specs&gs_lp=Egxnd3Mtd2l6LXNlcnAiKVNBTVNVTkcgTFMyN0MzMzBHQUVYWFAgMjdcIiBNT05JVE9SIHNwZWNzMggQABiABBiiBDIFEAAY7wUyBRAAGO8FMgUQABjvBTIFEAAY7wVIpQ1Q3wpY3wpwAngAkAEAmAFioAGkAaoBATK4AQPIAQD4AQL4AQGYAgOgAnbCAgoQABiwAxjWBBhHmAMAiAYBkAYIkgcDMi4xoAffCLIHAzAuMbgHacIHAzItM8gHDoAIAA&sclient=gws-wiz-serp" },
+            { name: "ZOTAC RTX 5070 SOLID OC 12GB GDDR7 GPU", brand: "ZOTAC", category: "Graphics Card", image: "assets/gpu/ZOTAC RTX 5070 SOLID OC 12GB GDDR7 GPU.jpg", link: "https://www.zotac.com/tm/product/graphics_card/zotac-gaming-geforce-rtx-5070-solid-oc" },
+            { name: "ZOTAC RTX 5070 SOLID 12GB GDDR7 GPU", brand: "ZOTAC", category: "Graphics Card", image: "assets/gpu/ZOTAC RTX 5070 SOLID 12GB GDDR7 GPU.jpg", link: "https://www.zotac.com/us/product/graphics_card/zotac-gaming-geforce-rtx-5070-solid?l=en" },
+            { name: "ZOTAC RTX 4060 TWIN EDGE OC 8GB GDDR6 GPU", brand: "ZOTAC", category: "Graphics Card", image: "assets/gpu/ZOTAC RTX 4060 TWIN EDGE OC 8GB GDDR6 GPU.jpg", link: "https://www.techpowerup.com/gpu-specs/zotac-rtx-4060-twin-edge-oc-white.b11250" },
+            { name: "ZOTAC RTX 3050 TWIN EDGE OC 6GB GDDR6 GPU", brand: "ZOTAC", category: "Graphics Card", image: "assets/gpu/ZOTAC RTX 3050 TWIN EDGE OC 6GB GDDR6 GPU.jpg", link: "https://www.techpowerup.com/gpu-specs/zotac-rtx-3050-twin-edge.b9369" },
+            { name: "TRANSCEND TS&DVDS-K EXTERNAL DVD WRITER", brand: "TRANSCEND", category: "Storage", image: "assets/storage/TRANSCEND TS&DVDS-K EXTERNAL DVD WRITER.jpg", link: "https://us.transcend-info.com/product/card-reader-accessory/extra-slim-portable-dvd-writer" },
+            { name: "SEAGATE 2TB BARRACUDA SATA 3.5 HDD", brand: "SEAGATE", category: "Storage", image: "assets/storage/SEAGATE 2TB BARRACUDA SATA 3.5 HDD.webp", link: "https://www.google.com/search?q=SEAGATE+2TB+BARRACUDA+SATA+3.5+HDD&rlz=1C1UEAD_enPH1123PH1123&oq=SEAGATE+2TB+BARRACUDA+SATA+3.5+HDD&gs_lcrp=EgZjaHJvbWUyBggAEEUYOdIBBzMxN2owajmoAgCwAgA&sourceid=chrome&ie=UTF-8" },
+            { name: "SEAGATE ONE TOUCH 1TB BLK EXTERNAL HDD", brand: "SEAGATE", category: "Storage", image: "assets/storage/SEAGATE ONE TOUCH 1TB BLK EXTERNAL HDD.jfif", link: "https://www.google.com/search?q=SEAGATE+ONE+TOUCH+1TB+BLK+EXTERNAL+HDD&sca_esv=f99d34a608ada35f&rlz=1C1UEAD_enPH1123PH1123&ei=lKE_abqcE_Ks0-kPl97HOQ&ved=0ahUKEwi6toX68r6RAxVy1jQHHRfvMQcQ4dUDCBE&uact=5&oq=SEAGATE+ONE+TOUCH+1TB+BLK+EXTERNAL+HDD&gs_lp=Egxnd3Mtd2l6LXNlcnAiJlNFQUdBVEUgT05FIFRPVUNIIDFUQiBCTEsgRVhURVJOQUwgSEREMgYQABgWGB4yBhAAGBYYHjIGEAAYFhgeMgsQABiABBiGAxiKBTILEAAYgAQYhgMYigUyCxAAGIAEGIYDGIoFMgsQABiABBiGAxiKBTIIEAAYgAQYogQyCBAAGIAEGKIEMggQABiABBiiBEiIAlAAWABwAHgBkAEAmAF-oAF-qgEDMC4xuAEDyAEA-AEC-AEBmAIBoAKdAZgDAJIHAzAuMaAH5AiyBwMwLjG4B50BwgcDNC0xyAcXgAgA&sclient=gws-wiz-serp" },
+            { name: "SEAGATE ONE TOUCH 1TB SLV EXTERNAL HDD", brand: "SEAGATE", category: "Storage", image: "assets/storage/SEAGATE ONE TOUCH 1TB SLV EXTERNAL HDD.webp", link: "https://www.google.com/search?q=SEAGATE+ONE+TOUCH+1TB+SLV+EXTERNAL+HDD&rlz=1C1UEAD_enPH1123PH1123&oq=SEAGATE+ONE+TOUCH+1TB+SLV+EXTERNAL+HDD&gs_lcrp=EgZjaHJvbWUyBggAEEUYOdIBBzI2MmowajmoAgCwAgA&sourceid=chrome&ie=UTF-8" },
+            { name: "SAMSUNG EVO 870 250 GB SSD SATA", brand: "SAMSUNG", category: "Storage", image: "assets/storage/SAMSUNG EVO 870 250 GB SSD SATA.jfif", link: "https://www.google.com/search?sca_esv=f99d34a608ada35f&rlz=1C1UEAD_enPH1123PH1123&q=SAMSUNG+EVO+870+250+GB+SSD+SATA&source=lnms&fbs=AIIjpHz30rPMyW-0vSP0k1VTNmO_kCOARpjPjQRkBWH2HwUIz5XUSIJvSK0oms7XOxizDlmwKHITlKtWk2mI7HrsvZYSQxyFnvPOXD8EL85KLH3X6wLsMidVuBTm89nF3q4V-XsNQlSjeB8hAyS9nnWaj60m8VaZwUer0ybbXkFMt3yIw5_0dDZIvMmq7DWUi9DCLgG-FkA9xx89gRUMAZdf3GC3higHgV2AtyC20W32wBTpytyiAyI&sa=X&ved=2ahUKEwjz49PS8L6RAxWy0jQHHZMdKb4Q0pQJegQIDhAB&biw=1366&bih=641&dpr=1" },
+            { name: "SAMSUNG EVO 870 500GB SSD SATA", brand: "SAMSUNG", category: "Storage", image: "assets/storage/SAMSUNG EVO 870 500GB SSD SATA.webp", link: "https://www.google.com/search?sca_esv=f99d34a608ada35f&rlz=1C1UEAD_enPH1123PH1123&q=SAMSUNG+EVO+870+500GB+SSD+SATA&source=lnms&fbs=AIIjpHz30rPMyW-0vSP0k1VTNmO_kCOARpjPjQRkBWH2HwUIz5XUSIJvSK0oms7XOxizDlmwKHITlKtWk2mI7HrsvZYSQxyFnvPOXD8EL85KLH3X6wLsMidVuBTm89nF3q4V-XsNQlSjeB8hAyS9nnWaj60m8VaZwUer0ybbXkFMt3yIw5_0dDZIvMmq7DWUi9DCLgG-FkA9xx89gRUMAZdf3GC3higHgV2AtyC20W32wBTpytyiAyI&sa=X&ved=2ahUKEwiY8P7u8L6RAxV1rVYBHdeNDBMQ0pQJegQIDBAB&biw=1366&bih=641&dpr=1" },
+            { name: "SAMSUNG 980 500GB SSD M.2 NVME", brand: "SAMSUNG", category: "Storage", image: "assets/storage/SAMSUNG 980 500GB SSD M.2 NVME.jfif", link: "https://www.google.com/search?sca_esv=f99d34a608ada35f&rlz=1C1UEAD_enPH1123PH1123&q=SAMSUNG+980+500GB+SSD+M.2+NVME&source=lnms&fbs=AIIjpHzrxpZbmXOWvJwBW7Vzcy2ExulGacgW6aUHSW6J2mMlDagTpkRjozwyxvph3QQ8t1H1iD0zwAolKRQGEBQixG0JX9l-bJvwHuqcY4iuS-n_PnAjwgVmCgTL5BYsMv3VtfhufWKZAJx4bE5KaGAcRv4gGsKfqKf-96QhV1L7hF5UeEm4PU-Qom_JqGi4aHTLiPtNT5epY1qDLU0sUMG4xk6HZjDh8ze191YMbZVnU6Z62fP6vj4&sa=X&ved=2ahUKEwiz8e-J8b6RAxU0p1YBHXOuCYMQ0pQJegQICxAB&biw=1366&bih=641&dpr=1" },
+            { name: "SAMSUNG EVO 870 2TB SSD SATA", brand: "SAMSUNG", category: "Storage", image: "assets/storage/SAMSUNG EVO 870 2TB SSD SATA.jfif", link: "https://www.google.com/search?q=SAMSUNG+EVO+870+2TB+SSD+SATA&sca_esv=f99d34a608ada35f&rlz=1C1UEAD_enPH1123PH1123&biw=1366&bih=641&ei=p58_aaXRMPeD2roPmsq60Aw&ved=0ahUKEwjlwJiP8b6RAxX3gVYBHRqlDsoQ4dUDCBE&uact=5&oq=SAMSUNG+EVO+870+2TB+SSD+SATA&gs_lp=Egxnd3Mtd2l6LXNlcnAiHFNBTVNVTkcgRVZPIDg3MCAyVEIgU1NEIFNBVEEyBhAAGBYYHjIGEAAYFhgeMgYQABgWGB4yBhAAGBYYHjIGEAAYFhgeMggQABgWGAoYHjIGEAAYFhgeMgYQABgWGB4yCBAAGBYYChgeMgYQABgWGB5I3ghQAFgAcAB4AZABAJgBcaABcaoBAzAuMbgBA8gBAPgBAvgBAZgCAaAChQGYAwCSBwMwLjGgB6YIsgcDMC4xuAeFAcIHAzMtMcgHEIAIAA&sclient=gws-wiz-serp" },
+            { name: "SAMSUNG EVO 870 1TB SSD SATA", brand: "SAMSUNG", category: "Storage", image: "assets/storage/SAMSUNG EVO 870 1TB SSD SATA.jfif", link: "https://www.google.com/search?q=SAMSUNG+EVO+870+1TB+SSD+SATA+specs&sca_esv=f99d34a608ada35f&rlz=1C1UEAD_enPH1123PH1123&biw=1366&bih=641&ei=EKA_aaDBL6-F2roPssDlwQ0&ved=0ahUKEwigiaDB8b6RAxWvglYBHTJgOdgQ4dUDCBE&uact=5&oq=SAMSUNG+EVO+870+1TB+SSD+SATA+specs&gs_lp=Egxnd3Mtd2l6LXNlcnAiIlNBTVNVTkcgRVZPIDg3MCAxVEIgU1NEIFNBVEEgc3BlY3MyBhAAGBYYHjIGEAAYFhgeMgYQABgWGB4yBhAAGBYYHjIGEAAYFhgeMgYQABgWGB4yCBAAGBYYChgeMgYQABgWGB4yBhAAGBYYHjILEAAYgAQYhgMYigVI_gxQgAJYugpwAXgBkAEAmAGMAaABnQWqAQMyLjS4AQPIAQD4AQGYAgegApIGwgIKEAAYsAMY1gQYR8ICCBAAGIAEGKIEwgIFEAAY7wXCAggQABiiBBiJBZgDAIgGAZAGCJIHAzEuNqAH-SqyBwMwLja4B4cGwgcDMy03yAdfgAgA&sclient=gws-wiz-serp" },
+            { name: "GIGABYTE SSD 240GB SATA", brand: "GIGABYTE", category: "Storage", image: "assets/storage/GIGABYTE SSD 240GB SATA.png", link: "https://www.gigabyte.com/ph/SSD/GIGABYTE-SSD-240GB" },
+            { name: "A10 9700", brand: "AMD", category: "CPU", image: "assets/cpu/A10 9700.jfif", link: "https://www.techpowerup.com/cpu-specs/a10-9700.c1955" },
+            { name: "WD BLUE SATA 250GB SSD SATA", brand: "WESTERN DIGITAL", category: "Storage", image: "assets/storage/WD BLUE SATA 250GB SSD SATA.webp", link: "https://www.westerndigital.com/en-ap/products/internal-drives/wd-blue-sata-ssd" },
+            { name: "SAMSUNG 980 1TB SSD M.2 NVME", brand: "SAMSUNG", category: "Storage", image: "assets/storage/SAMSUNG 980 1TB SSD M.2 NVME.jfif", link: "https://www.google.com/search?q=SAMSUNG+980+1TB+SSD+M.2+NVME+specs&sca_esv=f99d34a608ada35f&rlz=1C1UEAD_enPH1123PH1123&biw=1366&bih=641&ei=GKA_afjJNuvn2roPpbrWkA8&ved=0ahUKEwj4tY_F8b6RAxXrs1YBHSWdFfIQ4dUDCBE&uact=5&oq=SAMSUNG+980+1TB+SSD+M.2+NVME+specs&gs_lp=Egxnd3Mtd2l6LXNlcnAiIlNBTVNVTkcgOTgwIDFUQiBTU0QgTS4yIE5WTUUgc3BlY3MyBhAAGAgYHjILEAAYgAQYhgMYigUyBRAAGO8FMggQABiiBBiJBTIFEAAY7wUyBRAAGO8FMgUQABjvBUjAAVAAWABwAHgBkAEAmAF7oAF7qgEDMC4xuAEDyAEA-AEC-AEBmAIBoAKXAZgDAJIHAzAuMaAH9wSyBwMwLjG4B5cBwgcDNC0xyAcUgAgA&sclient=gws-wiz-serp" },
+            { name: "DARKFLASH DM2 SSD M.2 HEAT SPREADER", brand: "DARKFLASH", category: "Accessories", image: "assets/accessories/DARKFLASH DM2 SSD M.2 HEAT SPREADER.jpg", link: "https://www.darkflash.com/product/dm2" },
+            { name: "KINGSTON A400 480GB SSD SATA", brand: "KINGSTON", category: "Storage", image: "assets/storage/KINGSTON A400 480GB SSD SATA.jfif", link: "https://www.kingston.com/en/ssd/a400-solid-state-drive" },
+            { name: "ADATA XPG SX8200 PRO SSD SATA", brand: "ADATA", category: "Storage", image: "assets/storage/ADATA XPG SX8200 PRO SSD SATA.jfif", link: "https://www.xpg.com/ph/xpg/583" },
+            { name: "KINGSTON KC600 512GB SSD SATA", brand: "KINGSTON", category: "Storage", image: "assets/storage/KINGSTON KC600 512GB SSD SATA.jpg", link: "https://www.kingston.com/en/ssd/kc600-sata-solid-state-drive" },
+            { name: "KINGSTON KC600 256GB SSD SATA", brand: "KINGSTON", category: "Storage", image: "assets/storage/KINGSTON KC600 256GB SSD SATA.webp", link: "https://www.kingston.com/en/ssd/kc600-sata-solid-state-drive" },
+            { name: "INTEL NUC ASUS NUC13ANHI3 NUC", brand: "INTEL", category: "Mini PC", image: "assets/mini pc/INTEL NUC ASUS NUC13ANHI3 NUC.webp", link: "https://www.google.com/search?q=INTEL+NUC+ASUS+NUC13ANHI3+NUC+specs&sca_esv=25dfd463629c044b&rlz=1C1UEAD_enPH1123PH1123&ei=RpM-af7EOvi-0-kPr8bn-Qg&ved=0ahUKEwj-_5WW8byRAxV43zQHHS_jOY8Q4dUDCBE&uact=5&oq=INTEL+NUC+ASUS+NUC13ANHI3+NUC+specs&gs_lp=Egxnd3Mtd2l6LXNlcnAiI0lOVEVMIE5VQyBBU1VTIE5VQzEzQU5ISTMgTlVDIHNwZWNzMgUQIRigAUjXEVDyAljCDXABeAGQAQCYAZsBoAGVBaoBAzIuNLgBA8gBAPgBAZgCB6ACkQbCAgoQABiwAxjWBBhHmAMAiAYBkAYIkgcDMS42oAe4FLIHAzAuNrgHhQbCBwUyLTEuNsgHSIAIAA&sclient=gws-wiz-serp" },
+            { name: "ASUS GT730 2GB GDDR5 GPU", brand: "ASUS", category: "Graphics Card", image: "assets/gpu/ASUS GT730 2GB GDDR5 GPU.png", link: "https://www.asus.com/motherboards-components/graphics-cards/asus/gt730-sl-2gd5-brk-e/" },
+            { name: "DEEPCOOL WINDPAL MIN COOLING PAD", brand: "DEEPCOOL", category: "Cooling", image: "assets/cooling/DEEPCOOL WINDPAL MIN COOLING PAD.webp", link: "https://www.deepcool.com/products/Cooling/laptopcoolers/2021/14292.shtml" },
+            { name: "RAMSTA RS-A320MP MOTHERBOARD WITH AMD A10 MPK CPU", brand: "RAMSTA", category: "Motherboard", image: "assets/motherboard/RAMSTA RS-A320MP MOTHERBOARD WITH AMD A10 MPK CPU.jpg", link: "https://www.ramsta.com/p/csMOTHERBOARDA320MP.html" },
+            { name: "A4TECH FG35 WIRELESS MOUSE", brand: "A4TECH", category: "Peripherals", image: "assets/peripherals/A4TECH FG35 WIRELESS MOUSE.jpg", link: "https://www.a4tech.com/product.aspx?id=260" },
+            { name: "A4TECH KRS-83 KEYBOARD", brand: "A4TECH", category: "Peripherals", image: "assets/peripherals/A4TECH KRS-83 KEYBOARD.jpg", link: "https://www.a4tech.com/product.aspx?tid=10&id=74" },
+            { name: "A4TECH KRS-3330 KEYBOARD AND MOUSE COMBO", brand: "A4TECH", category: "Peripherals", image: "assets/peripherals/A4TECH KRS-3330 KEYBOARD AND MOUSE COMBO.jpg", link: "https://www.a4tech.com/product.aspx?tid=25&id=375" },
+            { name: "LENOVO L24i-4A 23.8\" MONITOR", brand: "LENOVO", category: "Monitor", image: "assets/monitors/LENOVO L24i-4A 23.8 MONITOR.webp", link: "https://psref.lenovo.com/syspool/Sys/PDF/Lenovo_Monitors/Lenovo_L24i_4A/Lenovo_L24i_4A_Spec.pdf" },
+            { name: "WINDOWS 11 PRO OEM DVD 64BIT", brand: "MICROSOFT", category: "Software", image: "assets/software/WINDOWS 11 PRO OEM DVD 64BIT.jfif", link: "https://www.google.com/search?q=WINDOWS+11+PRO+OEM+DVD+64BIT&rlz=1C1UEAD_enPH1123PH1123&oq=WINDOWS+11+PRO+OEM+DVD+64BIT&gs_lcrp=EgZjaHJvbWUyBggAEEUYOdIBBzQxNGowajSoAgCwAgE&sourceid=chrome&ie=UTF-8" },
+            { name: "AMD RYZEN 5 5600GT MPK CPU", brand: "AMD", category: "CPU", image: "assets/cpu/AMD RYZEN 5 5600GT MPK CPU.jfif", link: "https://www.techpowerup.com/cpu-specs/ryzen-5-5600gt.c3438" },
+            { name: "GIGABYTE A520M-K MOTHERBOARD", brand: "GIGABYTE", category: "Motherboard", image: "assets/motherboard/GIGABYTE A520M-K MOTHERBOARD.png", link: "https://www.gigabyte.com/Motherboard/A520M-K-rev-10" },
+
+            // Page 4
+            { name: "A4TECH FB10C WIRELESS MOUSE", brand: "A4TECH", category: "Peripherals", image: "assets/peripherals/A4TECH FB10C WIRELESS MOUSE.jpg", link: "https://www.a4tech.com/product.aspx?tid=46&id=285" },
+            { name: "TWOLF 6DT GAMING WIRELESS MOUSE", brand: "TWOLF", category: "Peripherals", image: "assets/peripherals/TWOLE 6DT GAMING WIRELESS MOUSE.jfif", link: "https://www.google.com/search?sca_esv=60592e8bb2cdfe2f&rlz=1C1UEAD_enPH1123PH1123&q=TWOLE+6DT+GAMING+WIRELESS+MOUSE&source=lnms&fbs=AIIjpHz30rPMyW-0vSP0k1VTNmO_w7HWzdssfT8--zJ8qNsl8L7-5q__n7BwgNeB-qyHnROdUjUk3HDUts89rJ1yvY2t1jEEvlUK0L1kms5XMmpgLOgYIOSvM8ByFl-Eru68q_j4XgQ356dROq2Np08TvkclZ9oqBwvynxhospaqLVOgqafTmyK2gAdqzI0tHQ7GQ5bwEmP3yD2Q95Ai2GblalE2Z3ASWzQOzmh3S219aywyw9aN5q4&sa=X&ved=2ahUKEwihv4r3k7-RAxUfbvUHHWpsHgYQ0pQJegQIDhAB&biw=1366&bih=641&dpr=1" },
+            { name: "PROLINK PMW WIRELESS MOUSE", brand: "PROLINK", category: "Peripherals", image: "assets/peripherals/PROLINK PMW WIRELESS MOUSE.webp", link: "https://prolink2u.com/products/pmw6008?variant=40440166776905" },
+            { name: "A4TECH G3-200N BLACK WIRELESS MOUSE", brand: "A4TECH", category: "Peripherals", image: "assets/peripherals/A4TECH G3-200N BLACK WIRELESS MOUSE.jpg", link: "https://www.a4tech.com/product.aspx?id=200" },
+            { name: "A4TECH G3-200N BLUE WIRELESS MOUSE", brand: "A4TECH", category: "Peripherals", image: "assets/peripherals/A4TECH G3-200N BLUE WIRELESS MOUSE.jpg", link: "https://www.a4tech.com/product.aspx?id=200" },
+            { name: "A4TECH G3-200N RED WIRELESS MOUSE", brand: "A4TECH", category: "Peripherals", image: "assets/peripherals/A4TECH G3-200N RED WIRELESS MOUSE.jpg", link: "https://www.a4tech.com/product.aspx?id=200" },
+            { name: "A4TECH OP760 WIRED MOUSE", brand: "A4TECH", category: "Peripherals", image: "assets/peripherals/A4TECH OP760 WIRED MOUSE.jpg", link: "https://www.a4tech.com/product.aspx?tid=9&id=149" },
+            { name: "A4TECH HU-30 USB HEADSET", brand: "A4TECH", category: "Peripherals", image: "assets/peripherals/A4TECH HU-30 USB HEADSET.jpg", link: "https://www.a4tech.com/product.aspx?tid=17&id=232" },
+            { name: "A4TECH HU-7P USB HEADSET", brand: "A4TECH", category: "Peripherals", image: "assets/peripherals/A4TECH HU-7P USB HEADSET.jpg", link: "https://www.a4tech.com/product.aspx?tid=17&id=233" },
+            { name: "APC SRV3LKI UPS", brand: "APC", category: "Power", image: "assets/psu/APC SRV3LKI UPS.jpg", link: "https://www.se.com/ph/en/product/SRV3KI/apc-easy-ups-online-3kva-2400w-tower-230v-6x-iec-c13-+-1x-iec-c19-outlets-intelligent-card-slot-lcd/" },
+            { name: "EDIFIER K800 USB HEADSET", brand: "EDIFIER", category: "Peripherals", image: "assets/peripherals/EDIFIER K800 USB HEADSET.png", link: "https://www.edifier.com/global/p/wired-headphones/usb-k800" },
+            { name: "A4TECH PK-710G WEBCAM", brand: "A4TECH", category: "Peripherals", image: "assets/peripherals/A4TECH PK-710G WEBCAM.jpg", link: "https://www.a4tech.com/product.aspx?tid=22&id=124" },
+            { name: "A4TECH PK-910P WEBCAM", brand: "A4TECH", category: "Peripherals", image: "assets/peripherals/A4TECH PK-910P WEBCAM.jpg", link: "https://www.a4tech.com/product.aspx?tid=34&id=216" },
+            { name: "SECURE AVR 500W AVR", brand: "SECURE", category: "Power", image: "assets/psu/SECURE AVR 500W AVR.jfif", link: "https://www.google.com/search?sca_esv=f99d34a608ada35f&rlz=1C1UEAD_enPH1123PH1123&q=SECURE+AVR+500W+AVR&source=lnms&fbs=AIIjpHyTFN8BbSyNXQ3oA-fn7H5N0_alFIlVM3Dsmdj_aHzoLxwxLLLCfPzthQs1CuDx_B8WamW5o1wd-yypcJ6bwqaJjTHwbmyr06K2lODYy1AigqGjDs4RwGE6djvM3g8BdBA8K4ZO_Hq2oGJiH41tspkAk41rjAWCuIz7r0kjAUL_OzFyhYNuN-z594Gsun1iL7wKatVYOEhhlQZ4M04f9oBTWyyr4rxxWTm1cyICWJtOJiBoHB8&sa=X&ved=2ahUKEwik5qyN9L6RAxU_klYBHTamMXgQ0pQJegQIDxAB&biw=1366&bih=641&dpr=1" },
+            { name: "SECURE UPS 650VA UPS", brand: "SECURE", category: "Power", image: "assets/psu/SECURE UPS 650VA UPS.jfif", link: "https://www.google.com/search?q=SECURE+UPS+650VA+UPS&sca_esv=f99d34a608ada35f&rlz=1C1UEAD_enPH1123PH1123&biw=1366&bih=641&ei=7KI_aZj2NpWl2roPqp7GoQo&ved=0ahUKEwiYnK2e9L6RAxWVklYBHSqPMaQQ4dUDCBE&uact=5&oq=SECURE+UPS+650VA+UPS&gs_lp=Egxnd3Mtd2l6LXNlcnAiFFNFQ1VSRSBVUFMgNjUwVkEgVVBTMggQABgWGAoYHjILEAAYgAQYhgMYigUyCxAAGIAEGIYDGIoFMgsQABiABBiGAxiKBTIIEAAYgAQYogQyBRAAGO8FMggQABiABBiiBDIIEAAYgAQYogQyCBAAGIAEGKIESNACUABYAHAAeAGQAQCYAWugAWuqAQMwLjG4AQPIAQD4AQL4AQGYAgGgAn6YAwCSBwMwLjGgB-oEsgcDMC4xuAd-wgcDMy0xyAcQgAgA&sclient=gws-wiz-serp" },
+            { name: "APC BVX650I-PH 650VA UPS", brand: "APC", category: "Power", image: "assets/psu/APC BVX650I-PH 650VA UPS.jpg", link: "https://www.se.com/ph/en/product/BVX650I-PH/apc-easy-ups-bvx-650va-avr-230v/" },
+            { name: "APC BVX1200LI-MS 1200VA UPS", brand: "APC", category: "Power", image: "assets/psu/APC BVX1200LI-MS 1200VA UPS.jpg", link: "https://www.se.com/ph/en/product/BVX1200LI-MS/apc-easy-ups-bvx-1200va-230v-avr-universal-sockets/" },
+            { name: "DEEPCOOL N200 COOLING PAD", brand: "DEEPCOOL", category: "Cooling", image: "assets/cooling/DEEPCOOL N200 COOLING PAD.webp", link: "https://www.deepcool.com/products/Cooling/laptopcoolers/2021/14289.shtml" },
+            { name: "ASUS X1605ZA-MB236WS LAPTOP", brand: "ASUS", category: "Laptop", image: "assets/laptops/ASUS X1605ZA-MB236WS LAPTOP.png", link: "https://www.asus.com/ph/content/biggerbetterasus/" },
+            { name: "ACER TMP-216-51-7025 LAPTOP", brand: "ACER", category: "Laptop", image: "assets/laptops/ACER TMP-216-51-7025 LAPTOP.jfif", link: "https://www.acer.com/ph-en/laptops/travelmate/travelmate-p2-16" },
+            { name: "A4TECH PK-910H WEBCAM", brand: "A4TECH", category: "Peripherals", image: "assets/peripherals/A4TECH PK-910H WEBCAM.jpg", link: "https://a4tech.com/product.aspx?id=36" },
+            { name: "JABRA EVOLVE 20 USB HEADSET", brand: "JABRA", category: "Peripherals", image: "assets/peripherals/JABRA EVOLVE 20 USB HEADSET.webp", link: "https://www.jabra.com/en-GB/business/office-headsets/jabra-evolve/jabra-evolve-20/buy?sku=4993-823-109" },
+            { name: "OEM KINGSTON 16GB DDR4 3200MHZ UDIMM", brand: "KINGSTON", category: "Memory", image: "assets/ram/OEM KINGSTON 16GB DDR4 3200MHZ UDIMM.jfif", link: "https://www.kingston.com/en/memory/client/ddr4-3200mts-non_ecc-unbuffered-dimm" },
+            { name: "OEM KINGSTON 8GB DDR4 3200MHZ UDIMM", brand: "KINGSTON", category: "Memory", image: "assets/ram/OEM KINGSTON 16GB DDR4 3200MHZ UDIMM.jfif", link: "https://www.kingston.com/en/memory/client/ddr4-3200mts-non_ecc-unbuffered-dimm" },
+            { name: "OEM SAMSUNG EVO 870 250GB SSD SATA", brand: "SAMSUNG", category: "Storage", image: "assets/storage/OEM SAMSUNG EVO 870 250GB SSD SATA.jfif", link: "https://www.google.com/search?q=OEM+SAMSUNG+EVO+870+250GB+SSD+SATA&sca_esv=f99d34a608ada35f&rlz=1C1UEAD_enPH1123PH1123&biw=1366&bih=641&ei=QKA_abjLKp3R2roPj9Go2A8&ved=0ahUKEwi464zY8b6RAxWdqFYBHY8oCvsQ4dUDCBE&uact=5&oq=OEM+SAMSUNG+EVO+870+250GB+SSD+SATA&gs_lp=Egxnd3Mtd2l6LXNlcnAiIk9FTSBTQU1TVU5HIEVWTyA4NzAgMjUwR0IgU1NEIFNBVEEyBRAhGJ8FMgUQIRifBTIFECEYnwUyBRAhGJ8FMgUQIRifBTIFECEYnwUyBRAhGJ8FMgUQIRifBUiHAlAAWABwAHgBkAEAmAF4oAF4qgEDMC4xuAEDyAEA-AEC-AEBmAIBoAKFAZgDAJIHAzAuMaAH4wiyBwMwLjG4B4UBwgcDMy0xyAcIgAgA&sclient=gws-wiz-serp" },
+            { name: "OEM KINGSTON A400 240GB SSD SATA", brand: "KINGSTON", category: "Storage", image: "assets/storage/KINGSTON A400 480GB SSD SATA.jfif", link: "https://www.kingston.com/en/ssd/a400-solid-state-drive" },
+            { name: "LAPTOP CHARGER", brand: "GENERIC", category: "Accessories", image: "assets/accessories/LAPTOP CHARGER.jfif", link: "https://www.google.com/search?q=LAPTOP+CHARGER+specs&sca_esv=7b41aa12b393a752&rlz=1C1UEAD_enPH1123PH1123&ei=7Fw-adGFG8Tj2roP-NDmsAY&ved=0ahUKEwjRq5urvbyRAxXEsVYBHXioGWYQ4dUDCBE&uact=5&oq=LAPTOP+CHARGER+specs&gs_lp=Egxnd3Mtd2l6LXNlcnAiFExBUFRPUCBDSEFSR0VSIHNwZWNzMgUQABiABDIGEAAYBRgeMgYQABgFGB4yBhAAGAUYHjIGEAAYBRgeMgYQABgFGB4yBhAAGAUYHjIGEAAYBRgeMgYQABgFGB4yBhAAGAUYHkiFA1AAWABwAHgBkAEAmAFvoAFvqgEDMC4xuAEDyAEA-AEC-AEBmAIBoAKMAZgDAOIDBRIBMSBAkgcDMC4xoAfVBbIHAzAuMbgHjAHCBwM0LTHIBxeACAA&sclient=gws-wiz-serp" },
+            { name: "USB TO LAN 3.0 CONVERTER", brand: "GENERIC", category: "Accessories", image: "assets/accessories/USB TO LAN 3.0 CONVERTER.jpg", link: "https://www.google.com/search?q=USB+TO+LAN+3.0+CONVERTER+specs&sca_esv=7b41aa12b393a752&rlz=1C1UEAD_enPH1123PH1123&ei=Ql0-af_6Gvzm2roPx8iKCQ&ved=0ahUKEwj_o5zUvbyRAxV8s1YBHUekIgEQ4dUDCBE&uact=5&oq=USB+TO+LAN+3.0+CONVERTER+specs&gs_lp=Egxnd3Mtd2l6LXNlcnAiHlVTQiBUTyBMQU4gMy4wIENPTlZFUlRFUiBzcGVjczIIEAAYgAQYogQyBRAAGO8FMggQABiABBiiBDIFEAAY7wUyCBAAGIAEGKIESLgLUMcHWMcHcAF4AZABAJgBjgGgAY4BqgEDMC4xuAEDyAEA-AEC-AEBmAICoAKlAcICChAAGLADGNYEGEeYAwCIBgGQBgiSBwMxLjGgB-sDsgcDMC4xuAebAcIHBTItMS4xyAcRgAgA&sclient=gws-wiz-serp" },
+            { name: "USB TYPE C TO LAN 3.0 CONVERTER", brand: "GENERIC", category: "Accessories", image: "assets/accessories/USB TYPE C TO LAN 3.0 CONVERTER.webp", link: "https://www.google.com/search?q=USB+TYPE+C+TO+LAN+3.0+CONVERTER+specs&sca_esv=7b41aa12b393a752&rlz=1C1UEAD_enPH1123PH1123&ei=d10-abzBOvfh2roPhOCE-A4&ved=0ahUKEwj82N7tvbyRAxX3sFYBHQQwAe8Q4dUDCBE&uact=5&oq=USB+TYPE+C+TO+LAN+3.0+CONVERTER+specs&gs_lp=Egxnd3Mtd2l6LXNlcnAiJVVTQiBUWVBFIEMgVE8gTEFOIDMuMCBDT05WRVJURVIgc3BlY3MyCBAAGIAEGKIEMggQABiABBiiBDIIEAAYgAQYogQyBRAAGO8FMgUQABjvBUi-AlAAWABwAHgBkAEAmAGAAaABgAGqAQMwLjG4AQPIAQD4AQL4AQGYAgGgAooBmAMAkgcDMC4xoAe5A7IHAzAuMbgHigHCBwMyLTHIBweACAA&sclient=gws-wiz-serp" },
+            { name: "USB HUB 4 PORTS USB 3.0 HUB", brand: "GENERIC", category: "Accessories", image: "assets/accessories/USB HUB 4 PORTS USB 3.0 HUB.jpg", link: "https://www.google.com/search?q=USB+HUB+4+PORTS+USB+3.0+HUB+specs&sca_esv=7b41aa12b393a752&rlz=1C1UEAD_enPH1123PH1123&ei=zl0-aaS4DMKq0-kP5b2t8AM&ved=0ahUKEwik1-6WvryRAxVC1TQHHeVeCz4Q4dUDCBE&uact=5&oq=USB+HUB+4+PORTS+USB+3.0+HUB+specs&gs_lp=Egxnd3Mtd2l6LXNlcnAiIVVTQiBIVUIgNCBQT1JUUyBVU0IgMy4wIEhVQiBzcGVjczIIECEYoAEYwwQyCBAhGKABGMMESOwFUABYAHAAeAGQAQCYAYkBoAGJAaoBAzAuMbgBA8gBAPgBAvgBAZgCAaACkwGYAwCSBwMwLjGgB8ACsgcDMC4xuAeTAcIHAzItMcgHBYAIAA&sclient=gws-wiz-serp" },
+            { name: "ADLINK HDMI TO VGA CONVERTER", brand: "ADLINK", category: "Accessories", image: "assets/accessories/ADLINK HDMI TO VGA CONVERTER.jfif", link: "https://www.google.com/search?q=ADLINK+HDMI+TO+VGA+CONVERTER&sca_esv=8ab2282fee241d3c&rlz=1C1UEAD_enPH1123PH1123&sxsrf=AE3TifNw_0gOsHhqiD-q-tMoo1VV55Li6w:1765431421416&ei=fVg6aYaQGbSP2roPienvkQY&start=0&sa=N&sstk=Af77f_fxEEZWD6yy4oGrsc8kp6F8qyAdF9iw8HmXTTf0hNliSY_yLCtlM9y8t_O8G-O0eeN5SXFUTfavKWYOdFMEPSBISFReOa9qQxdU0gkDwR9I-VMiLMRW-GJ28-HQ9HVS&ved=2ahUKEwjGwv7F6LSRAxW0h1YBHYn0O2I4ChDy0wN6BAgLEAQ&biw=1366&bih=641&dpr=1" },
+            { name: "ADLINK VGA TO HDMI CONVERTER", brand: "ADLINK", category: "Accessories", image: "assets/accessories/ADLINK VGA TO HDMI CONVERTER.jfif", link: "https://www.google.com/search?q=ADLINK+VGA+TO+HDMI+CONVERTER+specs&sca_esv=8ab2282fee241d3c&rlz=1C1UEAD_enPH1123PH1123&biw=1366&bih=641&sxsrf=AE3TifPiQXLNi2SDYuJI_JV1F740Ntqa-Q%3A1765431607685&ei=N1k6aYTHKcuPvr0P_YaiiAo&ved=0ahUKEwjEvuee6bSRAxXLh68BHX2DCKEQ4dUDCBE&uact=5&oq=ADLINK+VGA+TO+HDMI+CONVERTER+specs&gs_lp=Egxnd3Mtd2l6LXNlcnAiIkFETElOSyBWR0EgVE8gSERNSSBDT05WRVJURVIgc3BlY3MyBRAhGKABMgUQIRigATIFECEYoAFI0A9QR1jaDnACeAGQAQCYAYgCoAHUB6oBBTAuNS4xuAEDyAEA-AEBmAIIoAL1CMICChAAGLADGNYEGEfCAgYQABgWGB7CAgsQABiABBiGAxiKBcICCBAAGIAEGKIEwgIIEAAYogQYiQXCAgUQABjvBcICBBAhGBWYAwCIBgGQBgiSBwUyLjUuMaAH1RiyBwUwLjUuMbgHwQjCBwcyLTIuNS4xyAdjgAgA&sclient=gws-wiz-serp" },
+            { name: "ADLINK TYPE C 5 IN 1 CONVERTER", brand: "ADLINK", category: "Accessories", image: "assets/accessories/ADLINK TYPE C 5 IN 1 CONVERTER.jfif", link: "https://www.google.com/search?q=ADLINK+TYPE+C+5+IN+1+CONVERTER+specs&sca_esv=8ab2282fee241d3c&rlz=1C1UEAD_enPH1123PH1123&biw=1366&bih=641&sxsrf=AE3TifNg0lQb4CcOaWdadpiXxJtZJBfklw%3A1765431626810&ei=Slk6afCFMcTS1e8Pxf630Qk&ved=0ahUKEwjw0van6bSRAxVEafUHHUX_LZoQ4dUDCBE&uact=5&oq=ADLINK+TYPE+C+5+IN+1+CONVERTER+specs&gs_lp=Egxnd3Mtd2l6LXNlcnAiJEFETElOSyBUWVBFIEMgNSBJTiAxIENPTlZFUlRFUiBzcGVjczIIEAAYgAQYogQyCBAAGIAEGKIEMggQABiABBiiBDIIEAAYgAQYogQyCBAAGIAEGKIESOIOUNYKWNYKcAF4AZABAJgBmQGgAZkBqgEDMC4xuAEDyAEA-AEC-AEBmAICoAKvAcICChAAGLADGNYEGEeYAwCIBgGQBgiSBwMxLjGgB78DsgcDMC4xuAehAcIHBTItMS4xyAcPgAgA&sclient=gws-wiz-serp" },
+            { name: "NEUTRON HDMI TO VGA CONVERTER", brand: "NEUTRON", category: "Accessories", image: "assets/peripherals/NEUTRON HDMI TO VGA CONVERTER.jpg", link: "https://www.google.com/search?q=NEUTRON+HDMI+TO+VGA+CONVERTER&rlz=1C1UEAD_enPH1123PH1123&oq=NEUTRON+HDMI+TO+VGA+CONVERTER&gs_lcrp=EgZjaHJvbWUyBggAEEUYOdIBCDEwNDhqMGo5qAIAsAIA&sourceid=chrome&ie=UTF-8" },
+            { name: "NEUTRON DISPLAY PORT TO VGA CONVERTER", brand: "NEUTRON", category: "Accessories", image: "assets/peripherals/NEUTRON DISPLAY PORT TO VGA CONVERTER.jfif", link: "https://www.google.com/search?q=NEUTRON+DISPLAY+PORT+TO+VGA+CONVERTER&sca_esv=b8d16794a32ebd8e&rlz=1C1UEAD_enPH1123PH1123&ei=oZU_acfkLoimvr0PufjB-QM&ved=0ahUKEwiHuc7H576RAxUIk68BHTl8MD8Q4dUDCBE&uact=5&oq=NEUTRON+DISPLAY+PORT+TO+VGA+CONVERTER&gs_lp=Egxnd3Mtd2l6LXNlcnAiJU5FVVRST04gRElTUExBWSBQT1JUIFRPIFZHQSBDT05WRVJURVIyBxAhGKABGAoyBxAhGKABGApI4bIFUI4BWJCwBXAGeAGQAQCYAe8BoAH5BKoBBTMuMS4xuAEDyAEA-AEB-AECmAILoALABcICChAAGLADGNYEGEfCAgUQIRigAcICBBAhGBWYAwCIBgGQBgiSBwU4LjIuMaAHyBGyBwUyLjIuMbgHnAXCBwUwLjMuOMgHKIAIAA&sclient=gws-wiz-serp" },
+            { name: "NEUTRON DISPLAY PORT TO HDMI CONVERTER", brand: "NEUTRON", category: "Accessories", image: "assets/peripherals/NEUTRON DISPLAY PORT TO HDMI CONVERTER.webp", link: "https://www.google.com/search?q=NEUTRON+DISPLAY+PORT+TO+HDMI+CONVERTER&rlz=1C1UEAD_enPH1123PH1123&oq=NEUTRON+DISPLAY+PORT+TO+HDMI+CONVERTER&gs_lcrp=EgZjaHJvbWUyBggAEEUYOdIBBzQyM2owajmoAgCwAgA&sourceid=chrome&ie=UTF-8" },
+            { name: "NEUTRON TYPE C TO HDMI CONVERTER", brand: "NEUTRON", category: "Accessories", image: "assets/peripherals/NEUTRON TYPE C TO HDMI CONVERTER.jpg", link: "https://www.google.com/search?q=NEUTRON+TYPE+C+TO+HDMI+CONVERTER&sca_esv=b8d16794a32ebd8e&rlz=1C1UEAD_enPH1123PH1123&ei=NZY_aZntOpCOosUP6eO3uQk&ved=0ahUKEwjZ26OO6L6RAxUQh6gCHenxLZcQ4dUDCBE&uact=5&oq=NEUTRON+TYPE+C+TO+HDMI+CONVERTER&gs_lp=Egxnd3Mtd2l6LXNlcnAiIE5FVVRST04gVFlQRSBDIFRPIEhETUkgQ09OVkVSVEVSMgUQIRigATIFECEYoAFIwwFQAFgAcAB4AZABAJgBhwGgAYcBqgEDMC4xuAEDyAEA-AEC-AEBmAIBoAKOAZgDAJIHAzAuMaAH0AKyBwMwLjG4B44BwgcDMi0xyAcDgAgA&sclient=gws-wiz-serp" },
+            { name: "PRINTER CABLE 1.8M CABLE", brand: "GENERIC", category: "Accessories", image: "assets/accessories/PRINTER CABLE 1.8M CABLE.jfif", link: "https://www.google.com/search?q=PRINTER+CABLE+1.8M+CABLE+specs&sca_esv=7b41aa12b393a752&rlz=1C1UEAD_enPH1123PH1123&ei=DF4-afC7FoeB2roP2sTOqAU&ved=0ahUKEwjw8cC0vryRAxWHgFYBHVqiE1UQ4dUDCBE&uact=5&oq=PRINTER+CABLE+1.8M+CABLE+specs&gs_lp=Egxnd3Mtd2l6LXNlcnAiHlBSSU5URVIgQ0FCTEUgMS44TSBDQUJMRSBzcGVjczIIEAAYgAQYogQyCBAAGIAEGKIEMggQABiABBiiBDIIEAAYgAQYogQyCBAAGIAEGKIESOgCUABYAHAAeAGQAQCYAZIBoAGSAaoBAzAuMbgBA8gBAPgBAvgBAZgCAaACoAGYAwCSBwMwLjGgB_0CsgcDMC4xuAegAcIHAzMtMcgHCoAIAA&sclient=gws-wiz-serp" },
+            { name: "CRIMPING TOOLS", brand: "GENERIC", category: "Tools", image: "assets/accessories/CRIMPING TOOLS.jfif", link: "https://www.google.com/search?q=CRIMPING+TOOLS+specs&sca_esv=7b41aa12b393a752&rlz=1C1UEAD_enPH1123PH1123&ei=f14-aZPmJrrk2roPkbn0uQM&ved=0ahUKEwjTobzrvryRAxU6slYBHZEcPTcQ4dUDCBE&uact=5&oq=CRIMPING+TOOLS+specs&gs_lp=Egxnd3Mtd2l6LXNlcnAiFENSSU1QSU5HIFRPT0xTIHNwZWNzMggQABiABBiiBDIFEAAY7wUyCBAAGIAEGKIEMggQABiiBBiJBUiqBVAAWABwAHgAkAEAmAGGAaABhgGqAQMwLjG4AQPIAQD4AQL4AQGYAgGgApcBmAMAkgcDMC4xoAfWArIHAzAuMbgHlwHCBwMzLTHIBwyACAA&sclient=gws-wiz-serp" },
+            { name: "A4TECH FK13M NUMERIC KEYPAD", brand: "A4TECH", category: "Peripherals", image: "assets/peripherals/A4TECH FK13M NUMERIC KEYPAD.jpg", link: "https://www.a4tech.com/product.aspx?tid=10&id=276" },
+            { name: "PRINTER CABLE 1.5M CABLE", brand: "GENERIC", category: "Accessories", image: "assets/accessories/PRINTER CABLE 1.5M CABLE.jfif", link: "https://www.google.com/search?q=PRINTER+CABLE+1.5M+CABLE+specs&sca_esv=7b41aa12b393a752&rlz=1C1UEAD_enPH1123PH1123&ei=jV4-aaOvIcfS2roP87bxkA4&ved=0ahUKEwjjqY3yvryRAxVHqVYBHXNbHOIQ4dUDCBE&uact=5&oq=PRINTER+CABLE+1.5M+CABLE+specs&gs_lp=Egxnd3Mtd2l6LXNlcnAiHlBSSU5URVIgQ0FCTEUgMS41TSBDQUJMRSBzcGVjczIIECEYoAEYwwRI_wJQAFgAcAB4AZABAJgBlAGgAZQBqgEDMC4xuAEDyAEA-AEC-AEBmAIBoAKjAZgDAJIHAzAuMaAHxQGyBwMwLjG4B6MBwgcDMi0xyAcHgAgA&sclient=gws-wiz-serp" },
+            { name: "POWER CORD", brand: "GENERIC", category: "Accessories", image: "assets/accessories/POWER CORD.jfif", link: "https://www.google.com/search?q=POWER+CORD+specs&sca_esv=7b41aa12b393a752&rlz=1C1UEAD_enPH1123PH1123&ei=yl4-acm8GeLn2roP9oy7-QY&ved=0ahUKEwjJyZCPv7yRAxXis1YBHXbGLm8Q4dUDCBE&uact=5&oq=POWER+CORD+specs&gs_lp=Egxnd3Mtd2l6LXNlcnAiEFBPV0VSIENPUkQgc3BlY3MyBhAAGAcYHjIFEAAYgAQyBhAAGAUYHjIGEAAYBRgeMgYQABgFGB4yBhAAGAUYHjIGEAAYBRgeMgYQABgFGB4yBhAAGAUYHjIGEAAYBRgeSPMFUABYAHAAeAGQAQCYAZMBoAGTAaoBAzAuMbgBA8gBAPgBAvgBAZgCAaACqQGYAwCSBwMwLjGgB9EFsgcDMC4xuAepAcIHAzMtMcgHEoAIAA&sclient=gws-wiz-serp" },
+            { name: "ADLINK LAN CABLE 1.5M LAN", brand: "ADLINK", category: "Accessories", image: "assets/accessories/ADLINK LAN CABLE 1.5M LAN.jpg", link: "https://www.google.com/search?sca_esv=8ab2282fee241d3c&rlz=1C1UEAD_enPH1123PH1123&sxsrf=AE3TifNj_FFmQS06nCEuIAYjLvSAPCxQRw:1765431761726&q=ADLINK+LAN+CABLE+1.5M+LAN+specs&source=lnms&fbs=AIIjpHz2LkAPJDdeiKYzFgacvjxVCCXt2_rn5WCap3LXcg4MWimX5xVC8lXXVk1dsWFqCuPWcQlsxInfO8t-7SRSqtqwDOvPDMj3YRq--E0IOLAUyO7lIkHszn3419ypbEZ4LkGr2FmBc3f9hyZA6jScPXxNtUPXO6x2hqtz3Heu7AeI1a3s3P1tDkQwAR2lk8b4kaRsFxfEoDTvn9sIvQgvnPt5SSlSIZbleGkWQl0CzeKDlX-5XwE&sa=X&ved=2ahUKEwiWs6Ho6bSRAxXxmq8BHUlOIJcQ0pQJegQIDBAB&biw=1366&bih=641&dpr=1" },
+
+            // Page 5
+            { name: "VGA CABLE", brand: "GENERIC", category: "Accessories", image: "assets/accessories/VGA CABLE.jfif", link: "https://www.google.com/search?q=VGA+CABLE+specs&sca_esv=7b41aa12b393a752&rlz=1C1UEAD_enPH1123PH1123&ei=_14-afGfLbzl2roPxNWmkAE&ved=0ahUKEwixm8eov7yRAxW8slYBHcSqCRIQ4dUDCBE&uact=5&oq=VGA+CABLE+specs&gs_lp=Egxnd3Mtd2l6LXNlcnAiD1ZHQSBDQUJMRSBzcGVjczIFEAAYgAQyCxAAGIAEGIYDGIoFMggQABiABBiiBDIIEAAYgAQYogQyCBAAGIAEGKIEMggQABiiBBiJBTIIEAAYogQYiQVIpAJQAFgAcAB4AZABAJgBdKABdKoBAzAuMbgBA8gBAPgBAvgBAZgCAaACigGYAwCSBwMwLjGgB-cDsgcDMC4xuAeKAcIHAzMtMcgHEYAIAA&sclient=gws-wiz-serp" },
+            { name: "PRINTER CABLE 3M CABLE", brand: "GENERIC", category: "Accessories", image: "assets/accessories/PRINTER CABLE 3M CABLE.jfif", link: "https://www.google.com/search?q=PRINTER+CABLE+3M+CABLE+specs&sca_esv=7b41aa12b393a752&rlz=1C1UEAD_enPH1123PH1123&ei=WV8-aeb6F_Hh2roP-pOt2Qs&ved=0ahUKEwimi6fTv7yRAxXxsFYBHfpJK7sQ4dUDCBE&uact=5&oq=PRINTER+CABLE+3M+CABLE+specs&gs_lp=Egxnd3Mtd2l6LXNlcnAiHFBSSU5URVIgQ0FCTEUgM00gQ0FCTEUgc3BlY3MyCBAAGIAEGKIEMggQABiABBiiBDIFEAAY7wUyCBAAGIAEGKIESJcEUCFYIXABeACQAQCYAa0BoAGtAaoBAzAuMbgBA8gBAPgBAZgCAqACyQHCAg4QABiABBiwAxiGAxiKBcICCxAAGIAEGLADGKIEwgIIEAAYsAMY7wWYAwCIBgGQBgeSBwMxLjGgB6wCsgcDMC4xuAe7AcIHBTItMS4xyAcQgAgA&sclient=gws-wiz-serp" },
+            { name: "NEUTRON LAN CAT 5 10M CABLE", brand: "NEUTRON", category: "Accessories", image: "assets/peripherals/NEUTRON LAN CAT 5 CABLE 10M.jpg", link: "https://www.google.com/search?q=NEUTRON+LAN+CAT+5+CABLE+10M+CABLE&sca_esv=b8d16794a32ebd8e&rlz=1C1UEAD_enPH1123PH1123&ei=cpY_aZ61A5b91e8P5caHwAw&ved=0ahUKEwietveq6L6RAxWWfvUHHWXjAcgQ4dUDCBE&uact=5&oq=NEUTRON+LAN+CAT+5+CABLE+10M+CABLE&gs_lp=Egxnd3Mtd2l6LXNlcnAiIU5FVVRST04gTEFOIENBVCA1IENBQkxFIDEwTSBDQUJMRTIFECEYoAEyBRAhGKABMgUQIRigATIFECEYoAFIngJQAFgAcAB4AZABAJgBigGgAYoBqgEDMC4xuAEDyAEA-AEC-AEBmAIBoAKVAZgDAJIHAzAuMaAHigSyBwMwLjG4B5UBwgcDMi0xyAcGgAgA&sclient=gws-wiz-serp" },
+            { name: "NEUTRON LAN CAT 5 5M CABLE", brand: "NEUTRON", category: "Accessories", image: "assets/peripherals/NEUTRON LAN CAT 5 CABLE 10M.jpg", link: "https://www.google.com/search?q=NEUTRON+LAN+CAT+5+CABLE+10M+CABLE&sca_esv=b8d16794a32ebd8e&rlz=1C1UEAD_enPH1123PH1123&ei=cpY_aZ61A5b91e8P5caHwAw&ved=0ahUKEwietveq6L6RAxWWfvUHHWXjAcgQ4dUDCBE&uact=5&oq=NEUTRON+LAN+CAT+5+CABLE+10M+CABLE&gs_lp=Egxnd3Mtd2l6LXNlcnAiIU5FVVRST04gTEFOIENBVCA1IENBQkxFIDEwTSBDQUJMRTIFECEYoAEyBRAhGKABMgUQIRigATIFECEYoAFIngJQAFgAcAB4AZABAJgBigGgAYoBqgEDMC4xuAEDyAEA-AEC-AEBmAIBoAKVAZgDAJIHAzAuMaAHigSyBwMwLjG4B5UBwgcDMi0xyAcGgAgA&sclient=gws-wiz-serp" },
+            { name: "NEUTRON LAN CAT 5 3M CABLE", brand: "NEUTRON", category: "Accessories", image: "assets/peripherals/NEUTRON LAN CAT 5 CABLE 10M.jpg", link: "https://www.google.com/search?q=NEUTRON+LAN+CAT+5+CABLE+10M+CABLE&sca_esv=b8d16794a32ebd8e&rlz=1C1UEAD_enPH1123PH1123&ei=cpY_aZ61A5b91e8P5caHwAw&ved=0ahUKEwietveq6L6RAxWWfvUHHWXjAcgQ4dUDCBE&uact=5&oq=NEUTRON+LAN+CAT+5+CABLE+10M+CABLE&gs_lp=Egxnd3Mtd2l6LXNlcnAiIU5FVVRST04gTEFOIENBVCA1IENBQkxFIDEwTSBDQUJMRTIFECEYoAEyBRAhGKABMgUQIRigATIFECEYoAFIngJQAFgAcAB4AZABAJgBigGgAYoBqgEDMC4xuAEDyAEA-AEC-AEBmAIBoAKVAZgDAJIHAzAuMaAHigSyBwMwLjG4B5UBwgcDMi0xyAcGgAgA&sclient=gws-wiz-serp" },
+            { name: "HDMI CABLE 1M CABLE", brand: "GENERIC", category: "Accessories", image: "assets/accessories/HDMI CABLE 1M CABLE.jpg", link: "https://www.google.com/search?q=HDMI+CABLE+1M+CABLE+specs&sca_esv=7b41aa12b393a752&rlz=1C1UEAD_enPH1123PH1123&ei=kl8-aeO2E4vO2roPpsTN4Ac&ved=0ahUKEwjjx7nuv7yRAxULp1YBHSZiE3wQ4dUDCBE&uact=5&oq=HDMI+CABLE+1M+CABLE+specs&gs_lp=Egxnd3Mtd2l6LXNlcnAiGUhETUkgQ0FCTEUgMU0gQ0FCTEUgc3BlY3MyBRAhGKABMgUQIRigAUi8CVAwWNsDcAB4AZABAJgBsQKgAcIIqgEHMC4yLjIuMbgBA8gBAPgBAZgCBaAC6wjCAgYQABgWGB7CAgsQABiABBiGAxiKBcICCBAAGIAEGKIEwgIFEAAY7wWYAwCSBwcwLjIuMi4xoAe7DrIHBzAuMi4yLjG4B-sIwgcHMC4yLjIuMcgHFYAIAA&sclient=gws-wiz-serp" },
+            { name: "NEUTRON HDMI 1.8M CABLE V2.0", brand: "NEUTRON", category: "Accessories", image: "assets/peripherals/NEUTRON HDMI CABLE V2.0 1.8M CABLE.jpg", link: "https://www.google.com/search?q=NEUTRON+HDMI+CABLE+V2.0+1.8M+CABLE&sca_esv=b8d16794a32ebd8e&rlz=1C1UEAD_enPH1123PH1123&ei=4JY_ad2ME9bt1e8PiNiEiQs&ved=0ahUKEwjd_MDf6L6RAxXWdvUHHQgsIbEQ4dUDCBE&uact=5&oq=NEUTRON+HDMI+CABLE+V2.0+1.8M+CABLE&gs_lp=Egxnd3Mtd2l6LXNlcnAiIk5FVVRST04gSERNSSBDQUJMRSBWMi4wIDEuOE0gQ0FCTEUyBRAAGO8FMggQABiABBiiBDIIEAAYgAQYogQyCBAAGIAEGKIESKMDUABYAHAAeACQAQCYAXCgAXCqAQMwLjG4AQPIAQD4AQL4AQGYAgGgAneYAwCSBwMwLjGgB8ICsgcDMC4xuAd3wgcDMi0xyAcFgAgA&sclient=gws-wiz-serp" },
+            { name: "KINGSTON USB FLASH DRIVE BADMINTON 64GB USB", brand: "KINGSTON", category: "Storage", image: "assets/storage/KINGSTON USB FLASH DRIVE BADMINTON 64GB USB.jfif", link: "https://www.google.com/search?q=kingston+usb+flash+drive+badminton+64gb+usb+specs&sca_esv=bdf989aec2a32a28&rlz=1C1UEAD_enPH1123PH1123&biw=1366&bih=641&ei=p3Y_afaAGY3i2roPr8yC2Ak&oq=KINGSTON+USB+FLASH+DRIVE+BADMINTON+64GB+USB+s&gs_lp=Egxnd3Mtd2l6LXNlcnAiLUtJTkdTVE9OIFVTQiBGTEFTSCBEUklWRSBCQURNSU5UT04gNjRHQiBVU0IgcyoCCAEyBRAhGKABMgUQIRigATIFECEYoAEyBRAhGKABMgUQIRigATIEECEYFUj8ElCKBVibBXABeACQAQCYAcwDoAHhBKoBBzAuMS40LTG4AQHIAQD4AQGYAgOgAvcLwgIOEAAYgAQYsAMYhgMYigXCAgsQABiABBiwAxiiBMICCBAAGLADGO8FmAMAiAYBkAYGkgcDNC0zoAeZCrIHAzQtMrgHtwfCBwc0LTIuOC0xyAf1BIAIAA&sclient=gws-wiz-serp" },
+            { name: "TPLINK UB500 UN BLUETOOTH 5.3 BLUETOOTH ADAPTER", brand: "TP-LINK", category: "Networking", image: "assets/networking/TPLINK UB500 UN BLUETOOTH 5.3 BLUETOOTH ADAPTER.jpg", link: "https://www.tp-link.com/ph/home-networking/adapter/ub500/" },
+            { name: "TPLINK UE306UN BLACK USB TO LAN CONVERTER", brand: "TP-LINK", category: "Accessories", image: "assets/accessories/TPLINK UE306UN BLACK USB TO LAN CONVERTER.jpg", link: "https://www.tp-link.com/ph/home-networking/usb-converter/ue306/" },
+            { name: "TPLINK UE300 TYPE C TO LAN CONVERTER", brand: "TP-LINK", category: "Accessories", image: "assets/accessories/TPLINK UE300 TYPE C TO LAN CONVERTER.jpg", link: "https://www.tp-link.com/ph/home-networking/usb-converter/ue300c/" },
+            { name: "ZOTAC USB TO SATA CONVERTER", brand: "ZOTAC", category: "Accessories", image: "assets/gpu/ZOTAC USB TO SATA CONVERTER.jfif", link: "https://www.google.com/search?sca_esv=60592e8bb2cdfe2f&rlz=1C1UEAD_enPH1123PH1123&q=ZOTAC+USB+TO+SATA+CONVERTER&source=lnms&fbs=AIIjpHzrxpZbmXOWvJwBW7Vzcy2ExulGacgW6aUHSW6J2mMlDagTpkRjozwyxvph3QQ8t1H1iD0zwAolKRQGEBQixG0JX9l-bJvwHuqcY4iuS-n_PnAjwgVmCgTL5BYsMv3VtfhufWKZAJx4bE5KaGAcRv4gGsKfqKf-96QhV1L7hF5UeEm4PU-Qom_JqGi4aHTLiPtNT5epY1qDLU0sUMG4xk6HZjDh8ze191YMbZVnU6Z62fP6vj4&sa=X&ved=2ahUKEwjcp4HCl7-RAxUmdPUHHRFrLqIQ0pQJegQIDRAB&biw=1366&bih=641&dpr=1" },
+            { name: "KINGSTON NV3 1TB SSD M.2 NVME", brand: "KINGSTON", category: "Storage", image: "assets/storage/KINGSTON NV3 1TB SSD M.2 NVME.webp", link: "https://www.google.com/search?q=KINGSTON+NV3+1TB+SSD+M.2+NVME&rlz=1C1UEAD_enPH1123PH1123&oq=KINGSTON+NV3+1TB+SSD+M.2+NVME&gs_lcrp=EgZjaHJvbWUyBggAEEUYOdIBBzgyMGowajGoAgCwAgA&sourceid=chrome&ie=UTF-8" },
+            { name: "CRUCIAL 16GB DDR4 3200MHZ UDIMM", brand: "CRUCIAL", category: "Memory", image: "assets/ram/CRUCIAL 16GB DDR4 3200MHZ UDIMM.png", link: "https://www.crucial.com/memory/ddr4/ct8g4dfra32a" },
+            { name: "CRUCIAL 8GB DDR4 3200MHZ UDIMM", brand: "CRUCIAL", category: "Memory", image: "assets/ram/CRUCIAL 16GB DDR4 3200MHZ UDIMM.png", link: "https://www.crucial.com/memory/ddr4/ct8g4dfra32a" },
+            { name: "KINGSTON FURY 16GB DDR4 2666MHZ UDIMM", brand: "KINGSTON", category: "Memory", image: "assets/ram/KINGSTON FURY 16GB DDR4 2666MHZ UDIMM.jfif", link: "https://www.google.com/search?q=KINGSTON+FURY+16GB+DDR4+2666MHZ+UDIMM&rlz=1C1UEAD_enPH1123PH1123&oq=KINGSTON+FURY+16GB+DDR4+2666MHZ+UDIMM&gs_lcrp=EgZjaHJvbWUyBggAEEUYOdIBBzgxM2owajmoAgCwAgA&sourceid=chrome&ie=UTF-8" },
+            { name: "KINGSTON FURY 8GB DDR4 2666MHZ UDIMM", brand: "KINGSTON", category: "Memory", image: "assets/ram/KINGSTON FURY 16GB DDR4 2666MHZ UDIMM.jfif", link: "https://www.google.com/search?q=KINGSTON+FURY+8GB+DDR4+2666MHZ+UDIMM&rlz=1C1UEAD_enPH1123PH1123&oq=KINGSTON+FURY+8GB+DDR4+2666MHZ+UDIMM&gs_lcrp=EgZjaHJvbWUyBggAEEUYOdIBBzc5M2owajmoAgCwAgA&sourceid=chrome&ie=UTF-8" },
+            { name: "KINGSTON FURY 8GB DDR4 3200MHZ RGB UDIMM", brand: "KINGSTON", category: "Memory", image: "assets/ram/KINGSTON FURY 8GB DDR4 3200MHZ RGB UDIMM.webp", link: "https://www.kingston.com/en/memory/gaming/kingston-fury-beast-ddr4-rgb-memory" },
+            { name: "APACER 8GB DDR5 5200MHZ SODIMM", brand: "APACER", category: "Memory", image: "assets/ram/APACER 8GB DDR5 5200MHZ SODIMM.png", link: "https://www.apacer.com/en/product/personal-product/detail/personal_dram/ddr5_desktop_memory_module" },
+            { name: "ADATA 8GB DDR5 4800MHZ UDIMM", brand: "ADATA", category: "Memory", image: "assets/storage/ADATA 8GB DDR5 4800MHZ UDIMM.png", link: "https://www.adata.com/us/consumer/category/computer-memory/dram-module-ddr5-4800-u-dimm/" },
+            { name: "KINGSTON VALUE 8GB DDR3 1600MHZ UDIMM", brand: "KINGSTON", category: "Memory", image: "assets/ram/KINGSTON VALUE 8GB DDR3 1600MHZ UDIMM.jfif", link: "https://www.google.com/search?q=KINGSTON+VALUE+8GB+DDR3+1600MHZ+UDIMM&rlz=1C1UEAD_enPH1123PH1123&oq=KINGSTON+VALUE+8GB+DDR3+1600MHZ+UDIMM&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIHCAEQIRiPAjIHCAIQIRiPAtIBBzQ2N2owajSoAgCwAgA&sourceid=chrome&ie=UTF-8" },
+            { name: "KINGSTON 8GB DDR4 3200MHZ SODIMM", brand: "KINGSTON", category: "Memory", image: "assets/ram/KINGSTON 8GB DDR4 3200MHZ SODIMM.jfif", link: "https://www.google.com/search?q=KINGSTON+DDR4+3200MHZ+SODIMM+specs&sca_esv=0690ac81dbc3848e&rlz=1C1UEAD_enPH1123PH1123&biw=1366&bih=641&ei=pHk_aZGeBfCD2roP5LiqWQ&ved=0ahUKEwiRgODuzL6RAxXwgVYBHWScKgsQ4dUDCBE&uact=5&oq=KINGSTON+DDR4+3200MHZ+SODIMM+specs&gs_lp=Egxnd3Mtd2l6LXNlcnAiIktJTkdTVE9OIEREUjQgMzIwME1IWiBTT0RJTU0gc3BlY3MyCBAAGIAEGKIEMggQABiiBBiJBTIIEAAYgAQYogQyBRAAGO8FMggQABiABBiiBEidClCUAljwBXABeAGQAQCYAWagAdQCqgEDMy4xuAEDyAEA-AEBmAIFoAL5AsICChAAGLADGNYEGEeYAwCIBgGQBgiSBwMzLjKgB5AQsgcDMi4yuAfyAsIHAzItNcgHGoAIAA&sclient=gws-wiz-serp" },
+            { name: "KINGSTON 8GB DDR4 2666MHZ SODIMM", brand: "KINGSTON", category: "Memory", image: "assets/ram/KINGSTON 8GB DDR4 3200MHZ SODIMM.jfif", link: "https://www.google.com/search?q=KINGSTON+DDR4+3200MHZ+SODIMM+specs&sca_esv=0690ac81dbc3848e&rlz=1C1UEAD_enPH1123PH1123&biw=1366&bih=641&ei=pHk_aZGeBfCD2roP5LiqWQ&ved=0ahUKEwiRgODuzL6RAxXwgVYBHWScKgsQ4dUDCBE&uact=5&oq=KINGSTON+DDR4+3200MHZ+SODIMM+specs&gs_lp=Egxnd3Mtd2l6LXNlcnAiIktJTkdTVE9OIEREUjQgMzIwME1IWiBTT0RJTU0gc3BlY3MyCBAAGIAEGKIEMggQABiiBBiJBTIIEAAYgAQYogQyBRAAGO8FMggQABiABBiiBEidClCUAljwBXABeAGQAQCYAWagAdQCqgEDMy4xuAEDyAEA-AEBmAIFoAL5AsICChAAGLADGNYEGEeYAwCIBgGQBgiSBwMzLjKgB5AQsgcDMi4yuAfyAsIHAzItNcgHGoAIAA&sclient=gws-wiz-serp" },
+            { name: "KINGSTON 16GB DDR4 2666MHZ SODIMM", brand: "KINGSTON", category: "Memory", image: "assets/ram/KINGSTON 8GB DDR4 3200MHZ SODIMM.jfif", link: "https://www.google.com/search?q=KINGSTON+DDR4+3200MHZ+SODIMM+specs&sca_esv=0690ac81dbc3848e&rlz=1C1UEAD_enPH1123PH1123&biw=1366&bih=641&ei=pHk_aZGeBfCD2roP5LiqWQ&ved=0ahUKEwiRgODuzL6RAxXwgVYBHWScKgsQ4dUDCBE&uact=5&oq=KINGSTON+DDR4+3200MHZ+SODIMM+specs&gs_lp=Egxnd3Mtd2l6LXNlcnAiIktJTkdTVE9OIEREUjQgMzIwME1IWiBTT0RJTU0gc3BlY3MyCBAAGIAEGKIEMggQABiiBBiJBTIIEAAYgAQYogQyBRAAGO8FMggQABiABBiiBEidClCUAljwBXABeAGQAQCYAWagAdQCqgEDMy4xuAEDyAEA-AEBmAIFoAL5AsICChAAGLADGNYEGEeYAwCIBgGQBgiSBwMzLjKgB5AQsgcDMi4yuAfyAsIHAzItNcgHGoAIAA&sclient=gws-wiz-serp" },
+            { name: "KINGSTON 16GB DDR5 4800MHZ SODIMM", brand: "KINGSTON", category: "Memory", image: "assets/ram/KINGSTON 8GB DDR4 3200MHZ SODIMM.jfif", link: "https://www.google.com/search?q=KINGSTON+DDR4+3200MHZ+SODIMM+specs&sca_esv=0690ac81dbc3848e&rlz=1C1UEAD_enPH1123PH1123&biw=1366&bih=641&ei=pHk_aZGeBfCD2roP5LiqWQ&ved=0ahUKEwiRgODuzL6RAxXwgVYBHWScKgsQ4dUDCBE&uact=5&oq=KINGSTON+DDR4+3200MHZ+SODIMM+specs&gs_lp=Egxnd3Mtd2l6LXNlcnAiIktJTkdTVE9OIEREUjQgMzIwME1IWiBTT0RJTU0gc3BlY3MyCBAAGIAEGKIEMggQABiiBBiJBTIIEAAYgAQYogQyBRAAGO8FMggQABiABBiiBEidClCUAljwBXABeAGQAQCYAWagAdQCqgEDMy4xuAEDyAEA-AEBmAIFoAL5AsICChAAGLADGNYEGEeYAwCIBgGQBgiSBwMzLjKgB5AQsgcDMi4yuAfyAsIHAzItNcgHGoAIAA&sclient=gws-wiz-serp" },
+            { name: "TRANSCEND 8GB DDR4 2666MHZ SODIMM", brand: "TRANSCEND", category: "Memory", image: "assets/ram/TRANSCEND 8GB DDR4 2666MHZ SODIMM.jfif", link: "https://www.transcend-info.com/product/module/ddr4/jm2666hsg-8g?srsltid=AfmBOopCUMSJ0JYf76_U0SBmaWYbPC0GRX_8HDEVfv8Grj7oZTiuO_0G" },
+            { name: "KINGSTON EXODIA 64GB USB 3.2 FLASH DRIVE", brand: "KINGSTON", category: "Storage", image: "assets/storage/KINGSTON EXODIA 64GB USB 3.2 FLASH DRIVE.jpg", link: "https://www.google.com/search?sca_esv=0690ac81dbc3848e&rlz=1C1UEAD_enPH1123PH1123&q=KINGSTON+EXODIA+64GB+USB+3.2+FLASH+DRIVE+specs&source=lnms&fbs=AIIjpHzrxpZbmXOWvJwBW7Vzcy2ExulGacgW6aUHSW6J2mMlDagTpkRjozwyxvph3QQ8t1H1iD0zwAolKRQGEBQixG0JX9l-bJvwHuqcY4iuS-n_PnAjwgVmCgTL5BYsMv3VtfhufWKZAJx4bE5KaGAcRv4gGsKfqKf-96QhV1L7hF5UeEm4PU-Qom_JqGi4aHTLiPtNT5epY1qDLU0sUMG4xk6HZjDh8ze191YMbZVnU6Z62fP6vj4&sa=X&ved=2ahUKEwid9pqkzb6RAxU5h1YBHQHYOv4Q0pQJegQIDBAB&biw=1366&bih=641&dpr=1" },
+            { name: "TRANSCEND JETFLASH 790 32GB USB 3.1 USB FLASH DRIVE", brand: "TRANSCEND", category: "Storage", image: "assets/storage/TRANSCEND JETFLASH 790 32GB USB 3.1 USB FLASH DRIVE.png", link: "https://us.transcend-info.com/product/usb-flash-drive/jetflash-790" },
+            { name: "TRANSCEND JETFLASH 790 64GB USB 3.1 USB FLASH DRIVE", brand: "TRANSCEND", category: "Storage", image: "assets/storage/TRANSCEND JETFLASH 790 32GB USB 3.1 USB FLASH DRIVE.png", link: "https://us.transcend-info.com/product/usb-flash-drive/jetflash-790" },
+            { name: "TRANSCEND JETFLASH 700 32GB USB 3.1 USB FLASH DRIVE", brand: "TRANSCEND", category: "Storage", image: "assets/storage/TRANSCEND JETFLASH 790 32GB USB 3.1 USB FLASH DRIVE.png", link: "https://us.transcend-info.com/product/usb-flash-drive/jetflash-790" },
+            { name: "TRANSCEND MEMORY CARD 32GB MICRO SD", brand: "TRANSCEND", category: "Storage", image: "assets/storage/TRANSCEND MEMORY CARD 32GB MICRO SD.jfif", link: "https://www.google.com/search?q=TRANSCEND+MEMORY+CARD+32GB+MICRO+SD&rlz=1C1UEAD_enPH1123PH1123&oq=TRANSCEND+MEMORY+CARD+32GB+MICRO+SD&gs_lcrp=EgZjaHJvbWUyBggAEEUYOdIBBzMyOWowajSoAgCwAgA&sourceid=chrome&ie=UTF-8" },
+            { name: "TRANSCEND MEMORY CARD 64GB MICRO SD", brand: "TRANSCEND", category: "Storage", image: "assets/storage/TRANSCEND MEMORY CARD 64GB MICRO SD.jfif", link: "https://www.google.com/search?q=TRANSCEND+MEMORY+CARD+64GB+MICRO+SD&rlz=1C1UEAD_enPH1123PH1123&oq=TRANSCEND+MEMORY+CARD+64GB+MICRO+SD&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIHCAEQIRiPAjIHCAIQIRiPAtIBBzQ3OWowajmoAgCwAgA&sourceid=chrome&ie=UTF-8" },
+            { name: "TRANSCEND MEMORY CARD 128GB MICRO SD", brand: "TRANSCEND", category: "Storage", image: "assets/storage/TRANSCEND MEMORY CARD 128GB MICRO SD.jpg", link: "https://www.google.com/search?q=TRANSCEND+MEMORY+CARD+128GB+MICRO+SD+specs&sca_esv=60592e8bb2cdfe2f&rlz=1C1UEAD_enPH1123PH1123&ei=2sI_aZb3IqGUvr0P6c-u6AM&ved=0ahUKEwiWzO7Xkr-RAxUhiq8BHemnCz0Q4dUDCBE&uact=5&oq=TRANSCEND+MEMORY+CARD+128GB+MICRO+SD+specs&gs_lp=Egxnd3Mtd2l6LXNlcnAiKlRSQU5TQ0VORCBNRU1PUlkgQ0FSRCAxMjhHQiBNSUNSTyBTRCBzcGVjczIIEAAYgAQYogQyCBAAGIAEGKIEMggQABiiBBiJBTIIEAAYgAQYogQyCBAAGKIEGIkFSJASUO8DWJERcAN4AZABAJgBnAGgAY4FqgEDMi40uAEDyAEA-AEBmAIJoAL1BcICChAAGLADGNYEGEfCAgUQIRigAcICBxAhGKABGAqYAwCIBgGQBgiSBwMzLjagB9ATsgcDMC42uAfWBcIHBTItNy4yyAc9gAgA&sclient=gws-wiz-serp" },
+            { name: "TRANSCEND CARD READER RDF5 CARD READER", brand: "TRANSCEND", category: "Accessories", image: "assets/storage/TRANSCEND CARD READER RDF5 CARD READER.png", link: "https://www.transcend-info.com/Products/No-396?srsltid=AfmBOopZG4tKw8YDTpa7DUHxlYuvk52oNGoGAgzRKZatRoG_8Wd0XB9N" },
+            { name: "INPLAY SEAVIEW ATX CASING WHITE", brand: "INPLAY", category: "PC Case", image: "assets/casings/INPLAY-SEAVIEW-PALACE-SMALL-WHITE-PC-CASE.webp", link: "https://www.google.com/search?sca_esv=25dfd463629c044b&rlz=1C1UEAD_enPH1123PH1123&q=INPLAY+SEAVIEW+ATX+CASING+WHITE+specs&source=lnms&fbs=AIIjpHzszoRmzeEhd8K7Oddy3YY6sVKInfeLtYuL70cZRC9XhujYccG3xDFd_cyLVTC48LrwPjjnsi_vy_enm6IHGcZCCJF7sZaK-5G59n5hDo_PGDXoaqahdY2FMXeRKRG7dEszIErthieOZn19fQ8dfIbu__l7v4996myMzwCQVDKgKJuAgZ-ba_nLMOkWFI_CUVC8PJtOj197_9wHU3EExgcnLZ9ijl6VzepQ8WKlZ6pl1yei3fc&sa=X&ved=2ahUKEwirkZ-E8LyRAxVj1zQHHcBwFToQ0pQJegQIDRAB&biw=1366&bih=641&dpr=1" },
+            { name: "INPLAY SEAVIEW ATX CASING BLACK", brand: "INPLAY", category: "PC Case", image: "assets/casings/INPLAY SEAVIEW ATX CASING BLACK.jpg", link: "https://www.google.com/search?sca_esv=25dfd463629c044b&rlz=1C1UEAD_enPH1123PH1123&q=INPLAY+SEAVIEW+ATX+CASING+WHITE+specs&source=lnms&fbs=AIIjpHzszoRmzeEhd8K7Oddy3YY6sVKInfeLtYuL70cZRC9XhujYccG3xDFd_cyLVTC48LrwPjjnsi_vy_enm6IHGcZCCJF7sZaK-5G59n5hDo_PGDXoaqahdY2FMXeRKRG7dEszIErthieOZn19fQ8dfIbu__l7v4996myMzwCQVDKgKJuAgZ-ba_nLMOkWFI_CUVC8PJtOj197_9wHU3EExgcnLZ9ijl6VzepQ8WKlZ6pl1yei3fc&sa=X&ved=2ahUKEwirkZ-E8LyRAxVj1zQHHcBwFToQ0pQJegQIDRAB&biw=1366&bih=641&dpr=1" },
+            { name: "AMD RYZEN 5 4600G MPK", brand: "AMD", category: "CPU", image: "assets/cpu/AMD RYZEN 5 4600G MPK.jpg", link: "https://www.techpowerup.com/cpu-specs/ryzen-5-4600g.c2319" },
+            { name: "AMD RYZEN 3 3200G MPK", brand: "AMD", category: "CPU", image: "assets/cpu/AMD RYZEN 3 3200G MPK.jpg", link: "https://www.techpowerup.com/cpu-specs/ryzen-3-3200g.c2205" },
+            { name: "AMD ATHLON 200GE MPK", brand: "AMD", category: "CPU", image: "assets/cpu/AMD ATHLON 200GE MPK.jfif", link: "https://www.techpowerup.com/cpu-specs/athlon-200ge.c2073" },
+            { name: "R7 9700X", brand: "AMD", category: "CPU", image: "assets/cpu/R7 9700X.jpg", link: "https://www.techpowerup.com/cpu-specs/ryzen-7-9700x.c3651" },
+            { name: "VIKINGS VK-1123 GAMING MOUSE", brand: "VIKINGS", category: "Peripherals", image: "assets/peripherals/VIKINGS VK-1123 GAMING MOUSE.jfif", link: "https://www.google.com/search?q=VIKINGS+VK-1123+GAMING+MOUSE+specs&sca_esv=60592e8bb2cdfe2f&rlz=1C1UEAD_enPH1123PH1123&biw=1366&bih=641&ei=lcU_ab_6BMG6vr0Pwqim0Q8&ved=0ahUKEwj_mPiklb-RAxVBna8BHUKUKfoQ4dUDCBE&uact=5&oq=VIKINGS+VK-1123+GAMING+MOUSE+specs&gs_lp=Egxnd3Mtd2l6LXNlcnAiIlZJS0lOR1MgVkstMTEyMyBHQU1JTkcgTU9VU0Ugc3BlY3MyBRAhGKABSMQTUI0CWIMScAR4AJABAJgB0QGgAZcIqgEFMy41LjG4AQPIAQD4AQGYAg2gAroJwgIIEAAYsAMY7wXCAgsQABiwAxiiBBiJBcICBxAhGKABGArCAgQQIRgVmAMAiAYBkAYEkgcFNC44LjGgB-EbsgcFMC44LjG4B5MJwgcGMi0xMi4xyAdLgAgA&sclient=gws-wiz-serp" },
+            { name: "A4TECH FG20 YELLOW WIRELESS MOUSE", brand: "A4TECH", category: "Peripherals", image: "assets/peripherals/A4TECH FG20 YELLOW WIRELESS MOUSE.jpg", link: "https://www.a4tech.com/product.aspx?tid=3&id=259" },
+            { name: "A4TECH FG20 PINK WIRELESS MOUSE", brand: "A4TECH", category: "Peripherals", image: "assets/peripherals/A4TECH FG20 PINK WIRELESS MOUSE.jpg", link: "https://www.a4tech.com/product.aspx?tid=3&id=259" },
+
+            // Page 6
+            { name: "PROMATE CLIX-8 WIRELESS MOUSE", brand: "PROMATE", category: "Peripherals", image: "assets/peripherals/PROMATE CLIX-8 WIRELESS MOUSE.webp", link: "https://www.google.com/search?q=PROMATE+CLIX-8+WIRELESS+MOUSE+specs&sca_esv=b8d16794a32ebd8e&rlz=1C1UEAD_enPH1123PH1123&ei=bZo_aZS_F7Gk2roPzKzKkAI&ved=0ahUKEwjUqf6Q7L6RAxUxklYBHUyWEiIQ4dUDCBE&uact=5&oq=PROMATE+CLIX-8+WIRELESS+MOUSE+specs&gs_lp=Egxnd3Mtd2l6LXNlcnAiI1BST01BVEUgQ0xJWC04IFdJUkVMRVNTIE1PVVNFIHNwZWNzMgUQIRigATIFECEYoAFIvg1Q8QNYwAtwAXgBkAEAmAF4oAHbBKoBAzQuMrgBA8gBAPgBAZgCB6ACjQXCAgoQABiwAxjWBBhHwgIGEAAYFhgewgILEAAYgAQYhgMYigXCAggQABiABBiiBMICBRAAGO8FmAMAiAYBkAYIkgcDMy40oAf7FrIHAzIuNLgHgAXCBwcwLjMuMy4xyAcfgAgA&sclient=gws-wiz-serp" },
+            { name: "TRANSCEND 8GB DDR4 3200MHZ UDIMM RAM", brand: "TRANSCEND", category: "Memory", image: "assets/ram/TRANSCEND 8GB DDR4 3200MHZ UDIMM RAM.png", link: "https://www.transcend-info.com/product/module/ddr4/jm3200hlb-8g?srsltid=AfmBOoomLhyOOX_iecUUiGFMEbhD_FeD3TY4Y26l6otSGOOIs6czBVBK" },
+            { name: "TPLINK DECO M4 3PCS SET ROUTER", brand: "TP-LINK", category: "Networking", image: "assets/accessories/TPLINK DECO M4 3PCS SET ROUTER.jpg", link: "https://www.tp-link.com/ph/home-networking/deco/deco-m4(3-pack)/" },
+            { name: "INTEL CORE I3-12100 PROCESSOR", brand: "INTEL", category: "CPU", image: "assets/cpu/INTEL CORE I3-12100 PROCESSOR.jpg", link: "https://www.techpowerup.com/cpu-specs/core-i3-12100.c2541" },
+            { name: "MSI H610M-E PRO MOTHERBOARD", brand: "MSI", category: "Motherboard", image: "assets/motherboard/MSI H610M-E PRO MOTHERBOARD.png", link: "https://www.msi.com/Motherboard/PRO-H610M-E-DDR4" },
+            { name: "KINGSTON 8GB DDR4 3200MHZ FURY BEAST BLACK UDIMM RAM", brand: "KINGSTON", category: "Memory", image: "assets/ram/KINGSTON 8GB DDR4 3200MHZ FURY BEAST BLACK UDIMM RAM.jpg", link: "https://www.kingston.com/en/memory/gaming/kingston-fury-beast-ddr4-memory" },
+            { name: "NVISION N2455 PRO -B 23.8\" IPS MONITOR", brand: "NVISION", category: "Monitor", image: "assets/monitors/NVISION N2455 PRO -B 23.8 IPS MONITOR.jfif", link: "https://www.google.com/search?q=NVISION+N2455+PRO+-B+23.8+IPS+MONITOR+specs&sca_esv=bdf989aec2a32a28&rlz=1C1UEAD_enPH1123PH1123&biw=1366&bih=641&ei=lnA_afvuOLqfvr0P6rj_QA&ved=0ahUKEwj7keydxL6RAxW6j68BHWrcHwgQ4dUDCBE&uact=5&oq=NVISION+N2455+PRO+-B+23.8+IPS+MONITOR+specs&gs_lp=Egxnd3Mtd2l6LXNlcnAiK05WSVNJT04gTjI0NTUgUFJPIC1CIDIzLjggSVBTIE1PTklUT1Igc3BlY3NIugNQAFgAcAF4AJABAJgBAKABAKoBALgBA8gBAJgCAKACAJgDAIgGAZIHAKAHALIHALgHAMIHAMgHAIAIAA&sclient=gws-wiz-serp" },
+            { name: "NEUTRON ATOM C03 SLIM CASING", brand: "NEUTRON", category: "PC Case", image: "assets/casings/NEUTRON ATOM C03 SLIM CASING.jpg", link: "https://www.google.com/search?q=NEUTRON+ATOM+C03+SLIM+CASING&sca_esv=b8d16794a32ebd8e&rlz=1C1UEAD_enPH1123PH1123&ei=EZc_aePEL6ff2roP0p7zgA0&ved=0ahUKEwijkYz36L6RAxWnr1YBHVLPHNAQ4dUDCBE&uact=5&oq=NEUTRON+ATOM+C03+SLIM+CASING&gs_lp=Egxnd3Mtd2l6LXNlcnAiHE5FVVRST04gQVRPTSBDMDMgU0xJTSBDQVNJTkdIaVAAWABwAHgAkAEAmAEAoAEAqgEAuAEDyAEA-AEC-AEBmAIAoAIAmAMAkgcAoAcAsgcAuAcAwgcAyAcAgAgA&sclient=gws-wiz-serp" },
+            { name: "LOGITECH H390 USB HEADSET", brand: "LOGITECH", category: "Peripherals", image: "assets/peripherals/LOGITECH H390 USB HEADSET.webp", link: "https://www.logitech.com/en-ph/shop/p/h390-usb-headset" },
+            { name: "ACER TRAVELMATE TMP215-55-58EY LAPTOP", brand: "ACER", category: "Laptop", image: "assets/laptops/ACER TRAVELMATE TMP215-55-58EY LAPTOP.jfif", link: "https://www.acer.com/gb-en/laptops/travelmate/travelmate-p2-15/pdp/NX.BGPEK.006" },
+            { name: "ASUS PRIME A520-K MOTHERBOARD", brand: "ASUS", category: "Motherboard", image: "assets/motherboard/ASUS PRIME A520-K MOTHERBOARD.png", link: "https://www.asus.com/ph/motherboards-components/motherboards/prime/prime-a520m-k/" },
+            { name: "KINGSTON 8GB DDR4 3200MHZ FURY UDIMM RAM", brand: "KINGSTON", category: "Memory", image: "assets/ram/KINGSTON 8GB DDR4 3200MHZ FURY UDIMM RAM.jpg", link: "https://www.kingston.com/en/memory/gaming/kingston-fury-beast-ddr4-memory" },
+            { name: "APPLE EARBUDS TYPE C", brand: "APPLE", category: "Peripherals", image: "assets/peripherals/APPLE EARBUDS TYPE C.jfif", link: "https://www.soundguys.com/apple-earpods-usb-c-review-105861/" },
+            { name: "COMMSCOPE PATCH PANEL 48PORT CAT 6", brand: "COMMSCOPE", category: "Networking", image: "assets/networking/COMMSCOPE PATCH PANEL 48PORT CAT 6.png", link: "https://www.commscope.com/product-type/frames-panels-cassettes-modules/copper-panels-modules-cassettes/copper-panels/item760180059/" },
+            { name: "INTEL CORE I5-12400", brand: "INTEL", category: "CPU", image: "assets/cpu/INTEL CORE I5-12400.jfif", link: "https://www.techpowerup.com/cpu-specs/core-i5-12400.c2549" },
+            { name: "ASUS H610M-K MOTHERBOARD", brand: "ASUS", category: "Motherboard", image: "assets/motherboard/ASUS H610M-K MOTHERBOARD.png", link: "https://www.asus.com/ph/motherboards-components/motherboards/prime/prime-h610m-k-d4/" },
+            { name: "LAPTOP CHARGER FOR ASUS 19V 2.37A", brand: "ASUS", category: "Accessories", image: "assets/accessories/LAPTOP CHARGER FOR ASUS 19V 2.37A.jfif", link: "https://www.google.com/search?sca_esv=ee636c63b9ed21ff&rlz=1C1UEAD_enPH1123PH1123&sxsrf=AE3TifOjGD017YSjzlSEUaAa7YwLfm74Sw:1765595556094&q=LAPTOP+CHARGER+FOR+ASUS+19V+2.37A+specs&source=lnms&fbs=AIIjpHz2LkAPJDdeiKYzFgacvjxVCCXt2_rn5WCap3LXcg4MWm-LvafmciMFS3e579eCL4jLmQ1QoA5A5iFwPCmPaGiBN_X35vpDAwq9uYxw2b1eqVmgpG3SiJ7tyikSIcpfbNxKQDWB2CwBNH5pCq79S86cB1aJL95R2iOJHAWP6G-0l5PdsVTuf4UbrzMrU1_D9ugJiN2AjkgpDxerdd2SJiAJFbt-Q4vlME90RWENmCNtbGS3snc&sa=X&ved=2ahUKEwi9hcD_y7mRAxVQe_UHHfgyBEkQ0pQJegQIChAB&biw=1366&bih=641&dpr=1" },
+            { name: "LAPTOP CHARGER FOR ACER 19V 2.37A", brand: "ACER", category: "Accessories", image: "assets/accessories/LAPTOP CHARGER FOR ACER 19V 2.37A.jfif", link: "https://www.google.com/search?q=LAPTOP+CHARGER+FOR+ACER+19V+2.37A+specs&sca_esv=8ab2282fee241d3c&rlz=1C1UEAD_enPH1123PH1123&biw=1366&bih=641&sxsrf=AE3TifNMAA-oz2xBCRjqgOIjdV2GsLHYNw%3A1765431066878&ei=Glc6afesNZXl2roPp52EmQE&ved=0ahUKEwj3ofec57SRAxWVslYBHacOIRMQ4dUDCBE&uact=5&oq=LAPTOP+CHARGER+FOR+ACER+19V+2.37A+specs&gs_lp=Egxnd3Mtd2l6LXNlcnAiJ0xBUFRPUCBDSEFSR0VSIEZPUiBBQ0VSIDE5ViAyLjM3QSBzcGVjczIIEAAYgAQYogQyCBAAGIAEGKIEMggQABiABBiiBEjCElCmA1joEHACeACQAQCYAbABoAGvB6oBAzMuNbgBA8gBAPgBAZgCCaACrQfCAg4QABiABBiwAxiGAxiKBcICCxAAGIAEGLADGKIEwgIGEAAYFhgewgILEAAYgAQYhgMYigXCAgUQABjvBZgDAIgGAZAGBpIHAzIuN6AHjB6yBwMwLje4B5gHwgcHMi02LjIuMcgHSIAIAA&sclient=gws-wiz-serp" },
+            { name: "ASUS X1605VA-MB1789WSM", brand: "ASUS", category: "Laptop", image: "assets/laptops/ASUS X1605VA-MB1789WSM.jfif", link: "https://www.asus.com/ph/laptops/for-home/vivobook/vivobook-16-x1605/" },
+            { name: "HP-NB 86152PA PAV 15-EG3025TX", brand: "HP", category: "Laptop", image: "assets/laptops/HP-NB 86152PA PAV 15-EG3025TX.png", link: "https://support.hp.com/gb-en/document/ish_7670828-7670876-16" },
+            { name: "RYZEN 5 5600GT CPU", brand: "AMD", category: "CPU", image: "assets/cpu/RYZEN 5 5600GT CPU.jpg", link: "https://www.techpowerup.com/cpu-specs/ryzen-5-5600gt.c3438" },
+            { name: "RYZEN 7 5700G CPU", brand: "AMD", category: "CPU", image: "assets/cpu/RYZEN 7 5700G CPU.jpg", link: "https://www.techpowerup.com/cpu-specs/ryzen-7-5700g.c2472" },
+            { name: "MSI B550M PRO-VDH WIFI MOTHERBOARD", brand: "MSI", category: "Motherboard", image: "assets/motherboard/MSI B550M PRO-VDH WIFI MOTHERBOARD.png", link: "https://www.msi.com/Motherboard/B550M-PRO-VDH-WIFI" },
+            { name: "REDMI I3 LAPTOP", brand: "REDMI", category: "Laptop", image: "assets/laptops/REDMI I3 LAPTOP.webp", link: "https://www.mi.com/ph/product/redmibook-15/" },
+            { name: "ASUSTOR A56704T NAS", brand: "ASUSTOR", category: "Storage", image: "assets/storage/ASUSTOR A56704T NAS.png", link: "https://www.asustor.com/en/product?p_id=77" },
+            { name: "SEAGATE 8TB NAS HDD", brand: "SEAGATE", category: "Storage", image: "assets/storage/SEAGATE 8TB NAS HDD.png", link: "https://www.google.com/search?q=SEAGATE+8TB+NAS+HDD+specs&sca_esv=f99d34a608ada35f&rlz=1C1UEAD_enPH1123PH1123&ei=H6I_acXOA8nQ2roPzdu0kAQ&ved=0ahUKEwiF2pm8876RAxVJqFYBHc0tDUIQ4dUDCBE&uact=5&oq=SEAGATE+8TB+NAS+HDD+specs&gs_lp=Egxnd3Mtd2l6LXNlcnAiGVNFQUdBVEUgOFRCIE5BUyBIREQgc3BlY3MyBRAhGKABMgUQIRigAUi6DVC-BFiaDHABeAGQAQCYAYYBoAH_BKoBAzMuM7gBA8gBAPgBAZgCB6AC3QXCAgoQABiwAxjWBBhHwgIGEAAYFhgewgIIEAAYFhgKGB7CAgQQIRgVwgIHECEYoAEYCpgDAIgGAZAGCJIHAzEuNqAHsR2yBwMwLja4B84FwgcFMi00LjPIBz2ACAA&sclient=gws-wiz-serp" },
+            { name: "SEAGATE 10TB NAS HDD", brand: "SEAGATE", category: "Storage", image: "assets/storage/SEAGATE 10TB NAS HDD.jpg", link: "https://www.google.com/search?q=SEAGATE+10TB+NAS+HDD+specs&sca_esv=f99d34a608ada35f&rlz=1C1UEAD_enPH1123PH1123&ei=XqI_aeWsE46x2roP0eaecQ&ved=0ahUKEwjl067a876RAxWOmFYBHVGzJw4Q4dUDCBE&uact=5&oq=SEAGATE+10TB+NAS+HDD+specs&gs_lp=Egxnd3Mtd2l6LXNlcnAiGlNFQUdBVEUgMTBUQiBOQVMgSEREIHNwZWNzMgUQIRigATIFECEYoAFIlw1QiwZYkwxwAHgCkAEAmAHgAaABlQeqAQUxLjMuMrgBA8gBAPgBAZgCB6AC3AfCAgQQABhHwgIGEAAYFhgewgIIEAAYogQYiQXCAgUQABjvBcICCBAAGBYYChgewgIIEAAYgAQYogTCAgQQIRgVwgIHECEYoAEYCpgDAIgGAZAGCJIHBTEuNC4yoAfBHLIHBTAuNC4yuAfSB8IHBzAuMS40LjLIByyACAA&sclient=gws-wiz-serp" },
+            { name: "LOGITECH K270 WIRELESS KEYBOARD ONLY", brand: "LOGITECH", category: "Peripherals", image: "assets/peripherals/LOGITECH K270 WIRELESS KEYBOARD ONLY.webp", link: "https://www.logitech.com/en-ph/shop/p/k270-unifying-wireless" },
+            { name: "EPSON LS290 PRINTER", brand: "EPSON", category: "Printer", image: "assets/printers/EPSON LS290 PRINTER.jpg", link: "https://www.epson.com.ph/For-Home/Printers/Home-Office-Printers/Epson-EcoTank-L5290-Wi-Fi-All-in-One-Ink-Tank-Printer-with-ADF/p/C11CJ65502" },
+            { name: "TEAMGROUP TFORCE 8GB DDR4 3200MHZ", brand: "TEAMGROUP", category: "Memory", image: "assets/ram/TEAMGROUP TFORCE 8GB DDR4 3200MHZ.jpg", link: "https://www.teamgroupinc.com/en/product-detail/memory/T-FORCE/delta-rgb-ddr4-black/delta-rgb-ddr4-black-TF3D416G4000HC20CDC01/" },
+            { name: "TEAMGROUP TFORCE RGB 16GB DDR4 3200MHZ 2X8", brand: "TEAMGROUP", category: "Memory", image: "assets/ram/TEAMGROUP TFORCE 8GB DDR4 3200MHZ 2.jpg", link: "https://www.teamgroupinc.com/en/product-detail/memory/T-FORCE/delta-rgb-ddr4-black/delta-rgb-ddr4-black-TF3D416G4000HC20CDC01/" },
+            { name: "A4TECH FBK25 WIRELESS KEYBOARD", brand: "A4TECH", category: "Peripherals", image: "assets/peripherals/A4TECH FBK25 WIRELESS KEYBOARD.png", link: "https://www.a4tech.com/product.aspx?id=263" },
+            { name: "ADLINK VGA TO VGA", brand: "ADLINK", category: "Accessories", image: "assets/accessories/ADLINK VGA TO VGA.jfif", link: "https://www.google.com/search?q=ADLINK+VGA+TO+VGA+specs&sca_esv=8ab2282fee241d3c&rlz=1C1UEAD_enPH1123PH1123&biw=1366&bih=641&sxsrf=AE3TifPFuUj2m3xTRQxECJNfaE5dRZMg5g%3A1765432032626&ei=4Fo6ae35JY7Q1e8PjISzgAo&ved=0ahUKEwjt6bfp6rSRAxUOaPUHHQzCDKAQ4dUDCBE&uact=5&oq=ADLINK+VGA+TO+VGA+specs&gs_lp=Egxnd3Mtd2l6LXNlcnAiF0FETElOSyBWR0EgVE8gVkdBIHNwZWNzMggQIRigARjDBDIIECEYoAEYwwQyCBAhGKABGMMEMggQIRigARjDBEjTCFAAWABwAHgBkAEAmAG5AaABuQGqAQMwLjG4AQPIAQD4AQL4AQGYAgGgAuABmAMAkgcDMi0xoAf6A7IHAzItMbgH4AHCBwM0LTHIBxiACAA&sclient=gws-wiz-serp" },
+            { name: "ADLINK DISPLAY PORT", brand: "ADLINK", category: "Accessories", image: "assets/accessories/ADLINK DISPLAY PORT.jfif", link: "https://www.google.com/search?sca_esv=8ab2282fee241d3c&rlz=1C1UEAD_enPH1123PH1123&sxsrf=AE3TifM8vXFzB1i8AoTdqgETsvn5gBl7mA:1765432006890&q=ADLINK+DISPLAY+PORT+specs&source=lnms&fbs=AIIjpHxCtmkhHKu27CW9pNYJlh4RoZZ_y8scaivnpjp3a9aEstvyzM9WArA0Q4B52rAVe2T1DNjxfizh1BGYvPjRXb8mUICeO-WQOwvHXXuuTqCLnBeU0eczzGzCQ265XUctd47xCBmJ6UAo000rUZkamKstFa1Uy7xB_dip0_0LOy1MoYWKngLVhuN3YeimiTqPm6Eh1Hr20XlCHVPaCAFegkaRHIGswYfLWoQ8uFayNYv0lK8q9OU&sa=X&ved=2ahUKEwishpXd6rSRAxWXkK8BHZ8ZE5wQ0pQJegQIChAB&biw=1366&bih=641&dpr=1" },
+            { name: "UGREEN USB TO TYPE C", brand: "UGREEN", category: "Accessories", image: "assets/peripherals/UGREEN USB TO TYPE C.jpg", link: "https://www.google.com/search?q=UGREEN+USB+TO+TYPE+C+specs&sca_esv=60592e8bb2cdfe2f&rlz=1C1UEAD_enPH1123PH1123&biw=1366&bih=641&ei=v8Q_abuXA7jr1e8P3sHNGQ&ved=0ahUKEwj78vC-lL-RAxW4dfUHHd5gMwMQ4dUDCBE&uact=5&oq=UGREEN+USB+TO+TYPE+C+specs&gs_lp=Egxnd3Mtd2l6LXNlcnAiGlVHUkVFTiBVU0IgVE8gVFlQRSBDIHNwZWNzMgUQIRigAUjEDVDdAVj_C3ADeAGQAQCYAb0BoAHjB6oBAzIuNrgBA8gBAPgBAZgCC6AC1QjCAgoQABiwAxjWBBhHwgIFEAAYgATCAgsQABiABBiRAhiKBcICBhAAGBYYHsICCxAAGIAEGIYDGIoFwgIFEAAY7wXCAggQABiABBiiBJgDAIgGAZAGCJIHBTMuNy4xoAeJHbIHBTAuNy4xuAe-CMIHBTItOC4zyAdHgAgA&sclient=gws-wiz-serp" },
+            { name: "ADLINK USB TO TYPE C", brand: "ADLINK", category: "Accessories", image: "assets/accessories/ADLINK USB TO TYPE C.jfif", link: "https://www.google.com/search?sca_esv=8ab2282fee241d3c&rlz=1C1UEAD_enPH1123PH1123&sxsrf=AE3TifMK5GLHhgl95T45vUmscp3UvG14Aw:1765431954114&q=ADLINK+USB+TO+TYPE+C+specs&source=lnms&fbs=AIIjpHwdlVWI4oi2g38E8_BbusNmV4N_PDMDZa8kD6jzfAqHH_e2wpq3bNF0nim2pM6iwiI3YZUT4dZ0qi7fChuC-hVDTS2JIdXDc33C9ADrJoDFtDsdnXYMu8rYO_uzl3O9Zw2ZwhSuPJg5GUCUOKK8hVKQ3DAFtYdQef5qgSIuNUCpTUoA1aVmU3sxnp_5VP5uO1zGdRcAtYVDiciiOXgxr2gDZ76PJNxp965OOVrm-GWZkInIYKw&sa=X&ved=2ahUKEwjH6__D6rSRAxWOc_UHHQb2EZUQ0pQJegQIChAB&biw=1366&bih=641&dpr=1" },
+            { name: "ADLINK LAN CABLE 20 METERS", brand: "ADLINK", category: "Accessories", image: "assets/accessories/ADLINK LAN CABLE 20 METERS.jpg", link: "https://www.google.com/search?sca_esv=8ab2282fee241d3c&rlz=1C1UEAD_enPH1123PH1123&sxsrf=AE3TifNj_FFmQS06nCEuIAYjLvSAPCxQRw:1765431761726&q=ADLINK+LAN+CABLE+1.5M+LAN+specs&source=lnms&fbs=AIIjpHz2LkAPJDdeiKYzFgacvjxVCCXt2_rn5WCap3LXcg4MWimX5xVC8lXXVk1dsWFqCuPWcQlsxInfO8t-7SRSqtqwDOvPDMj3YRq--E0IOLAUyO7lIkHszn3419ypbEZ4LkGr2FmBc3f9hyZA6jScPXxNtUPXO6x2hqtz3Heu7AeI1a3s3P1tDkQwAR2lk8b4kaRsFxfEoDTvn9sIvQgvnPt5SSlSIZbleGkWQl0CzeKDlX-5XwE&sa=X&ved=2ahUKEwiWs6Ho6bSRAxXxmq8BHUlOIJcQ0pQJegQIDBAB&biw=1366&bih=641&dpr=1" },
+            { name: "INTEL CORE I7-12700 PROCESSOR", brand: "INTEL", category: "CPU", image: "assets/cpu/INTEL CORE I7-12700 PROCESSOR.jpg", link: "https://www.techpowerup.com/cpu-specs/core-i7-12700.c2559" },
+            { name: "NVISION EG24XT-B 23.8\"FHD 240HZ GAMING IPS MONITOR", brand: "NVISION", category: "Monitor", image: "assets/monitors/NVISION EG24XT-B 23.8 FHD 240HZ GAMING IPS MONITOR.jfif", link: "https://www.google.com/search?q=NVISION+EG24XT-B+23.8+FHD+240HZ+GAMING+IPS+MONITOR+specs&sca_esv=bdf989aec2a32a28&rlz=1C1UEAD_enPH1123PH1123&biw=1366&bih=641&ei=33A_aafxFNrS1e8P2tS88Qg&ved=0ahUKEwjn3K_AxL6RAxVaafUHHVoqL44Q4dUDCBE&uact=5&oq=NVISION+EG24XT-B+23.8+FHD+240HZ+GAMING+IPS+MONITOR+specs&gs_lp=Egxnd3Mtd2l6LXNlcnAiOE5WSVNJT04gRUcyNFhULUIgMjMuOCBGSEQgMjQwSFogR0FNSU5HIElQUyBNT05JVE9SIHNwZWNzMgUQABjvBTIFEAAY7wUyCBAAGKIEGIkFMggQABiiBBiJBUiRHFCSBliSBnAAeAGQAQCYAb8DoAHXBaoBBzItMS4wLjG4AQPIAQD4AQGYAgKgAo4GwgIIEAAYgAQYogSYAwCSBwcyLTEuMC4xoAfeB7IHBzItMS4wLjG4B44GwgcHMi0xLjAuMcgHLIAIAA&sclient=gws-wiz-serp" },
+            { name: "NVISION G2455-W 23.8\"FHD 144HZ GAMING IPS MONITOR FRAMELESS WHITE", brand: "NVISION", category: "Monitor", image: "assets/monitors/NVISION G2455-W 23.8 FHD 144HZ GAMING IPS MONITOR FRAMELESS WHITE.jfif", link: "https://www.google.com/search?q=NVISION+G2455-W+23.8%5C%22FHD+144HZ+GAMING+IPS+MONITOR+FRAMELESS+WHITE+specs&sca_esv=bdf989aec2a32a28&rlz=1C1UEAD_enPH1123PH1123&biw=1366&bih=641&ei=5XA_afHgCuvS1e8PjKPQWQ&ved=0ahUKEwix55PDxL6RAxVrafUHHYwRNAsQ4dUDCBE&uact=5&oq=NVISION+G2455-W+23.8%5C%22FHD+144HZ+GAMING+IPS+MONITOR+FRAMELESS+WHITE+specs&gs_lp=Egxnd3Mtd2l6LXNlcnAiSE5WSVNJT04gRzI0NTUtVyAyMy44XCJGSEQgMTQ0SFogR0FNSU5HIElQUyBNT05JVE9SIEZSQU1FTEVTUyBXSElURSBzcGVjc0iLA1AAWABwAHgBkAEAmAFVoAFVqgEBMbgBA8gBAPgBAvgBAZgCAKACAJgDAJIHAKAHfrIHALgHAMIHAMgHAIAIAA&sclient=gws-wiz-serp" },
+            { name: "NVISION QG27P2 27\" QHD 2K 180HZ GAMING IPS MONITOR BLACK", brand: "NVISION", category: "Monitor", image: "assets/monitors/NVISION QG27P2 27 QHD 2K 180HZ GAMING IPS MONITOR BLACK.jfif", link: "https://www.google.com/search?q=NVISION+QG27P2+27%5C%22+QHD+2K+180HZ+GAMING+IPS+MONITOR+BLACK+specs&sca_esv=bdf989aec2a32a28&rlz=1C1UEAD_enPH1123PH1123&biw=1366&bih=641&ei=GXE_aZPNENnX1e8PpdzouQI&ved=0ahUKEwjTvf_bxL6RAxXZa_UHHSUuOicQ4dUDCBE&uact=5&oq=NVISION+QG27P2+27%5C%22+QHD+2K+180HZ+GAMING+IPS+MONITOR+BLACK+specs&gs_lp=Egxnd3Mtd2l6LXNlcnAiP05WSVNJT04gUUcyN1AyIDI3XCIgUUhEIDJLIDE4MEhaIEdBTUlORyBJUFMgTU9OSVRPUiBCTEFDSyBzcGVjc0jptQpQMFjXsgpwA3gBkAEAmAHxBKABww-qAQk0LjEuNC0xLjK4AQPIAQD4AQH4AQKYAgGgAhHCAgoQABiwAxjWBBhHmAMAiAYBkAYIkgcBMaAH0geyBwC4BwDCBwMzLTHIBw6ACAA&sclient=gws-wiz-serp" },
+
+            // Page 7
+            { name: "NVISION EG27XT-B 27\" FHD 240HZ GAMING IPS MONITOR BLACK", brand: "NVISION", category: "Monitor", image: "assets/monitors/NVISION EG27XT-B 27 FHD 240HZ GAMING IPS MONITOR BLACK.webp", link: "https://www.google.com/search?q=NVISION+EG27XT-B+27+FHD+240HZ+GAMING+IPS+MONITOR+BLACK+specs&sca_esv=bdf989aec2a32a28&rlz=1C1UEAD_enPH1123PH1123&biw=1366&bih=641&ei=xnE_aZrICI3V1e8P16vZqAQ&ved=0ahUKEwiaw7auxb6RAxWNavUHHddVFkUQ4dUDCBE&uact=5&oq=NVISION+EG27XT-B+27+FHD+240HZ+GAMING+IPS+MONITOR+BLACK+specs&gs_lp=Egxnd3Mtd2l6LXNlcnAiPE5WSVNJT04gRUcyN1hULUIgMjcgRkhEIDI0MEhaIEdBTUlORyBJUFMgTU9OSVRPUiBCTEFDSyBzcGVjczIFEAAY7wUyBRAAGO8FMgUQABjvBTIFEAAY7wVIlgRQAFgAcAB4AZABAJgB4wGgAeMBqgEDMi0xuAEDyAEA-AEC-AEBmAIBoAL7AZgDAJIHAzItMaAH3wKyBwMyLTG4B_sBwgcDMy0xyAcRgAgA&sclient=gws-wiz-serp" },
+            { name: "NVISION EG27XT-W 27\" FHD 240HZ GAMING IPS MONITOR WHITE", brand: "NVISION", category: "Monitor", image: "assets/monitors/NVISION EG27XT-B 27 FHD 240HZ GAMING IPS MONITOR WHITE.jfif", link: "https://www.google.com/search?q=NVISION+EG27XT-B+27+FHD+240HZ+GAMING+IPS+MONITOR+WHITE+specs&sca_esv=bdf989aec2a32a28&rlz=1C1UEAD_enPH1123PH1123&biw=1366&bih=641&ei=InI_ad6pL63a1e8P76ydqAQ&ved=0ahUKEwjewszaxb6RAxUtbfUHHW9WB0UQ4dUDCBE&uact=5&oq=NVISION+EG27XT-B+27+FHD+240HZ+GAMING+IPS+MONITOR+WHITE+specs&gs_lp=Egxnd3Mtd2l6LXNlcnAiPE5WSVNJT04gRUcyN1hULUIgMjcgRkhEIDI0MEhaIEdBTUlORyBJUFMgTU9OSVRPUiBXSElURSBzcGVjczIIEAAYogQYiQUyBRAAGO8FMgUQABjvBTIFEAAY7wUyBRAAGO8FSIoDUABYAHAAeACQAQCYAaMBoAGjAaoBAzAuMbgBA8gBAPgBAvgBAZgCAaACvAGYAwCSBwMwLjGgB44EsgcDMC4xuAe8AcIHAzQtMcgHE4AIAA&sclient=gws-wiz-serp" },
+            { name: "NVISION ESV32XT-B 32\" FHD 240HZ GAMING CURVED MONITOR BLACK", brand: "NVISION", category: "Monitor", image: "assets/monitors/NVISION EG27XT-B 27 FHD 240HZ GAMING IPS MONITOR WHITE.jfif", link: "https://www.google.com/search?q=NVISION+EG27XT-B+27+FHD+240HZ+GAMING+IPS+MONITOR+WHITE+specs&sca_esv=bdf989aec2a32a28&rlz=1C1UEAD_enPH1123PH1123&biw=1366&bih=641&ei=InI_ad6pL63a1e8P76ydqAQ&ved=0ahUKEwjewszaxb6RAxUtbfUHHW9WB0UQ4dUDCBE&uact=5&oq=NVISION+EG27XT-B+27+FHD+240HZ+GAMING+IPS+MONITOR+WHITE+specs&gs_lp=Egxnd3Mtd2l6LXNlcnAiPE5WSVNJT04gRUcyN1hULUIgMjcgRkhEIDI0MEhaIEdBTUlORyBJUFMgTU9OSVRPUiBXSElURSBzcGVjczIIEAAYogQYiQUyBRAAGO8FMgUQABjvBTIFEAAY7wUyBRAAGO8FSIoDUABYAHAAeACQAQCYAaMBoAGjAaoBAzAuMbgBA8gBAPgBAvgBAZgCAaACvAGYAwCSBwMwLjGgB44EsgcDMC4xuAe8AcIHAzQtMcgHE4AIAA&sclient=gws-wiz-serp" },
+            { name: "GIGABYTE RTX3050 6GB SERIES GV-N3050WF2OCV2-6GD", brand: "GIGABYTE", category: "Graphics Card", image: "assets/gpu/GIGABYTE RTX3050 6GB SERIES GV-N3050WF2OCV2-6GD.png", link: "https://www.gigabyte.com/Graphics-Card/GV-N3050WF2OCV2-6GD" },
+            { name: "GIGABYTE RTX3050 8GB SERIES GV-N3050WF2OCV2-8GD", brand: "GIGABYTE", category: "Graphics Card", image: "assets/gpu/GIGABYTE RTX3050 8GB SERIES GV-N3050WF2OCV2-8GD.png", link: "https://www.gigabyte.com/Graphics-Card/GV-N3050WF2OCV2-8GD" },
+            { name: "GIGABYTE RTX4060TI SERIES - 8GB GV-N406TAERO-OC-8GD", brand: "GIGABYTE", category: "Graphics Card", image: "assets/gpu/GIGABYTE RTX4060TI SERIES - 8GB GV-N406TAERO-OC-8GD.png", link: "https://www.gigabyte.com/Graphics-Card/GV-N406TAERO-OC-8GD" },
+            { name: "GIGABYTE RTX5050 SERIES 8GB GV-N5050WF2OC-8GD", brand: "GIGABYTE", category: "Graphics Card", image: "assets/gpu/GIGABYTE RTX5050 SERIES 8GB GV-N5050WF2OC-8GD.png", link: "https://www.gigabyte.com/Graphics-Card/GV-N5050WF2OC-8GD" },
+            { name: "GIGABYTE RTX5050 SERIES 8GB GV-N5050GAMING-OC-8GD", brand: "GIGABYTE", category: "Graphics Card", image: "assets/gpu/GIGABYTE RTX5050 SERIES 8GB GV-N5050GAMING-OC-8GD.png", link: "https://www.gigabyte.com/Graphics-Card/GV-N5050GAMING-OC-8GD" },
+            { name: "GIGABYTE RTX5060 8GB SERIES GV-N5060WF2-8GD", brand: "GIGABYTE", category: "Graphics Card", image: "assets/gpu/GIGABYTE RTX5060 8GB SERIES GV-N5060WF2-8GD.png", link: "https://www.gigabyte.com/Graphics-Card/GV-N5060WF2-8GD" },
+            { name: "GIGABYTE RTX5060 8GB SERIES GV-N5060WF2MAX-OC-8GD", brand: "GIGABYTE", category: "Graphics Card", image: "assets/gpu/GIGABYTE RTX5060 8GB SERIES GV-N5060WF2MAX-OC-8GD.png", link: "https://www.gigabyte.com/Graphics-Card/GV-N5060WF2MAX-OC-8GD" },
+            { name: "GIGABYTE RTX5060 8GB SERIES GV-N5060EAGLE-OC-8GD", brand: "GIGABYTE", category: "Graphics Card", image: "assets/gpu/GIGABYTE RTX5060 8GB SERIES GV-N5060EAGLE-OC-8GD.png", link: "https://www.gigabyte.com/Graphics-Card/GV-N5060EAGLE-OC-8GD" },
+            { name: "GIGABYTE RTX5060 8GB SERIES GV-N5060EAGLEOC-ICE-8GD", brand: "GIGABYTE", category: "Graphics Card", image: "assets/gpu/GIGABYTE RTX5060 8GB SERIES GV-N5060EAGLEOC-ICE-8GD.png", link: "https://www.gigabyte.com/Graphics-Card/GV-N5060EAGLEOC-ICE-8GD" },
+            { name: "GIGABYTE RTX5060 8GB SERIES GV-N5060GAMING-OC-8GD", brand: "GIGABYTE", category: "Graphics Card", image: "assets/gpu/GIGABYTE RTX5060 8GB SERIES GV-N5060GAMING-OC-8GD.png", link: "https://www.gigabyte.com/Graphics-Card/GV-N5060GAMING-OC-8GD" },
+            { name: "GIGABYTE RTX5060 8GB SERIES GV-N5060AERO-OC-8GD", brand: "GIGABYTE", category: "Graphics Card", image: "assets/gpu/GIGABYTE RTX5060 8GB SERIES GV-N5060AERO-OC-8GD.png", link: "https://www.gigabyte.com/Graphics-Card/GV-N5060AERO-OC-8GD" },
+            { name: "GIGABYTE RTX5060 8GB SERIES GV-N5060AORUS-E-8GD", brand: "GIGABYTE", category: "Graphics Card", image: "assets/gpu/GIGABYTE RTX5060 8GB SERIES GV-N5060AORUS-E-8GD.png", link: "https://www.gigabyte.com/Graphics-Card/GV-N5060AORUS-E-8GD" },
+            { name: "GIGABYTE RTX5060 TI 8GB SERIES GV-N506TWF2-8GD", brand: "GIGABYTE", category: "Graphics Card", image: "assets/gpu/GIGABYTE RTX5060 TI 8GB SERIES GV-N506TWF2-8GD.png", link: "https://www.gigabyte.com/Graphics-Card/GV-N506TWF2-8GD" },
+            { name: "GIGABYTE RTX5060 TI 8GB SERIES GV-N506TWF2OC-8GD", brand: "GIGABYTE", category: "Graphics Card", image: "assets/gpu/GIGABYTE RTX5060 TI 8GB SERIES GV-N506TWF2OC-8GD.png", link: "https://www.gigabyte.com/Graphics-Card/GV-N506TWF2OC-8GD" },
+            { name: "GIGABYTE RTX5060 TI 8GB SERIES GV-N506TEAGLE-OC-8GD", brand: "GIGABYTE", category: "Graphics Card", image: "assets/gpu/GIGABYTE RTX5060 TI 8GB SERIES GV-N506TEAGLE-OC-8GD.png", link: "https://www.gigabyte.com/Graphics-Card/GV-N506TEAGLE-OC-8GD" },
+            { name: "GIGABYTE RTX5060 TI 8GB SERIES GV-N506TEAGLEOC-ICE-8GD", brand: "GIGABYTE", category: "Graphics Card", image: "assets/gpu/GIGABYTE RTX5060 TI 8GB SERIES GV-N506TEAGLEOC-ICE-8GD.png", link: "https://www.gigabyte.com/Graphics-Card/GV-N506TEAGLEOC-ICE-8GD" },
+            { name: "GIGABYTE RTX5060 TI 8GB SERIES GV-N506TGAMING-OC-8GD", brand: "GIGABYTE", category: "Graphics Card", image: "assets/gpu/GIGABYTE RTX5060 TI 8GB SERIES GV-N506TGAMING-OC-8GD.png", link: "https://www.gigabyte.com/Graphics-Card/GV-N506TGAMING-OC-8GD" },
+            { name: "GIGABYTE RTX5060 TI 8GB SERIES GV-N506TAERO-OC-8GD", brand: "GIGABYTE", category: "Graphics Card", image: "assets/gpu/GIGABYTE RTX5060 TI 8GB SERIES GV-N506TAERO-OC-8GD.png", link: "https://www.gigabyte.com/Graphics-Card/GV-N506TAERO-OC-8GD" },
+            { name: "GIGABYTE RTX5060 TI 16GB SERIES GV-N506TWF2-16GD", brand: "GIGABYTE", category: "Graphics Card", image: "assets/gpu/GIGABYTE RTX5060 TI 16GB SERIES GV-N506TWF2-16GD.png", link: "https://www.gigabyte.com/Graphics-Card/GV-N506TWF2-16GD" },
+            { name: "GIGABYTE RTX5060 TI 16GB SERIES GV-N506TWF2MAX-OC-16GD", brand: "GIGABYTE", category: "Graphics Card", image: "assets/gpu/GIGABYTE RTX5060 TI 16GB SERIES GV-N506TWF2MAX-OC-16GD.png", link: "https://www.gigabyte.com/Graphics-Card/GV-N506TWF2MAX-OC-16GD" },
+            { name: "GIGABYTE RTX5060 TI 16GB SERIES GV-N506TEAGLE-OC-16GD", brand: "GIGABYTE", category: "Graphics Card", image: "assets/gpu/GIGABYTE RTX5060 TI 16GB SERIES GV-N506TEAGLE-OC-16GD.png", link: "https://www.gigabyte.com/Graphics-Card/GV-N506TEAGLE-OC-16GD" },
+            { name: "GIGABYTE RTX5060 TI 16GB SERIES GV-N506TEAGLEOC-ICE-16GD", brand: "GIGABYTE", category: "Graphics Card", image: "assets/gpu/GIGABYTE RTX5060 TI 16GB SERIES GV-N506TEAGLEOC-ICE-16GD.png", link: "https://www.gigabyte.com/Graphics-Card/GV-N506TEAGLEOC-ICE-16GD" },
+            { name: "GIGABYTE RTX5060 TI 16GB SERIES GV-N506TGAMING-OC-16GD", brand: "GIGABYTE", category: "Graphics Card", image: "assets/gpu/GIGABYTE RTX5060 TI 16GB SERIES GV-N506TGAMING-OC-16GD.png", link: "https://www.gigabyte.com/Graphics-Card/GV-N506TGAMING-OC-16GD" },
+            { name: "GIGABYTE RTX5060 TI 16GB SERIES GV-N506TAERO-OC-16GD", brand: "GIGABYTE", category: "Graphics Card", image: "assets/gpu/GIGABYTE RTX5060 TI 16GB SERIES GV-N506TAERO-OC-16GD.png", link: "https://www.gigabyte.com/Graphics-Card/GV-N506TAERO-OC-16GD" },
+            { name: "GIGABYTE RTX5060 TI 16GB SERIES GV-N506TAORUS-E-16GD", brand: "GIGABYTE", category: "Graphics Card", image: "assets/gpu/GIGABYTE RTX5060 TI 16GB SERIES GV-N506TAORUS-E-16GD.png", link: "https://www.gigabyte.com/Graphics-Card/GV-N506TAERO-OC-16GD" },
+            { name: "GIGABYTE RTX5070 SERIES GV-N5070WF3-12GD", brand: "GIGABYTE", category: "Graphics Card", image: "assets/gpu/GIGABYTE RTX5070 SERIES GV-N5070WF3-12GD.png", link: "https://www.gigabyte.com/Graphics-Card/GV-N5070WF3-12GD" },
+            { name: "GIGABYTE RTX5070 SERIES GV-N5070WF3OC-12GD", brand: "GIGABYTE", category: "Graphics Card", image: "assets/gpu/GIGABYTE RTX5070 SERIES GV-N5070WF3OC-12GD.png", link: "https://www.gigabyte.com/Graphics-Card/GV-N5070WF3OC-12GD" },
+            { name: "GIGABYTE RTX5070 SERIES GV-N5070EAGLE-OC-12GD", brand: "GIGABYTE", category: "Graphics Card", image: "assets/gpu/GIGABYTE RTX5070 SERIES GV-N5070EAGLE-OC-12GD.png", link: "https://www.gigabyte.com/Graphics-Card/GV-N5070EAGLE-OC-12GD" },
+            { name: "GIGABYTE RTX5070 SERIES GV-N5070EAGLEOC-ICE-12GD", brand: "GIGABYTE", category: "Graphics Card", image: "assets/gpu/GIGABYTE RTX5070 SERIES GV-N5070EAGLEOC-ICE-12GD.png", link: "https://www.gigabyte.com/Graphics-Card/GV-N5070EAGLEOC-ICE-12GD" },
+            { name: "GIGABYTE RTX5070 SERIES GV-N5070GAMING-OC-12GD", brand: "GIGABYTE", category: "Graphics Card", image: "assets/gpu/GIGABYTE RTX5070 SERIES GV-N5070GAMING-OC-12GD.png", link: "https://www.gigabyte.com/Graphics-Card/GV-N5070GAMING-OC-12GD" },
+            { name: "GIGABYTE RTX5070 SERIES GV-N5070AERO-OC-12GD", brand: "GIGABYTE", category: "Graphics Card", image: "assets/gpu/GIGABYTE RTX5070 SERIES GV-N5070AERO-OC-12GD.png", link: "https://www.gigabyte.com/Graphics-Card/GV-N5070AERO-OC-12GD" },
+            { name: "GIGABYTE RTX5070 SERIES GV-N5070AORUS-M-12GD", brand: "GIGABYTE", category: "Graphics Card", image: "assets/gpu/GIGABYTE RTX5070 SERIES GV-N5070AORUS-M-12GD.png", link: "https://www.gigabyte.com/Graphics-Card/GV-N5070AORUS-M-12GD" },
+            { name: "GIGABYTE RTX5070TI SERIES GV-N507TWF3-16GD", brand: "GIGABYTE", category: "Graphics Card", image: "assets/gpu/GIGABYTE RTX5070TI SERIES GV-N507TWF3-16GD.png", link: "https://www.gigabyte.com/Graphics-Card/GV-N507TWF3-16GD" },
+            { name: "GIGABYTE RTX5070TI SERIES GV-N507TWF3OC-16GD", brand: "GIGABYTE", category: "Graphics Card", image: "assets/gpu/GIGABYTE RTX5070TI SERIES GV-N507TWF3OC-16GD.png", link: "https://www.gigabyte.com/Graphics-Card/GV-N507TWF3OC-16GD" },
+            { name: "GIGABYTE RTX5070TI SERIES GV-N507TEAGLE-OC-16GD", brand: "GIGABYTE", category: "Graphics Card", image: "assets/gpu/GIGABYTE RTX5070TI SERIES GV-N507TEAGLE-OC-16GD.png", link: "https://www.gigabyte.com/Graphics-Card/GV-N507TEAGLE-OC-16GD" },
+            { name: "GIGABYTE RTX5070TI SERIES GV-N507TEAGLEOC-ICE-16GD", brand: "GIGABYTE", category: "Graphics Card", image: "assets/gpu/GIGABYTE RTX5070TI SERIES GV-N507TEAGLEOC-ICE-16GD.png", link: "https://www.gigabyte.com/Graphics-Card/GV-N507TEAGLEOC-ICE-16GD" },
+            { name: "GIGABYTE RTX5070TI SERIES GV-N507TGAMING-OC-16GD", brand: "GIGABYTE", category: "Graphics Card", image: "assets/gpu/GIGABYTE RTX5070TI SERIES GV-N507TGAMING-OC-16GD.png", link: "https://www.gigabyte.com/Graphics-Card/GV-N507TGAMING-OC-16GD" },
+            { name: "GIGABYTE RTX5070TI SERIES GV-N507TAERO-OC-16GD", brand: "GIGABYTE", category: "Graphics Card", image: "assets/gpu/GIGABYTE RTX5070TI SERIES GV-N507TAERO-OC-16GD.png", link: "https://www.gigabyte.com/Graphics-Card/GV-N507TAERO-OC-16GD" },
+            { name: "GIGABYTE RTX5070TI SERIES GV-N507TAORUS-M-16GD", brand: "GIGABYTE", category: "Graphics Card", image: "assets/gpu/GIGABYTE RTX5070TI SERIES GV-N507TAORUS-M-16GD.png", link: "https://www.gigabyte.com/Graphics-Card/GV-N507TAORUS-M-16GD" },
+            { name: "GIGABYTE RTX5080 SERIES GV-N5080WF3OC-16GD", brand: "GIGABYTE", category: "Graphics Card", image: "assets/gpu/GIGABYTE RTX5080 SERIES GV-N5080WF3OC-16GD.png", link: "https://www.gigabyte.com/Graphics-Card/GV-N5080WF3OC-16GD" },
+
+            // Page 8
+            { name: "GIGABYTE RTX5080 SERIES GV-N5080GAMING-OC-16GD", brand: "GIGABYTE", category: "Graphics Card", image: "assets/gpu/GIGABYTE RTX5080 SERIES GV-N5080GAMING-OC-16GD.png", link: "https://www.gigabyte.com/Graphics-Card/GV-N5080GAMING-OC-16GD" },
+            { name: "GIGABYTE RTX5080 SERIES GV-N5080AORUS-M-16GD", brand: "GIGABYTE", category: "Graphics Card", image: "assets/gpu/GIGABYTE RTX5080 SERIES GV-N5080AORUS-M-16GD.png", link: "https://www.gigabyte.com/Graphics-Card/GV-N5080AORUS-M-16GD" },
+            { name: "GIGABYTE RTX5090 SERIES GV-N5090GAMING-OC-32GD", brand: "GIGABYTE", category: "Graphics Card", image: "assets/gpu/GIGABYTE RTX5090 SERIES GV-N5090GAMING-OC-32GD.png", link: "https://www.gigabyte.com/Graphics-Card/GV-N5090GAMING-OC-32GD" },
+            { name: "GIGABYTE RTX5090 SERIES GV-N5090AORUS-M-32GD", brand: "GIGABYTE", category: "Graphics Card", image: "assets/gpu/GIGABYTE RTX5090 SERIES GV-N5090AORUS-M-32GD.png", link: "https://www.gigabyte.com/Graphics-Card/GV-N5090AORUS-M-32GD" },
+            { name: "GIGABYTE RTX5090 SERIES GV-N5090AORUSM ICE-32GD", brand: "GIGABYTE", category: "Graphics Card", image: "assets/gpu/GIGABYTE RTX5090 SERIES GV-N5090AORUSM ICE-32GD.png", link: "https://www.gigabyte.com/Graphics-Card/GV-N5090AORUSM-ICE-32GD" },
+            { name: "GIGABYTE RADEON RX 7600 GV-R76GAMING-OC-8GD", brand: "GIGABYTE", category: "Graphics Card", image: "assets/gpu/GIGABYTE RADEON RX 7600 GV-R76GAMING-OC-8GD.webp", link: "https://www.gigabyte.com/Graphics-Card/GV-R76GAMING-OC-8GD-rev-10-11#kf" },
+            { name: "GIGABYTE RADEON RX 9060 XT GV-R9060XTGAMING-OC-8GD", brand: "GIGABYTE", category: "Graphics Card", image: "assets/gpu/GIGABYTE RADEON RX 9060 XT GV-R9060XTGAMING-OC-8GD.png", link: "https://www.gigabyte.com/Graphics-Card/GV-R9060XTGAMING-OC-8GD" },
+            { name: "GIGABYTE RADEON RX 9060 XT GV-R9060XTGAMING-OC-16GD", brand: "GIGABYTE", category: "Graphics Card", image: "assets/gpu/GIGABYTE RADEON RX 9060 XT GV-R9060XTGAMING-OC-16GD.png", link: "https://www.gigabyte.com/Graphics-Card/GV-R9060XTGAMING-OC-16GD" },
+            { name: "GIGABYTE RADEON RX 9070 GV-R9070GAMING-OC-16GD", brand: "GIGABYTE", category: "Graphics Card", image: "assets/gpu/GIGABYTE RADEON RX 9070 GV-R9070GAMING-OC-16GD.png", link: "https://www.gigabyte.com/Graphics-Card/GV-R9070GAMING-OC-16GD" },
+            { name: "GIGABYTE RADEON RX 9070XT GV-R9070XTGAMING-OC-16GD", brand: "GIGABYTE", category: "Graphics Card", image: "assets/gpu/GIGABYTE RADEON RX 9070XT GV-R9070XTGAMING-OC-16GD.png", link: "https://www.gigabyte.com/Graphics-Card/GV-R9070XTGAMING-OC-16GD" },
+            { name: "GIGABYTE RADEON RX 9070XT GV-R9070XTAORUS-E-16GD", brand: "GIGABYTE", category: "Graphics Card", image: "assets/gpu/GIGABYTE RADEON RX 9070XT GV-R9070XTAORUS-E-16GD.png", link: "https://www.gigabyte.com/Graphics-Card/GV-R9070XTAORUS-E-16GD" },
+            { name: "ASUS GT710-SL-2GD5-BRK-EVO", brand: "ASUS", category: "Graphics Card", image: "assets/gpu/ASUS GT710-SL-2GD5-BRK-EVO.png", link: "https://www.asus.com/motherboards-components/graphics-cards/asus/gt710-sl-2gd5-brk-evo/" },
+            { name: "ASUS GT730-SL-2GD5-BRK", brand: "ASUS", category: "Graphics Card", image: "assets/gpu/ASUS GT730-SL-2GD5-BRK.png", link: "https://www.asus.com/ph/motherboards-components/graphics-cards/asus/gt730-sl-2gd5-brk/" },
+            { name: "ASUS GT1030-SL-2G-BRK", brand: "ASUS", category: "Graphics Card", image: "assets/gpu/ASUS GT1030-SL-2G-BRK.png", link: "https://www.asus.com/ph/motherboards-components/graphics-cards/asus/gt1030-sl-2g-brk/" },
+            { name: "ASUS DUAL-RTX3050-06G", brand: "ASUS", category: "Graphics Card", image: "assets/gpu/ASUS DUAL-RTX3050-06G.png", link: "https://www.asus.com/ph/motherboards-components/graphics-cards/dual/dual-rtx3050-o6g/" },
+            { name: "ASUS DUAL-RTX3050-08G-V2", brand: "ASUS", category: "Graphics Card", image: "assets/gpu/ASUS DUAL-RTX3050-08G-V2.png", link: "https://www.asus.com/ph/motherboards-components/graphics-cards/dual/dual-rtx3050-o8g-v2/" },
+            { name: "ASUS PRIME-RTX5050-08G", brand: "ASUS", category: "Graphics Card", image: "assets/gpu/ASUS PRIME-RTX5050-08G.jfif", link: "https://www.asus.com/motherboards-components/graphics-cards/prime/prime-rtx5050-o8g/" },
+            { name: "ASUS TUF-RTX5060-08G-GAMING", brand: "ASUS", category: "Graphics Card", image: "assets/gpu/ASUS TUF-RTX5060-08G-GAMING.jfif", link: "https://www.asus.com/motherboards-components/graphics-cards/tuf-gaming/tuf-rtx5060-o8g-gaming/" },
+            { name: "ASUS PRIME-RTX5060-08G", brand: "ASUS", category: "Graphics Card", image: "assets/gpu/ASUS PRIME-RTX5060-08G.jpg", link: "https://www.asus.com/motherboards-components/graphics-cards/prime/prime-rtx5060-8g/" },
+            { name: "ASUS DUAL-RTX5060-08G", brand: "ASUS", category: "Graphics Card", image: "assets/gpu/ASUS DUAL-RTX5060-08G.jfif", link: "https://www.asus.com/motherboards-components/graphics-cards/dual/dual-rtx5060-o8g/" },
+            { name: "ASUS TUF-RTX5060TI-08G-GAMING", brand: "ASUS", category: "Graphics Card", image: "assets/gpu/ASUS TUF-RTX5060TI-08G-GAMING.jfif", link: "https://www.asus.com/motherboards-components/graphics-cards/tuf-gaming/tuf-rtx5060ti-o8g-gaming/" },
+            { name: "ASUS PRIME-RTX5060TI-08G", brand: "ASUS", category: "Graphics Card", image: "assets/gpu/ASUS PRIME-RTX5060TI-08G.jfif", link: "https://www.asus.com/ph/motherboards-components/graphics-cards/prime/prime-rtx5060ti-8g/" },
+            { name: "ASUS DUAL-RTX5060TI-08G", brand: "ASUS", category: "Graphics Card", image: "assets/gpu/ASUS DUAL-RTX5060TI-08G.jfif", link: "https://www.asus.com/motherboards-components/graphics-cards/dual/dual-rtx5060ti-o8g/" },
+            { name: "ASUS TUF-RTX5060TI-O16G-GAMING", brand: "ASUS", category: "Graphics Card", image: "assets/gpu/ASUS TUF-RTX5060TI-O16G-GAMING.jpg", link: "https://www.asus.com/motherboards-components/graphics-cards/tuf-gaming/tuf-rtx5060ti-o16g-gaming/" },
+            { name: "ASUS PRIME-RTX5060TI-O16G", brand: "ASUS", category: "Graphics Card", image: "assets/gpu/ASUS PRIME-RTX5060TI-O16G.jpg", link: "https://www.asus.com/motherboards-components/graphics-cards/prime/prime-rtx5060ti-o16g/" },
+            { name: "ASUS DUAL-RTX5060TI-O16G-WHITE", brand: "ASUS", category: "Graphics Card", image: "assets/gpu/ASUS DUAL-RTX5060TI-O16G-WHITE.jfif", link: "https://www.asus.com/motherboards-components/graphics-cards/dual/dual-rtx5060ti-o16g-white/" },
+            { name: "ASUS DUAL-RTX5060TI-O16G", brand: "ASUS", category: "Graphics Card", image: "assets/gpu/ASUS DUAL-RTX5060TI-O16G.jfif", link: "https://www.asus.com/motherboards-components/graphics-cards/dual/dual-rtx5060ti-o16g/" },
+            { name: "ASUS ROG-STRIX-RTX5070-O12G-GAMING", brand: "ASUS", category: "Graphics Card", image: "assets/gpu/ASUS ROG-STRIX-RTX5070-O12G-GAMING.jpg", link: "https://rog.asus.com/graphics-cards/graphics-cards/rog-strix/rog-strix-rtx5070-o12g-gaming/" },
+            { name: "ASUS TUF-RTX5070-O12G-GAMING", brand: "ASUS", category: "Graphics Card", image: "assets/gpu/ASUS TUF-RTX5070-O12G-GAMING.jpg", link: "https://www.asus.com/ph/motherboards-components/graphics-cards/tuf-gaming/tuf-rtx5070-o12g-gaming/" },
+            { name: "ASUS PRIME-RTX5070-O12G-WHITE", brand: "ASUS", category: "Graphics Card", image: "assets/gpu/ASUS PRIME-RTX5070-O12G-WHITE.jpg", link: "https://www.asus.com/motherboards-components/graphics-cards/prime/prime-rtx5070-o12g-white/" },
+            { name: "ASUS PRIME-RTX5070-12G", brand: "ASUS", category: "Graphics Card", image: "assets/gpu/ASUS PRIME-RTX5070-O12G.jfif", link: "https://www.asus.com/ph/motherboards-components/graphics-cards/prime/prime-rtx5070-o12g/" },
+            { name: "ASUS ROG-STRIX-RTX5070TI-O16G-GAMING", brand: "ASUS", category: "Graphics Card", image: "assets/gpu/ASUS ROG-STRIX-RTX5070TI-O16G-GAMING.png", link: "https://rog.asus.com/graphics-cards/graphics-cards/rog-strix/rog-strix-rtx5070ti-o16g-gaming/" },
+            { name: "ASUS TUF-RTX5070TI-O16G-WHITE-GAMING", brand: "ASUS", category: "Graphics Card", image: "assets/gpu/ASUS TUF-RTX5070TI-O16G-WHITE-GAMING.png", link: "https://www.asus.com/motherboards-components/graphics-cards/tuf-gaming/tuf-rtx5070ti-o16g-white-gaming/" },
+            { name: "ASUS TUF-RTX5070TI-O16G-GAMING", brand: "ASUS", category: "Graphics Card", image: "assets/gpu/ASUS TUF-RTX5070TI-O16G-GAMING.png", link: "https://www.asus.com/ph/motherboards-components/graphics-cards/tuf-gaming/tuf-rtx5070ti-o16g-gaming/" },
+            { name: "ASUS PRIME-RTX5070TI-16G", brand: "ASUS", category: "Graphics Card", image: "assets/gpu/ASUS PRIME-RTX5070TI-16G.jfif", link: "https://www.asus.com/ph/motherboards-components/graphics-cards/prime/prime-rtx5070ti-16g/" },
+            { name: "ASUS ROG-ASTRAL-RTX5080-O16G-GAMING", brand: "ASUS", category: "Graphics Card", image: "assets/gpu/ASUS ROG-ASTRAL-RTX5080-O16G-GAMING.png", link: "https://rog.asus.com/graphics-cards/graphics-cards/rog-astral/rog-astral-rtx5080-o16g-gaming/" },
+            { name: "ASUS TUF-RTX5080-O16G-GAMING", brand: "ASUS", category: "Graphics Card", image: "assets/gpu/ASUS TUF-RTX5080-O16G-GAMING.png", link: "https://www.asus.com/ph/motherboards-components/graphics-cards/tuf-gaming/tuf-rtx5080-o16g-gaming/" },
+            { name: "ASUS PRIME-RTX5080-O16G", brand: "ASUS", category: "Graphics Card", image: "assets/gpu/ASUS PRIME-RTX5080-O16G.png", link: "https://www.asus.com/ph/motherboards-components/graphics-cards/prime/prime-rtx5080-o16g/" },
+            { name: "ASUS TUF-RX7900XT-O20G-GAMING", brand: "ASUS", category: "Graphics Card", image: "assets/gpu/ASUS TUF-RX7900XT-O20G-GAMING.png", link: "https://www.asus.com/ph/motherboards-components/graphics-cards/tuf-gaming/tuf-rx7900xt-o20g-gaming/" },
+            { name: "ASUS PRIME-RX9060XT-08G", brand: "ASUS", category: "Graphics Card", image: "assets/gpu/ASUS PRIME-RX9060XT-08G.png", link: "https://www.asus.com/motherboards-components/graphics-cards/prime/prime-rx9060xt-o8g/" },
+
+            // Page 9
+            { name: "ASUS DUAL-RX9060XT-8G", brand: "ASUS", category: "Graphics Card", image: "assets/gpu/ASUS DUAL-RX9060XT-8G.jpg", link: "https://www.asus.com/motherboards-components/graphics-cards/dual/dual-rx9060xt-8g/" },
+            { name: "ASUS TUF-RX9060XT-O16G-GAMING", brand: "ASUS", category: "Graphics Card", image: "assets/gpu/ASUS TUF-RX9060XT-O16G-GAMING.png", link: "https://www.asus.com/motherboards-components/graphics-cards/tuf-gaming/tuf-rx9060xt-o16g-gaming/" },
+            { name: "ASUS PRIME-RX9060XT-O16G", brand: "ASUS", category: "Graphics Card", image: "assets/gpu/ASUS PRIME-RX9060XT-O16G.png", link: "https://www.asus.com/motherboards-components/graphics-cards/prime/prime-rx9060xt-o16g/" },
+            { name: "ASUS TUF-RX9070-O16G-GAMING", brand: "ASUS", category: "Graphics Card", image: "assets/gpu/ASUS TUF-RX9070-O16G-GAMING.png", link: "https://www.asus.com/ph/motherboards-components/graphics-cards/tuf-gaming/tuf-rx9070-o16g-gaming/" },
+            { name: "ASUS PRIME-RX9070-O16G", brand: "ASUS", category: "Graphics Card", image: "assets/gpu/ASUS PRIME-RX9070-O16G.jfif", link: "https://www.asus.com/ph/motherboards-components/graphics-cards/prime/prime-rx9070-o16g/" },
+            { name: "ASUS TUF-RX9070XT-O16G-GAMING", brand: "ASUS", category: "Graphics Card", image: "assets/gpu/ASUS TUF-RX9070XT-O16G-GAMING.png", link: "https://www.asus.com/ph/motherboards-components/graphics-cards/tuf-gaming/tuf-rx9070xt-o16g-gaming/" },
+            { name: "ASUS PRIME-RX9070XT-O16G", brand: "ASUS", category: "Graphics Card", image: "assets/gpu/ASUS PRIME-RX9070XT-O16G.png", link: "https://www.asus.com/motherboards-components/graphics-cards/prime/prime-rx9070xt-o16g/" },
+            { name: "PALIT RTX3050 STORMX 6GB GDDR6 96BIT DVI HDMI DP", brand: "PALIT", category: "Graphics Card", image: "assets/gpu/PALIT RTX3050 STORMX 6GB GDDR6 96BIT DVI HDMI DP.png", link: "https://www.palit.com/palit/vgapro.php?id=5137" },
+            { name: "PALIT RTX3050 DUAL 8GB GDDR6 128BIT DVI HDMI DP GRAPHICS CARD [RGB]", brand: "PALIT", category: "Graphics Card", image: "assets/gpu/PALIT RTX3050 DUAL 8GB GDDR6 128BIT DVI HDMI DP GRAPHICS CARD [RGB].png", link: "https://www.palit.com/palit/vgapro.php?id=4468&lang=en" },
+            { name: "PALIT RTX5050 STORMX 8GB GDDR6 128BIT 3-DP HDMI", brand: "PALIT", category: "Graphics Card", image: "assets/gpu/PALIT RTX5050 STORMX 8GB GDDR6 128BIT 3-DP HDMI.png", link: "https://www.palit.com/palit/vgapro.php?id=5695&lang=en" },
+            { name: "PALIT RTX5050 DUAL 8GB GDDR6 128BIT 3-DP HDMI", brand: "PALIT", category: "Graphics Card", image: "assets/gpu/PALIT RTX5050 DUAL 8GB GDDR6 128BIT 3-DP HDMI.png", link: "https://www.palit.com/palit/vgapro.php?id=5685&lang=en" },
+            { name: "PALIT RTX5050 DUAL OC 8GB GDDR6 128BIT 3-DP HDMI", brand: "PALIT", category: "Graphics Card", image: "assets/gpu/PALIT RTX5050 DUAL OC 8GB GDDR6 128BIT 3-DP HDMI.png", link: "https://www.palit.com/palit/vgapro.php?id=5675&lang=en" },
+            { name: "PALIT RTX5060 DUAL 8GB GDDR7 128BIT 3-DP HDMI (2 FANS)", brand: "PALIT", category: "Graphics Card", image: "assets/gpu/PALIT RTX5060 DUAL 8GB GDDR7 128BIT 3-DP HDMI (2 FANS).png", link: "https://www.palit.com/palit/vgapro.php?id=5575&lang=en" },
+            { name: "PALIT RTX5060 INFINITY 2 OC 8GB GDDR7 128BIT 3-DP HDMI (2 FANS)", brand: "PALIT", category: "Graphics Card", image: "assets/gpu/PALIT RTX5060 INFINITY 2 OC 8GB GDDR7 128BIT 3-DP HDMI (2 FANS).png", link: "https://www.palit.com/palit/vgapro.php?id=5755&lang=en" },
+            { name: "PALIT RTX5060 WHITE OC 8GB GDDR7 128BIT 3-DP HDMI (2 FANS)", brand: "PALIT", category: "Graphics Card", image: "assets/gpu/PALIT RTX5060 WHITE OC 8GB GDDR7 128BIT 3-DP HDMI (2 FANS).png", link: "https://www.palit.com/palit/vgapro.php?id=5745&lang=en" },
+            { name: "PALIT RTX5060 INFINITY 3 8GB GDDR7 128BIT 3-DP HDMI (3 FANS)", brand: "PALIT", category: "Graphics Card", image: "assets/gpu/PALIT RTX5060 INFINITY 3 8GB GDDR7 128BIT 3-DP HDMI (3 FANS).png", link: "https://www.palit.com/palit/vgapro.php?id=5595&lang=en" },
+            { name: "PALIT RTX5060TI DUAL 8GB GDDR7 128BIT 3-DP HDMIDP HDMI", brand: "PALIT", category: "Graphics Card", image: "assets/gpu/PALIT RTX5060TI DUAL 8GB GDDR7 128BIT 3-DP HDMIDP HDMI.png", link: "https://www.palit.com/palit/vgapro.php?id=5545&lang=en" },
+            { name: "PALIT RTX5060TI INFINITY 3 8GB GDDR7 128BIT 3-DP HDMI (3 FANS)", brand: "PALIT", category: "Graphics Card", image: "assets/gpu/PALIT RTX5060TI INFINITY 3 8GB GDDR7 128BIT 3-DP HDMI (3 FANS).png", link: "https://www.palit.com/palit/vgapro.php?id=5505&lang=en" },
+            { name: "PALIT RTX5060TI INFINITY 3 16GB GDDR7 128BIT 3-DP HDMI", brand: "PALIT", category: "Graphics Card", image: "assets/gpu/PALIT RTX5060TI INFINITY 3 16GB GDDR7 128BIT 3-DP HDMI.png", link: "https://www.palit.com/palit/vgapro.php?id=5495&lang=en" },
+            { name: "i3 10105", brand: "INTEL", category: "CPU", image: "assets/cpu/i3 10105.jfif", link: "https://www.techpowerup.com/cpu-specs/core-i3-10105.c2414" },
+            { name: "i5 10400", brand: "INTEL", category: "CPU", image: "assets/cpu/i5 10400.jfif", link: "https://www.techpowerup.com/cpu-specs/core-i5-10400.c2210" },
+            { name: "i5 11400", brand: "INTEL", category: "CPU", image: "assets/cpu/i5 11400.webp", link: "https://www.techpowerup.com/cpu-specs/core-i5-11400.c2406" },
+            { name: "i3 12100", brand: "INTEL", category: "CPU", image: "assets/cpu/i3 12100.jpg", link: "https://www.techpowerup.com/cpu-specs/core-i3-12100.c2541" },
+            { name: "i3 13100", brand: "INTEL", category: "CPU", image: "assets/cpu/i3 13100.jpg", link: "https://www.techpowerup.com/cpu-specs/core-i3-13100.c2998" },
+            { name: "i3 14100", brand: "INTEL", category: "CPU", image: "assets/cpu/i3 14100.jpg", link: "https://www.techpowerup.com/cpu-specs/core-i3-14100.c3450" },
+            { name: "i5 12400F", brand: "INTEL", category: "CPU", image: "assets/cpu/i5 12400F.jpg", link: "https://www.techpowerup.com/cpu-specs/core-i5-12400f.c2550" },
+            { name: "i5 12400", brand: "INTEL", category: "CPU", image: "assets/cpu/i5 12400.webp", link: "https://www.techpowerup.com/cpu-specs/core-i5-12400.c2549" },
+            { name: "i5 12600", brand: "INTEL", category: "CPU", image: "assets/cpu/i5 12600.jpg", link: "https://www.techpowerup.com/cpu-specs/core-i5-12600.c2556" },
+            { name: "i5 12600K", brand: "INTEL", category: "CPU", image: "assets/cpu/i5 12600K.jpg", link: "https://www.techpowerup.com/cpu-specs/core-i5-12600k.c2509" },
+            { name: "i5 13400", brand: "INTEL", category: "CPU", image: "assets/cpu/i5 13400.jpg", link: "https://www.techpowerup.com/cpu-specs/core-i5-13400.c2994" },
+            { name: "i5 14400F", brand: "INTEL", category: "CPU", image: "assets/cpu/i5 14400F.jpg", link: "https://www.techpowerup.com/cpu-specs/core-i5-14400f.c3454" },
+            { name: "i5 14400", brand: "INTEL", category: "CPU", image: "assets/cpu/i5 14400.jpg", link: "https://www.techpowerup.com/cpu-specs/core-i5-14400.c3449" },
+            { name: "i5 14500", brand: "INTEL", category: "CPU", image: "assets/cpu/i5 14500.jpg", link: "https://www.techpowerup.com/cpu-specs/core-i5-14500.c3448" },
+            { name: "i5 14600K", brand: "INTEL", category: "CPU", image: "assets/cpu/i5 14600K.jpg", link: "https://www.techpowerup.com/cpu-specs/core-i5-14600k.c3266" },
+            { name: "i7 12700", brand: "INTEL", category: "CPU", image: "assets/cpu/i7 12700.jpg", link: "https://www.techpowerup.com/cpu-specs/core-i7-12700.c2559" },
+            { name: "i7 14700F", brand: "INTEL", category: "CPU", image: "assets/cpu/i7 14700F.webp", link: "https://www.techpowerup.com/cpu-specs/core-i7-14700f.c3443" },
+            { name: "i7 14700", brand: "INTEL", category: "CPU", image: "assets/cpu/i7 14700.jpg", link: "https://www.techpowerup.com/cpu-specs/core-i7-14700.c3442" },
+            { name: "i7 14700K", brand: "INTEL", category: "CPU", image: "assets/cpu/i7 14700K.jpg", link: "https://www.techpowerup.com/cpu-specs/core-i7-14700k.c3268" },
+            { name: "i9 14900F", brand: "INTEL", category: "CPU", image: "assets/cpu/i9 14900F.jfif", link: "https://www.techpowerup.com/cpu-specs/core-i9-14900f.c3445" },
+            { name: "i9 14900KF", brand: "INTEL", category: "CPU", image: "assets/cpu/i9 14900KF.webp", link: "https://www.techpowerup.com/cpu-specs/core-i9-14900kf.c3310" },
+            { name: "i9 14900", brand: "INTEL", category: "CPU", image: "assets/cpu/i9 14900.jfif", link: "https://www.techpowerup.com/cpu-specs/core-i9-14900.c3441" },
+            { name: "i9 14900K", brand: "INTEL", category: "CPU", image: "assets/cpu/i9 14900K.jpg", link: "https://www.techpowerup.com/cpu-specs/core-i9-14900k.c3269" },
+            { name: "ULTRA 5 225", brand: "INTEL", category: "CPU", image: "assets/cpu/ULTRA 5 225.jfif", link: "https://www.techpowerup.com/cpu-specs/core-ultra-5-225.c3783" },
+
+            // Page 10
+            { name: "ULTRA 5 245KF", brand: "INTEL", category: "CPU", image: "assets/cpu/ULTRA 5 245KF.jfif", link: "https://www.techpowerup.com/cpu-specs/core-ultra-5-245kf.c3782" },
+            { name: "ULTRA 5 245K", brand: "INTEL", category: "CPU", image: "assets/cpu/ULTRA 5 245K.jpg", link: "https://www.techpowerup.com/cpu-specs/core-ultra-5-245k.c3781" },
+            { name: "ULTRA 7 265", brand: "INTEL", category: "CPU", image: "assets/cpu/ULTRA 7 265.webp", link: "https://www.techpowerup.com/cpu-specs/core-ultra-7-265.c3777" },
+            { name: "ULTRA 7 265KF", brand: "INTEL", category: "CPU", image: "assets/cpu/ULTRA 7 265KF.jfif", link: "https://www.techpowerup.com/cpu-specs/core-ultra-7-265kf.c3778" },
+            { name: "ULTRA 7 265K", brand: "INTEL", category: "CPU", image: "assets/cpu/ULTRA 7 265K.jpg", link: "https://www.techpowerup.com/cpu-specs/core-ultra-7-265k.c3776" },
+            { name: "ULTRA 9 285K", brand: "INTEL", category: "CPU", image: "assets/cpu/ULTRA 9 285K.jpg", link: "https://www.techpowerup.com/cpu-specs/core-ultra-9-285k.c3773" },
+            { name: "A6 7480", brand: "AMD", category: "CPU", image: "assets/cpu/A6 7480.jfif", link: "https://www.techpowerup.com/cpu-specs/a6-7480.c2614" },
+            { name: "A8 7680", brand: "AMD", category: "CPU", image: "assets/cpu/A8 7680.jfif", link: "https://www.techpowerup.com/cpu-specs/a8-7680.c2120" },
+            { name: "A8 9600", brand: "AMD", category: "CPU", image: "assets/cpu/A8 9600.jpg", link: "https://www.techpowerup.com/cpu-specs/pro-a8-9600.c1957" },
+            { name: "SAMSUNG 970 EVO PLUS M.2 NVME", brand: "SAMSUNG", category: "Storage", image: "assets/storage/SAMSUNG 970 EVO PLUS M.2 NVME.jfif", link: "https://www.google.com/search?q=SAMSUNG+970+EVO+PLUS+M.2+NVME&sca_esv=f99d34a608ada35f&rlz=1C1UEAD_enPH1123PH1123&biw=1366&bih=641&ei=cqA_adi9F5Pe2roPmsnT2QE&ved=0ahUKEwjYvuXv8b6RAxUTr1YBHZrkNBsQ4dUDCBE&uact=5&oq=SAMSUNG+970+EVO+PLUS+M.2+NVME&gs_lp=Egxnd3Mtd2l6LXNlcnAiHVNBTVNVTkcgOTcwIEVWTyBQTFVTIE0uMiBOVk1FMgUQABiABDIFEAAYgAQyBhAAGBYYHjIGEAAYFhgeMgYQABgWGB4yBhAAGBYYHjIGEAAYFhgeMgYQABgWGB4yCBAAGBYYChgeMgYQABgWGB5IjghQAFjSBnABeAGQAQCYAWygAcgBqgEDMS4xuAEDyAEA-AEC-AEBmAIDoALyAZgDAJIHAzEuMqAHkA6yBwMwLjK4B-MBwgcDMy0zyAcjgAgA&sclient=gws-wiz-serp" },
+            { name: "ATHLON 200GE", brand: "AMD", category: "CPU", image: "assets/cpu/ATHLON 200GE.jpg", link: "https://www.techpowerup.com/cpu-specs/athlon-200ge.c2073" },
+            { name: "ATHLON 300GE", brand: "AMD", category: "CPU", image: "assets/cpu/ATHLON 300GE.jfif", link: "https://www.cpubenchmark.net/cpu.php?cpu=AMD+Athlon+300GE&id=3629" },
+            { name: "ATHLON 300G", brand: "AMD", category: "CPU", image: "assets/cpu/ATHLON 300G.jpg", link: "https://www.techpowerup.com/cpu-specs/athlon-3000g-fh.c2243" },
+            { name: "R3 3200G", brand: "AMD", category: "CPU", image: "assets/cpu/R3 3200G.jfif", link: "https://www.techpowerup.com/cpu-specs/ryzen-3-3200g.c2205" },
+            { name: "R5 3400G", brand: "AMD", category: "CPU", image: "assets/cpu/R5 3400G.jpg", link: "https://www.techpowerup.com/cpu-specs/ryzen-5-3400g.c2204" },
+            { name: "R5 3500X", brand: "AMD", category: "CPU", image: "assets/cpu/R5 3500X.jfif", link: "https://www.techpowerup.com/cpu-specs/ryzen-5-3500x.c2264" },
+            { name: "R5 4500", brand: "AMD", category: "CPU", image: "assets/cpu/R5 4500.jpg", link: "https://www.techpowerup.com/cpu-specs/ryzen-5-4500.c2758" },
+            { name: "R5 4600G", brand: "AMD", category: "CPU", image: "assets/cpu/R5 4600G.jfif", link: "https://www.techpowerup.com/cpu-specs/ryzen-5-4600g.c2319" },
+            { name: "R5 4655G", brand: "AMD", category: "CPU", image: "assets/cpu/R5 4655G.jpg", link: "https://www.techpowerup.com/cpu-specs/ryzen-5-pro-4655g.c3324" },
+            { name: "R5 5500", brand: "AMD", category: "CPU", image: "assets/cpu/R5 5500.jfif", link: "https://www.techpowerup.com/cpu-specs/ryzen-5-5500.c2756" },
+            { name: "R5 5500GT", brand: "AMD", category: "CPU", image: "assets/cpu/R5 5500GT.jfif", link: "https://www.techpowerup.com/cpu-specs/ryzen-5-5500gt.c3439" },
+            { name: "R5 5600", brand: "AMD", category: "CPU", image: "assets/cpu/R5 5600.jpg", link: "https://www.techpowerup.com/cpu-specs/ryzen-5-5600.c2743" },
+            { name: "R5 5600G", brand: "AMD", category: "CPU", image: "assets/cpu/R5 5600G.jpg", link: "https://www.techpowerup.com/cpu-specs/ryzen-5-5600g.c2471" },
+            { name: "R5 5600GT", brand: "AMD", category: "CPU", image: "assets/cpu/R5 5600GT.jfif", link: "https://www.techpowerup.com/cpu-specs/ryzen-5-5600gt.c3438" },
+            { name: "R5 5600X", brand: "AMD", category: "CPU", image: "assets/cpu/R5 5600X.jpg", link: "https://www.techpowerup.com/cpu-specs/ryzen-5-5600x.c2365" },
+            { name: "R5 7500F", brand: "AMD", category: "CPU", image: "assets/cpu/R5 7500F.jfif", link: "https://www.techpowerup.com/cpu-specs/ryzen-5-7500f.c3259" },
+            { name: "R5 7600", brand: "AMD", category: "CPU", image: "assets/cpu/R5 7600.jpg", link: "https://www.techpowerup.com/cpu-specs/ryzen-5-7600.c2959" },
+            { name: "R5 7600X", brand: "AMD", category: "CPU", image: "assets/cpu/R5 7600X.jpeg", link: "https://www.techpowerup.com/cpu-specs/ryzen-5-7600x.c2849" },
+            { name: "R5 8500G", brand: "AMD", category: "CPU", image: "assets/cpu/R5 8500G.jpg", link: "https://www.techpowerup.com/cpu-specs/ryzen-5-8500g.c3436" },
+            { name: "R5 8600G", brand: "AMD", category: "CPU", image: "assets/cpu/R5 8600G.jfif", link: "https://www.techpowerup.com/cpu-specs/ryzen-5-8600g.c3435" },
+            { name: "R7 5700G", brand: "AMD", category: "CPU", image: "assets/cpu/R7 5700G.jpg", link: "https://www.techpowerup.com/cpu-specs/ryzen-7-5700g.c2472" },
+            { name: "R7 5700X", brand: "AMD", category: "CPU", image: "assets/cpu/R7 5700X.jpg", link: "https://www.techpowerup.com/cpu-specs/ryzen-7-5700x.c2755" },
+            { name: "R7 5800X", brand: "AMD", category: "CPU", image: "assets/cpu/R7 5800X.jpg", link: "https://www.techpowerup.com/cpu-specs/ryzen-7-5800x.c2362" },
+            { name: "R7 7700", brand: "AMD", category: "CPU", image: "assets/cpu/R7 7700.jpg", link: "https://www.techpowerup.com/cpu-specs/ryzen-7-7700.c2960" },
+            { name: "R7 7700X", brand: "AMD", category: "CPU", image: "assets/cpu/R7 7700X.jpg", link: "https://www.techpowerup.com/cpu-specs/ryzen-7-7700x.c2848" },
+            { name: "R7 7800X3D", brand: "AMD", category: "CPU", image: "assets/cpu/R7 7800X3D.jpg", link: "https://www.techpowerup.com/cpu-specs/ryzen-7-7800x3d.c3022" },
+            { name: "R7 8700G", brand: "AMD", category: "CPU", image: "assets/cpu/R7 8700G.jpg", link: "https://www.techpowerup.com/cpu-specs/ryzen-7-8700g.c3434" },
+            { name: "A10-9700 MPK", brand: "AMD", category: "CPU", image: "assets/cpu/A10-9700 MPK.jfif", link: "https://www.techpowerup.com/cpu-specs/a10-9700.c1955" },
+            { name: "R7 9800X3D", brand: "AMD", category: "CPU", image: "assets/cpu/R7 9800X3D.jpg", link: "https://www.techpowerup.com/cpu-specs/ryzen-7-9800x3d.c3891" },
+            { name: "R9 5900X", brand: "AMD", category: "CPU", image: "assets/cpu/R9 5900X.jpg", link: "https://www.techpowerup.com/cpu-specs/ryzen-9-5900x.c2363" },
+            { name: "R9 7900X", brand: "AMD", category: "CPU", image: "assets/cpu/R9 7900X.jpg", link: "https://www.techpowerup.com/cpu-specs/ryzen-9-7900x.c2847" },
+            { name: "R9 7950X", brand: "AMD", category: "CPU", image: "assets/cpu/R9 7950X.jpg", link: "https://www.techpowerup.com/cpu-specs/ryzen-9-7950x.c2846" },
+            { name: "R9 9900X", brand: "AMD", category: "CPU", image: "assets/cpu/R9 9900X.jpg", link: "https://www.techpowerup.com/cpu-specs/ryzen-9-9900x.c3650" },
+
+            // Page 11
+            { name: "R9 9900X3D", brand: "AMD", category: "CPU", image: "assets/cpu/R9 9900X3D.jfif", link: "https://www.techpowerup.com/cpu-specs/ryzen-9-9900x3d.c3997" },
+            { name: "R9 9950X", brand: "AMD", category: "CPU", image: "assets/cpu/R9 9950X.jpg", link: "https://www.techpowerup.com/cpu-specs/ryzen-9-9950x.c3649" },
+            { name: "R9 9950X3D", brand: "AMD", category: "CPU", image: "assets/cpu/R9 9950X3D.jpg", link: "https://www.techpowerup.com/cpu-specs/ryzen-9-9950x3d.c3993" },
+            { name: "MSI Pro H410MB", brand: "MSI", category: "Motherboard", image: "assets/motherboard/MSI Pro H410MB.png", link: "https://www.msi.com/Motherboard/PRO-H410M-B/Overview" },
+            { name: "MSI H510M B", brand: "MSI", category: "Motherboard", image: "assets/motherboard/MSI H510M B.png", link: "https://www.msi.com/Motherboard/PRO-H510M-B" },
+            { name: "MSI H510M A Pro", brand: "MSI", category: "Motherboard", image: "assets/motherboard/MSI H510M A Pro.png", link: "https://www.msi.com/Motherboard/H510M-A-PRO" },
+            { name: "MSI H510Pro E", brand: "MSI", category: "Motherboard", image: "assets/motherboard/MSI H510Pro E.png", link: "https://www.msi.com/Motherboard/H510M-PRO-E" },
+            { name: "MSI B560M Pro E", brand: "MSI", category: "Motherboard", image: "assets/motherboard/MSI B560M Pro E.png", link: "https://www.msi.com/Motherboard/B560M-PRO-E" },
+            { name: "Gigabyte B560M DS3H AC", brand: "GIGABYTE", category: "Motherboard", image: "assets/motherboard/Gigabyte B560M DS3H AC.png", link: "https://www.gigabyte.com/Motherboard/B560M-DS3H-AC-rev-1x" },
+            { name: "Asus H510M K", brand: "ASUS", category: "Motherboard", image: "assets/motherboard/Asus H510M K.png", link: "https://www.asus.com/ph/motherboards-components/motherboards/prime/prime-h510m-k/" },
+            { name: "AsRock H610M HDV/M.2+ D5", brand: "ASROCK", category: "Motherboard", image: "assets/motherboard/AsRock H610M HDVM.2+ D5.png", link: "https://www.asrock.com/mb/Intel/H610M-HDVM.2+%20D5/index.asp" },
+            { name: "ASUS H610MK", brand: "ASUS", category: "Motherboard", image: "assets/motherboard/ASUS H610MK.png", link: "https://www.asus.com/ph/motherboards-components/motherboards/prime/prime-h610m-k-d4/" },
+            { name: "Asus H610M E", brand: "ASUS", category: "Motherboard", image: "assets/motherboard/Asus H610M E.png", link: "https://www.asus.com/ph/motherboards-components/motherboards/prime/prime-h610m-e-d4/" },
+            { name: "Gigabyte H610M H V3", brand: "GIGABYTE", category: "Motherboard", image: "assets/motherboard/Gigabyte H610M H V3.png", link: "https://www.gigabyte.com/Motherboard/H610M-H-V3-DDR4-rev-10" },
+            { name: "MSI Pro H610M E", brand: "MSI", category: "Motherboard", image: "assets/motherboard/MSI Pro H610M E.png", link: "https://www.msi.com/Motherboard/PRO-H610M-E-DDR4" },
+            { name: "MSI B660M Mortar WiFi", brand: "MSI", category: "Motherboard", image: "assets/motherboard/MSI B660M Mortar WiFi.png", link: "https://www.msi.com/Motherboard/MAG-B660M-MORTAR-WIFI-DDR4" },
+            { name: "MSI B760M E", brand: "MSI", category: "Motherboard", image: "assets/motherboard/MSI B760M E.png", link: "https://www.msi.com/Motherboard/PRO-B760M-E-DDR4" },
+            { name: "MSI Gaming Plus", brand: "MSI", category: "Motherboard", image: "assets/motherboard/MSI Gaming Plus.png", link: "https://www.msi.com/Motherboard/MPG-B550-GAMING-PLUS" },
+            { name: "MSI Mortar WiFi", brand: "MSI", category: "Motherboard", image: "assets/motherboard/MSI Mortar WiFi.png", link: "https://www.msi.com/Motherboard/MAG-B550M-MORTAR-WIFI" },
+            { name: "MSI Tomahawk WiFi", brand: "MSI", category: "Motherboard", image: "assets/motherboard/MSI Tomahawk WiFi.png", link: "https://www.msi.com/Motherboard/MAG-B650-TOMAHAWK-WIFI" },
+            { name: "MSI Z790 Pro Z790P WiFi", brand: "MSI", category: "Motherboard", image: "assets/motherboard/MSI Z790 Pro Z790P WiFi.png", link: "https://www.msi.com/Motherboard/PRO-Z790-P-WIFI" },
+            { name: "Asus B760M A D4 WiFi", brand: "ASUS", category: "Motherboard", image: "assets/motherboard/Asus B760M A D4 WiFi.png", link: "https://www.asus.com/ph/motherboards-components/motherboards/prime/prime-b760m-a-wifi-d4/" },
+            { name: "ASUS B760M A D5 WiFi", brand: "ASUS", category: "Motherboard", image: "assets/motherboard/ASUS B760M A D5 WiFi.png", link: "https://www.asus.com/ph/motherboards-components/motherboards/prime/prime-b760m-a-wifi/" },
+            { name: "ASUS Prime B760M K D4", brand: "ASUS", category: "Motherboard", image: "assets/motherboard/ASUS Prime B760M K D4.png", link: "https://www.asus.com/ph/motherboards-components/motherboards/prime/prime-b760m-k-d4/" },
+            { name: "ASUS TUF M+ Gaming", brand: "ASUS", category: "Motherboard", image: "assets/gpu/ASUS TUF M+ Gaming.jfif", link: "https://www.asus.com/ph/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b550m-plus/" },
+            { name: "ASUS TUF M+ Gaming ddr4", brand: "ASUS", category: "Motherboard", image: "assets/motherboard/ASUS TUF M+ Gaming ddr4.png", link: "https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b760m-plus-d4/" },
+            { name: "ASUS TUF M+ Gaming ddr5", brand: "ASUS", category: "Motherboard", image: "assets/motherboard/ASUS TUF M+ Gaming ddr5.png", link: "https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b650m-plus/" },
+            { name: "ASUS B760 Strix F", brand: "ASUS", category: "Motherboard", image: "assets/motherboard/ASUS B760 Strix F.png", link: "https://rog.asus.com/motherboards/rog-strix/rog-strix-b760-f-gaming-wifi-model/" },
+            { name: "ASUS B760 Strix A Gaming", brand: "ASUS", category: "Motherboard", image: "assets/motherboard/ASUS B760 Strix A Gaming.png", link: "https://rog.asus.com/motherboards/rog-strix/rog-strix-b760-a-gaming-wifi/" },
+            { name: "ASUS B760 Strix G Gaming", brand: "ASUS", category: "Motherboard", image: "assets/motherboard/ASUS B760 Strix G Gaming.png", link: "https://rog.asus.com/motherboards/rog-strix/rog-strix-b760-g-gaming-wifi/" },
+            { name: "ASUS Z790 A-WiFi/CSM", brand: "ASUS", category: "Motherboard", image: "assets/motherboard/ASUS Z790 A-WiFiCSM.png", link: "https://www.asus.com/ph/motherboards-components/motherboards/csm/prime-z790-a-wifi-csm/" },
+            { name: "Gigabyte B760M DS3HAX ddr4", brand: "GIGABYTE", category: "Motherboard", image: "assets/motherboard/Gigabyte B760M DS3HAX ddr4.png", link: "https://www.gigabyte.com/Motherboard/B760M-DS3H-AX-DDR4-rev-1x" },
+            { name: "Gigabyte Aorus Elite", brand: "GIGABYTE", category: "Motherboard", image: "assets/motherboard/Gigabyte Aorus Elite.png", link: "https://www.gigabyte.com/Motherboard/B550-AORUS-ELITE-rev-10/" },
+            { name: "Gigabyte DS3HAX ddr5", brand: "GIGABYTE", category: "Motherboard", image: "assets/motherboard/Gigabyte DS3HAX ddr5.png", link: "https://www.gigabyte.com/Motherboard/B760M-DS3H-AX-rev-1x" },
+            { name: "Gigabyte Z790M Aorus Elite AX", brand: "GIGABYTE", category: "Motherboard", image: "assets/motherboard/Gigabyte Z790M Aorus Elite AX.png", link: "https://www.gigabyte.com/Motherboard/Z790M-AORUS-ELITE-AX-rev-10" },
+            { name: "Gigabyte B860M Gaming X", brand: "GIGABYTE", category: "Motherboard", image: "assets/motherboard/Gigabyte B860M Gaming X.png", link: "https://www.gigabyte.com/Motherboard/B860M-GAMING-X-rev-1x" },
+            { name: "MSI B860M A Pro", brand: "MSI", category: "Motherboard", image: "assets/motherboard/MSI B860M A Pro.png", link: "https://www.msi.com/Motherboard/PRO-B860M-A-WIFI" },
+            { name: "MSI B860 Gaming+", brand: "MSI", category: "Motherboard", image: "assets/motherboard/MSI B860 Gaming+.png", link: "https://www.msi.com/Motherboard/B860-GAMING-PLUS-WIFI" },
+            { name: "MSI Z890 P WiFi", brand: "MSI", category: "Motherboard", image: "assets/motherboard/MSI Z890 P WiFi.png", link: "https://www.msi.com/Motherboard/PRO-Z890-P-WIFI" },
+            { name: "Asus B860M A Prime", brand: "ASUS", category: "Motherboard", image: "assets/motherboard/Asus B860M A Prime.png", link: "https://www.asus.com/motherboards-components/motherboards/prime/prime-b860m-a/" },
+
+            // Page 12
+            { name: "Asus B860 M+ TUF", brand: "ASUS", category: "Motherboard", image: "assets/motherboard/Asus B860 M+ TUF.png", link: "https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b860m-plus/" },
+            { name: "ASUS Strix Gaming G WiFi", brand: "ASUS", category: "Motherboard", image: "assets/motherboard/ASUS Strix Gaming G WiFi.png", link: "https://rog.asus.com/motherboards/rog-strix/rog-strix-b850-g-gaming-wifi/" },
+            { name: "ASUS Z890 P WiFi", brand: "ASUS", category: "Motherboard", image: "assets/motherboard/ASUS Z890 P WiFi.png", link: "https://www.asus.com/motherboards-components/motherboards/prime/prime-z890-p-wifi/" },
+            { name: "ASUS TUF Gaming Plus WiFi", brand: "ASUS", category: "Motherboard", image: "assets/motherboard/ASUS TUF Gaming Plus WiFi.png", link: "https://www.asus.com/ph/motherboards-components/motherboards/tuf-gaming/tuf-gaming-x570-plus-wi-fi/" },
+            { name: "ASUS TUF Gaming Pro WiFi", brand: "ASUS", category: "Motherboard", image: "assets/motherboard/ASUS TUF Gaming Pro WiFi.png", link: "https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-x570-pro-wi-fi/" },
+            { name: "ASUS Strix Gaming WF A", brand: "ASUS", category: "Motherboard", image: "assets/motherboard/ASUS Strix Gaming WF A.png", link: "https://rog.asus.com/motherboards/rog-strix/rog-strix-x870-a-gaming-wifi/" },
+            { name: "ASUS STRIX F", brand: "ASUS", category: "Motherboard", image: "assets/motherboard/ASUS STRIX F.png", link: "https://rog.asus.com/motherboards/rog-strix/rog-strix-x570-f-gaming-model/" },
+            { name: "ASUS STRIX E", brand: "ASUS", category: "Motherboard", image: "assets/motherboard/ASUS STRIX E.png", link: "https://rog.asus.com/motherboards/rog-strix/rog-strix-x570-e-gaming-model/" },
+            { name: "MSI B550M PRO-VDH WiFi", brand: "MSI", category: "Motherboard", image: "assets/motherboard/MSI B550M PRO-VDH WiFi.png", link: "https://www.msi.com/Motherboard/B550M-PRO-VDH-WIFI" },
+            { name: "MSI B550M-A PRO", brand: "MSI", category: "Motherboard", image: "assets/motherboard/MSI B550M-A PRO.png", link: "https://www.msi.com/Motherboard/B550M-A-PRO" },
+            { name: "MSI B450 GAMING PLUS MAX", brand: "MSI", category: "Motherboard", image: "assets/motherboard/MSI B450 GAMING PLUS MAX.png", link: "https://www.msi.com/Motherboard/B450-GAMING-PLUS-MAX/Specification" },
+            { name: "MSI B450-A PRO MAX", brand: "MSI", category: "Motherboard", image: "assets/motherboard/MSI B450-A PRO MAX.png", link: "https://www.msi.com/Motherboard/B450-A-PRO-MAX/Specification" },
+            { name: "MSI B450M-A PRO MAX II", brand: "MSI", category: "Motherboard", image: "assets/motherboard/MSI B450M-A PRO MAX II.png", link: "https://www.msi.com/Motherboard/B450M-A-PRO-MAX-II" },
+            { name: "MSI A520M-A PRO", brand: "MSI", category: "Motherboard", image: "assets/motherboard/MSI A520M-A PRO.png", link: "https://www.msi.com/Motherboard/A520M-A-PRO" },
+            { name: "YESTON GT1030 4GB DDR4 128BIT", brand: "YESTON", category: "Graphics Card", image: "assets/gpu/YESTON GT1030 4GB DDR4 128BIT.webp", link: "https://yestonstore.com/products/yeston-gt-1030-4gd4-64bit-graphics-card-video-card" },
+            { name: "RAMSTA GT730 2GB DDR3", brand: "RAMSTA", category: "Graphics Card", image: "assets/gpu/RAMSTA GT730 2GB DDR3.webp", link: "https://www.google.com/search?sca_esv=b8d16794a32ebd8e&rlz=1C1UEAD_enPH1123PH1123&q=RAMSTA+GT730+2GB+DDR3+specs&source=lnms&fbs=AIIjpHz2LkAPJDdeiKYzFgacvjxVmKaDDQLwycTxV2L0apBPyNTRLJN5Yi1fzSp12MAsxdfnjssIWUxPzj6l45zi9ytOThPHlQTtZ1OVZq5CtfO2oL_ArUeXUF8JIOQjZDkpSqhFXMfny4Zgof2pOeAzwclNwecdoG5LTNfLlMpUIFZ1tDsxVZbHhrpi_HEMRP4FoDEgIanXRXND9nwjtmDZdQCyoC7qaTh03yyHuYZTTkrlaT0kkSI&sa=X&ved=2ahUKEwjJ-pqW7b6RAxVWk1YBHWO8CyMQ0pQJegQIDRAB&biw=1366&bih=641&dpr=1" },
+            { name: "REDRAGON IVY COOLING PAD", brand: "REDRAGON", category: "Cooling", image: "assets/cooling/REDRAGON IVY COOLING PAD.webp", link: "https://www.redragonzone.com/products/redragon-gcp500-laptop-cpu-cooler" }
+        ];
+
+        // ======================= CONFIG =======================
+        const itemsPerPage = 24;
+        let currentPage = 1;
+        let filteredProducts = [];
+
+        // Read multiple ?category= values
+        const urlParams = new URLSearchParams(window.location.search);
+        const preSelectedCategories = urlParams.getAll("category");
+
+
+        // ======================= RENDER BRANDS =======================
+        function renderBrands() {
+            const brands = [...new Set(allProducts.map(p => p.brand))].sort();
+            const container = document.getElementById("brandList");
+
+            container.innerHTML = brands.map(b => `
+        <div class='form-check'>
+            <input class='form-check-input brandCheck' type='checkbox' value='${b}' id='brand-${b}'>
+            <label class='form-check-label'>${b}</label>
+        </div>
+    `).join("");
+        }
+
+
+        // ======================= RENDER CATEGORIES =======================
+        function renderCategories() {
+            const categories = [...new Set(allProducts.map(p => p.category))].sort();
+            const container = document.getElementById("categoryList");
+
+            container.innerHTML = categories.map(c => `
+        <div class='form-check'>
+            <input class='form-check-input categoryCheck' type='checkbox' value='${c}' id='cat-${c}'>
+            <label class='form-check-label'>${c}</label>
+        </div>
+    `).join("");
+
+            // Auto-check from URL
+            preSelectedCategories.forEach(cat => {
+                const checkbox = document.querySelector(`.categoryCheck[value="${cat}"]`);
+                if (checkbox) checkbox.checked = true;
+            });
+        }
+
+
+        // ======================= RENDER PRODUCTS =======================
+        function renderProducts() {
+            const grid = document.getElementById("productGrid");
+            const start = (currentPage - 1) * itemsPerPage;
+            const end = start + itemsPerPage;
+
+            const paginatedList = filteredProducts.slice(start, end);
+
+            grid.innerHTML = paginatedList.map(p => `
+        <div class="col-3 mb-4">
+            <div class="product-card">
+                <img src="${p.image || 'https://via.placeholder.com/300x220'}" />
+                <div class="mt-2" style="font-size:14px; font-weight:600">${p.name}</div>
+                <div style="font-size:12px; color:#555;">${p.brand}</div>
+                <a href="${p.link || '#'}" class="view-btn mt-2" target="_blank">View Product</a>
+            </div>
+        </div>
+    `).join("");
+
+            renderPagination();
+        }
+
+
+        // ======================= GOOGLE MATERIAL PAGINATION =======================
+        function renderPagination() {
+            const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
+            const container = document.getElementById("pagination");
+
+            if (totalPages <= 1) {
+                container.innerHTML = "";
+                return;
+            }
+
+            let html = `<ul class="pagination justify-content-center">`;
+
+            // Previous
+            html += `
+        <li class="page-item ${currentPage === 1 ? "disabled" : ""}">
+            <a class="page-link" data-page="${currentPage - 1}">&lt;</a>
+        </li>
+    `;
+
+            // Visible pages (7 total)
+            const maxVisible = 7;
+            let start = Math.max(1, currentPage - Math.floor(maxVisible / 2));
+            let end = start + maxVisible - 1;
+
+            if (end > totalPages) {
+                end = totalPages;
+                start = Math.max(1, end - maxVisible + 1);
+            }
+
+            for (let i = start; i <= end; i++) {
+                html += `
+            <li class="page-item ${i === currentPage ? "active" : ""}">
+                <a class="page-link" data-page="${i}">${i}</a>
+            </li>
+        `;
+            }
+
+            // Next
+            html += `
+        <li class="page-item ${currentPage === totalPages ? "disabled" : ""}">
+            <a class="page-link" data-page="${currentPage + 1}">&gt;</a>
+        </li>
+    `;
+
+            html += `</ul>`;
+
+            container.innerHTML = html;
+
+            // Attach click events
+            document.querySelectorAll("#pagination .page-link").forEach(btn => {
+                btn.addEventListener("click", e => {
+                    const page = Number(e.target.dataset.page);
+                    if (!isNaN(page)) {
+                        currentPage = page;
+                        renderProducts();
+                    }
+                });
+            });
+        }
+
+
+        // ======================= APPLY FILTERS =======================
+        function applyFilters() {
+            let list = [...allProducts];
+
+            // Category filtering
+            const selectedCategories = [...document.querySelectorAll('.categoryCheck:checked')]
+                .map(cb => cb.value);
+
+            if (selectedCategories.length > 0) {
+                list = list.filter(p => selectedCategories.includes(p.category));
+            }
+
+            // Brand filtering
+            const selectedBrands = [...document.querySelectorAll('.brandCheck:checked')]
+                .map(cb => cb.value);
+
+            if (selectedBrands.length > 0) {
+                list = list.filter(p => selectedBrands.includes(p.brand));
+            }
+
+            // Sorting
+            const sort = document.getElementById("sortSelect").value;
+            if (sort === "az") list.sort((a, b) => a.name.localeCompare(b.name));
+            if (sort === "za") list.sort((a, b) => b.name.localeCompare(a.name));
+
+            // Store globally
+            filteredProducts = list;
+
+            // Reset to page 1 whenever filters change
+            currentPage = 1;
+
+            renderProducts();
+        }
+
+
+        // ======================= INIT =======================
+        document.addEventListener("DOMContentLoaded", () => {
+            renderBrands();
+            renderCategories();
+            applyFilters();
+        });
+
+        document.addEventListener("change", applyFilters);
+
+        document.getElementById("clearFiltersBtn").addEventListener("click", () => {
+            // Uncheck all category filters
+            document.querySelectorAll(".categoryCheck").forEach(cb => cb.checked = false);
+
+            // Uncheck all brand filters
+            document.querySelectorAll(".brandCheck").forEach(cb => cb.checked = false);
+
+            // Reset sorting
+            document.getElementById("sortSelect").value = "az";
+
+            // Refresh product list
+            applyFilters();
+        });
+
+
+
+
+    </script>
+</body>
+
+</html>
